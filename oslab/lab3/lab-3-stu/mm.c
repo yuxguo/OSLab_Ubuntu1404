@@ -50,7 +50,7 @@
 #define PUT_PREV(p,val) (PUT(p,val))
 
 #define GET_SUCC(p) (GET( ((unsigned int *)(p) + 1)) )
-#define PUT_SUCC(p) (PUT( ((unsigned int *)(p) + 1), val ))
+#define PUT_SUCC(p,val) (PUT( ((unsigned int *)(p) + 1), val ))
 
 #define MIN_SIZE 16
 
@@ -296,7 +296,8 @@ static void place(void *bp, size_t asize)
 
 static void *find_fit(size_t asize)
 {
-    for (char *p = GET_SUCC(start_p); p; p=GET_SUCC(p))
+	char *p;
+    for (p =(char *)GET_SUCC(start_p); p; p=(char *)GET_SUCC(p))
     {
         if (GET_SIZE(HDRP(p)) >= asize)
         {
