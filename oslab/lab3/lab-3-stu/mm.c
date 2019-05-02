@@ -129,8 +129,9 @@ static void *extend_heap(size_t words)
     PUT_PREV(bp,NULL);       //next previous is bp
 
     printf("\nout extend_heap\n");
-    insert_node_LIFO(bp);
-    return coalesce(bp);
+    
+    char *t = coalesce(bp);
+    insert_node_LIFO(t);
 }
 
 
