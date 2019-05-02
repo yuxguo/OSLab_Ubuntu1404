@@ -302,7 +302,8 @@ static void place(void *bp, size_t asize)
         printf ("\n 22 \n");        
         PUT(HDRP(bp), PACK(space,PU_U));
         printf("\n 33 \n");
-        printf("\n %x, %x \n", bp, GET_SUCC(bp));
+        printf("\n %x, %x, %x \n", bp, GET_SUCC(bp), mem_sbrk(0));
+
         if (GET_SUCC(bp))
         {
             PUT_PREV(GET_SUCC(bp), GET_PREV(bp));
