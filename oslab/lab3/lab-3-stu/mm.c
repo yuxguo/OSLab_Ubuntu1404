@@ -350,9 +350,9 @@ static void place(void *bp, size_t asize)
 
         if (GET_SUCC(p_tmp))
         {
-            PUT_PREV(GET_SUCC(p_tmp), GET_PREV(p_tmp));
+            PUT_PREV(GET_SUCC(p_tmp), p_tmp);
         }
-        PUT_SUCC(GET_PREV(p_tmp), GET_SUCC(p_tmp));
+        PUT_SUCC(GET_PREV(p_tmp), p_tmp);
         
     }
     else
