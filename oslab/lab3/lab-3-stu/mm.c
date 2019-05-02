@@ -344,9 +344,16 @@ static void place(void *bp, size_t asize)
         char *p_tmp = bp + asize; 
         PUT(HDRP(bp), PACK(asize,PU_U));
         PUT(HDRP(p_tmp),PACK(space-asize,PU_N));
+        PUT(FTRP(p_tmp),PACK(space-asize,PU_N));
         PUT_SUCC(p_tmp,GET_SUCC(bp));
         PUT_PREV(p_tmp,GET_PREV(bp));
-        PUT(FTRP(p_tmp),PACK(space-asize,PU_N));
+
+        if (GET_SUCC(p_tmp))
+        {
+            PUT_PREV(GET_SUCC(p_tmp), GET_PREV(p_tmp));
+        }
+        PUT_SUCC(GET_PREV(p_tmp), GET_SUCC(p_tmp));
+        
     }
     else
     {
