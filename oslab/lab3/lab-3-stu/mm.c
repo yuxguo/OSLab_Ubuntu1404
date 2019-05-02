@@ -352,7 +352,7 @@ static void place(void *bp, size_t asize)
         printf ("\n 22 \n");        
         PUT(HDRP(bp), PACK(space,PU_U));
         PUT(HDRP(NEXT_BLKP(bp)),(GET(HDRP(NEXT_BLKP(bp))) | MASK_PU ));
-
+        printf("\n 33 \n");
         if (GET_SUCC(bp))
         {
             PUT_PREV(GET_SUCC(bp), GET_PREV(bp));
@@ -371,6 +371,7 @@ static void *find_fit(size_t asize)
     {
         if (GET_SIZE(HDRP(p)) >= asize)
         {
+            printf("\nout find_fit\n");
             return p;
         }
     }
