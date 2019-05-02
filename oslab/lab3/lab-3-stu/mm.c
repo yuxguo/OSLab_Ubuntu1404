@@ -89,14 +89,16 @@ int mm_init(void)
     PUT(heap_listp + (7*WSIZE), (unsigned int)NULL);              //succeed is NULL
 
     heap_listp += (4*WSIZE);//heap start addr
-    printf("init ok\n");
+    printf("\nin mm_init\n");
     if (extend_heap(CHUNKSIZE/WSIZE) == NULL)
         return -1;
+    printf("\nout mm_init\n");
     return 0;
 }// Done!
 
 static void *extend_heap(size_t words)
 {
+    printf("\nin extend_heap\n");
     char *bp;
     size_t size;
     size = (words % 2) ? (words+1) * WSIZE : words*WSIZE;       
@@ -122,6 +124,7 @@ static void *extend_heap(size_t words)
     PUT_PREV(NEXT_BLKP(bp),bp);       //next previous is bp
     PUT_SUCC(NEXT_BLKP(bp),NULL);        //next succeed is NULL
 
+    printf("\nout extend_heap\n");
     return coalesce(bp);
 }
 
@@ -133,6 +136,7 @@ static void *extend_heap(size_t words)
 void *mm_malloc(size_t size)
 {
     //确定要malloc的具体大小，调用findfit查找，再用place放置
+    printf("\nin mm_malloc\n");
     size_t asize;
     size_t extendsize;
     char *bp;
@@ -160,6 +164,7 @@ void *mm_malloc(size_t size)
     if ((bp = extend_heap(extendsize/WSIZE)) == NULL)
         return NULL;
     place(bp, asize);
+    printf("\nout mm_malloc\n");
     return bp;
 }
 
@@ -189,6 +194,7 @@ void mm_free(void *bp)
 }
 static void *coalesce(void *bp)
 {
+    printf("\nin coalesce\n");
     //从当前块头读出前一个块是否分配
     size_t is_prev_alloc = GET_PREV_INFO(HDRP(bp));
     //通过块大小计算出后一块，看它是否分配
@@ -258,6 +264,7 @@ static void *coalesce(void *bp)
         PUT_PREV(bp,NULL);
         PUT_SUCC(bp,NULL);
     }
+    printf("\nout coalesce\n");
     return bp;
 }
 
