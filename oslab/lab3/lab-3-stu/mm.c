@@ -50,8 +50,8 @@
 #define GET_PREV(p) (GET(p))
 #define PUT_PREV(p,val) (PUT(p,val))
 
-#define GET_SUCC(p) (GET( ((unsigned int *)(p) + 1)) )
-#define PUT_SUCC(p,val) (PUT( ((unsigned int *)(p) + 1), val ))
+#define GET_SUCC(p) (*((unsigned int *)(p) + 1))
+#define PUT_SUCC(p,val) (*((unsigned int *)(p) + 1) = (val))
 
 #define MIN_SIZE 16
 
@@ -89,7 +89,7 @@ int mm_init(void)
     PUT(heap_listp + (7*WSIZE), (unsigned int)NULL);              //succeed is NULL
 
     heap_listp += (4*WSIZE);//heap start addr
-
+    printf("init ok\n");
     if (extend_heap(CHUNKSIZE/WSIZE) == NULL)
         return -1;
     return 0;
@@ -117,10 +117,10 @@ static void *extend_heap(size_t words)
     }
     
 
-    PUT_SUCC(bp,HDRP(NEXT_BLKP(bp)));       //bp's succeed is next
+    PUT_SUCC(bp,NEXT_BLKP(bp));       //bp's succeed is next
     PUT(HDRP(NEXT_BLKP(bp)), PACK(0, PN_U));//make next header
-    PUT_PREV(HDRP(NEXT_BLKP(bp)),bp);       //next previous is bp
-    PUT_SUCC(HDRP(NEXT_BLKP(bp)),NULL);        //next succeed is NULL
+    PUT_PREV(NEXT_BLKP(bp),bp);       //next previous is bp
+    PUT_SUCC(NEXT_BLKP(bp),NULL);        //next succeed is NULL
 
     return coalesce(bp);
 }
