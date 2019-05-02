@@ -301,8 +301,11 @@ static void place(void *bp, size_t asize)
     {
         printf ("\n 22 \n");        
         PUT(HDRP(bp), PACK(space,PU_U));
+        if (GET_SUCC(bp))
+        {
+            PUT_PREV(GET_SUCC(bp), GET_PREV(bp));
+        }
         PUT_SUCC(GET_PREV(bp), GET_SUCC(bp));
-        PUT_PREV(GET_SUCC(bp), GET_PREV(bp));
     }
     printf("\nout_place\n");
 }
