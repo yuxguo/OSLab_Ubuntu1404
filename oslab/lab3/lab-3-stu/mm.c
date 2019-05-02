@@ -276,8 +276,8 @@ static void insert_node_LIFO(char *bp)
     {
         PUT_SUCC(bp,p_tmp);
         PUT_PREV(bp,start_p);
-        PUT_SUCC(GET_SUCC(start_p), bp);
-        PUT_PREV(GET_PREV(p_tmp), bp);
+        PUT_SUCC(start_p, bp);
+        PUT_PREV(p_tmp, bp);
     }
     printf("\nout insert_node_LIFO\n");
 }
