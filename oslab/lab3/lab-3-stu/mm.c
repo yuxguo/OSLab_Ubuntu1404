@@ -222,7 +222,7 @@ static void *coalesce(void *bp)
         PUT(HDRP(bp),PACK(size,PU_N));
         PUT(FTRP(bp),PACK(size,PU_N));
         //更改这个块之后的块的状态，按位与一个掩码，将其次低位置为0，标记为前块未用
-        PUT(FTRP(NEXT_BLKP(bp)), (GET(FTRP(NEXT_BLKP(bp))) & MASK_PN));
+        PUT(HDRP(NEXT_BLKP(bp)), (GET(HDRP(NEXT_BLKP(bp))) & MASK_PN));
     }
     else if (is_prev_alloc && !is_succ_alloc)
     {
@@ -244,7 +244,7 @@ static void *coalesce(void *bp)
         PUT_PREV(bp,NULL);
         PUT_SUCC(bp,NULL);
         //更改这个块之后的块的状态，按位与一个掩码，将其次低位置为0，标记为前块未用
-        PUT(FTRP(NEXT_BLKP(bp)), (GET(FTRP(NEXT_BLKP(bp))) & MASK_PN));        
+        PUT(HDRP(NEXT_BLKP(bp)), (GET(HDRP(NEXT_BLKP(bp))) & MASK_PN));        
         
     }
     else if (!is_prev_alloc && is_succ_alloc)
@@ -268,7 +268,7 @@ static void *coalesce(void *bp)
         PUT_PREV(bp,NULL);
         PUT_SUCC(bp,NULL);
         //更改这个块之后的块的状态，按位与一个掩码，将其次低位置为0，标记为前块未用
-        PUT(FTRP(NEXT_BLKP(bp)), (GET(FTRP(NEXT_BLKP(bp))) & MASK_PN));   
+        PUT(HDRP(NEXT_BLKP(bp)), (GET(HDRP(NEXT_BLKP(bp))) & MASK_PN));   
         
     }
     else 
@@ -292,7 +292,7 @@ static void *coalesce(void *bp)
         PUT_PREV(bp,NULL);
         PUT_SUCC(bp,NULL);
         //更改这个块之后的块的状态，按位与一个掩码，将其次低位置为0，标记为前块未用
-        PUT(FTRP(NEXT_BLKP(bp)), (GET(FTRP(NEXT_BLKP(bp))) & MASK_PN));   
+        PUT(HDRP(NEXT_BLKP(bp)), (GET(HDRP(NEXT_BLKP(bp))) & MASK_PN));   
     }
     printf("\nout coalesce\n");
     return bp;
@@ -337,9 +337,8 @@ static void place(void *bp, size_t asize)
     {
         printf ("\n 22 \n");        
         PUT(HDRP(bp), PACK(space,PU_U));
-        printf("\n 33 \n");
-        printf("\n %x, %x, %x \n", bp, GET_SUCC(bp), mem_sbrk(0));
-
+        PUT(HDRP(NEXT_BLKP(bp)),(GET(HDRP(NEXT_BLKP(bp))) | MASK_PU ));
+        
         if (GET_SUCC(bp))
         {
             PUT_PREV(GET_SUCC(bp), GET_PREV(bp));
