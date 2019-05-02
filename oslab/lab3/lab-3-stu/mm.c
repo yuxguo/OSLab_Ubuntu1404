@@ -353,6 +353,7 @@ static void place(void *bp, size_t asize)
         PUT(HDRP(bp), PACK(space,PU_U));
         PUT(HDRP(NEXT_BLKP(bp)),(GET(HDRP(NEXT_BLKP(bp))) | MASK_PU ));
         
+        printf("\n %x, %x\n",GET_PREV(bp), GET_SUCC(bp));
         if (GET_SUCC(bp))
         {
             PUT_PREV(GET_SUCC(bp), GET_PREV(bp));
