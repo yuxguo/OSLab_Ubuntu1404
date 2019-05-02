@@ -270,6 +270,7 @@ static void *coalesce(void *bp)
 
 static void insert_node_LIFO(char *bp)
 {
+    printf("\nin insert_node_LIFO\n");
     char *p_tmp = GET_SUCC(start_p);
     if (bp)
     {
@@ -278,12 +279,13 @@ static void insert_node_LIFO(char *bp)
         PUT_SUCC(GET_SUCC(start_p), bp);
         PUT_PREV(GET_PREV(p_tmp), bp);
     }
-    
+    printf("\nout insert_node_LIFO\n");
 }
 
 
 static void place(void *bp, size_t asize)
 {
+    printf("\nin place\n");
     size_t space = GET_SIZE(HDRP(bp));
     if (space - asize >= MIN_SIZE)
     {
@@ -300,10 +302,12 @@ static void place(void *bp, size_t asize)
         PUT_SUCC(GET_PREV(bp), GET_SUCC(bp));
         PUT_PREV(GET_SUCC(bp), GET_PREV(bp));
     }
+    printf("\nout_place\n");
 }
 
 static void *find_fit(size_t asize)
 {
+    printf("\nin find_fit\n");
 	char *p;
     for (p =(char *)GET_SUCC(start_p); p; p=(char *)GET_SUCC(p))
     {
@@ -312,6 +316,7 @@ static void *find_fit(size_t asize)
             return p;
         }
     }
+    printf("\nout find_fit\n");
     return NULL;
 }
 
