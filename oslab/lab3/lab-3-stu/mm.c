@@ -371,6 +371,7 @@ static void *find_fit(size_t asize)
 	char *p;
     for (p =(char *)GET_SUCC(start_p); p; p=(char *)GET_SUCC(p))
     {
+        printf("\n %x \n",p);
         if (GET_SIZE(HDRP(p)) >= asize)
         {
             printf("\nout find_fit\n");
