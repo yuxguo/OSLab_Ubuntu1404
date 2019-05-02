@@ -289,6 +289,7 @@ static void place(void *bp, size_t asize)
     size_t space = GET_SIZE(HDRP(bp));
     if (space - asize >= MIN_SIZE)
     {
+        printf ("\n 11 \n");
         char *p_tmp = bp + asize; 
         PUT(HDRP(bp), PACK(asize,PU_U));
         PUT(HDRP(p_tmp),PACK(space-asize,PU_N));
@@ -298,6 +299,7 @@ static void place(void *bp, size_t asize)
     }
     else
     {
+        printf ("\n 22 \n");        
         PUT(HDRP(bp), PACK(space,PU_U));
         PUT_SUCC(GET_PREV(bp), GET_SUCC(bp));
         PUT_PREV(GET_SUCC(bp), GET_PREV(bp));
