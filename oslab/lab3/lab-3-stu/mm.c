@@ -305,6 +305,7 @@ static void place(void *bp, size_t asize)
         {
             PUT_PREV(GET_SUCC(bp), GET_PREV(bp));
         }
+        printf("\n 33 \n");
         PUT_SUCC(GET_PREV(bp), GET_SUCC(bp));
     }
     printf("\nout_place\n");
