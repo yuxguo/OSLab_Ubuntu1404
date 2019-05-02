@@ -59,6 +59,9 @@
 #define PU_N (0x2)
 #define PN_U (0x1)
 #define PN_N (0x0)
+
+#define MASK_PU 0x00000002
+#define MASK_PN 0xfffffffd 
 /*********************************************************/
 
 static void *extend_heap(size_t words);
@@ -74,24 +77,24 @@ static char *start_p = NULL;
  */
 int mm_init(void)
 {
-
-    if ((heap_listp = mem_sbrk(8 * WSIZE)) == (void *) -1)
+    char *bp;
+    if ((heap_listp = mem_sbrk(6 * WSIZE)) == (void *) -1)
         return -1;
 
     start_p = heap_listp + WSIZE;
     PUT(heap_listp, 0);// first block
-    PUT(heap_listp + (1*WSIZE), (unsigned int)NULL);
-    PUT(heap_listp + (2*WSIZE), (unsigned int)(heap_listp + (6*WSIZE)) );
+    PUT(heap_listp + (1*WSIZE), NULL);
+    PUT(heap_listp + (2*WSIZE), NULL );
     PUT(heap_listp + (3*WSIZE), PACK(DSIZE, PN_U));
     PUT(heap_listp + (4*WSIZE), PACK(DSIZE, PN_U));
-    PUT(heap_listp + (5*WSIZE), PACK(0, PN_U));     //lenth 0, previous not used
-    PUT(heap_listp + (6*WSIZE), (unsigned int)start_p);           //previous start_p, also is bp 
-    PUT(heap_listp + (7*WSIZE), (unsigned int)NULL);              //succeed is NULL
+    PUT(heap_listp + (5*WSIZE), PACK(0, PU_U));     //lenth 0, previous not used
 
     heap_listp += (4*WSIZE);//heap start addr
     printf("\nin mm_init\n");
-    if (extend_heap(CHUNKSIZE/WSIZE) == NULL)
+    if ((bp = extend_heap(CHUNKSIZE/WSIZE)) == NULL)
         return -1;
+
+    insert_node_LIFO(bp);
     printf("\nout mm_init\n");
     return 0;
 }// Done!
@@ -101,11 +104,13 @@ static void *extend_heap(size_t words)
     printf("\nin extend_heap\n");
     char *bp;
     size_t size;
-    size = (words % 2) ? (words+1) * WSIZE : words*WSIZE;       
-    if ((long)(bp = mem_sbrk(size)) == -1)
+    size = (words % 2) ? (words+1) * WSIZE : words*WSIZE; 
+
+    //多申请的两个字用来放链表的两个指针
+    if ((long)(bp = mem_sbrk(size + 2*WSIZE)) == -1)
         return NULL;
     
-    bp -= (2*WSIZE);//bp回到最后一个块的起始位置，回到有效载荷
+    
 
     if (GET_PREV_INFO(HDRP(bp)) != 0)
     {
@@ -119,10 +124,9 @@ static void *extend_heap(size_t words)
     }
     
 
-    PUT_SUCC(bp,NEXT_BLKP(bp));       //bp's succeed is next
+    PUT_SUCC(bp,NULL);       //bp's succeed is next
     PUT(HDRP(NEXT_BLKP(bp)), PACK(0, PN_U));//make next header
-    PUT_PREV(NEXT_BLKP(bp),bp);       //next previous is bp
-    PUT_SUCC(NEXT_BLKP(bp),NULL);        //next succeed is NULL
+    PUT_PREV(bp,NULL);       //next previous is bp
 
     printf("\nout extend_heap\n");
     return coalesce(bp);
@@ -204,39 +208,55 @@ static void *coalesce(void *bp)
 
     if (is_prev_alloc && is_succ_alloc)
     {
-        if (size < MIN_SIZE)
+        //若释放块的大小，大于空闲块所需要的最低大小，
+        //则直接初始化为一个节点，等待插入链表
+        //同时需要特别注意，将这个节点拿出来的同时还要将它的前驱节点和后继节点相连
+        PUT_SUCC(GET_PREV(bp), GET_SUCC(bp));//前驱节点的后继等于当前节点的后继
+        if (GET_SUCC(bp))
         {
-            //如果释放的块的大小小于MIN_SIZE，
-            //则需要将其并入这个块的前驱块的后面，作为填充块
-            //没想好要怎么做
+            PUT_PREV(GET_SUCC(bp),GET_PREV(bp));
         }
-        else
-        {
-            //若释放块的大小，大于空闲块所需要的最低大小，
-            //则直接初始化为一个节点，等待插入链表
-            PUT_PREV(bp,NULL);
-            PUT_SUCC(bp,NULL);
-            PUT(HDRP(bp),PACK(size,PU_N));
-            PUT(FTRP(bp),PACK(size,PU_N));
-        }
+
+        PUT_PREV(bp,NULL);
+        PUT_SUCC(bp,NULL);
+        PUT(HDRP(bp),PACK(size,PU_N));
+        PUT(FTRP(bp),PACK(size,PU_N));
+        //更改这个块之后的块的状态，按位与一个掩码，将其次低位置为0，标记为前块未用
+        PUT(FTRP(NEXT_BLKP(bp)), (GET(FTRP(NEXT_BLKP(bp))) & MASK_PN));
     }
     else if (is_prev_alloc && !is_succ_alloc)
     {
         //前驱被分配，后继未被分配
-        //先更新size
+        //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
+        PUT_SUCC(GET_PREV(bp), GET_SUCC(NEXT_BLKP(bp)));//前驱节点的后继等于当前节点的后继
+        
+        if (GET_SUCC(NEXT_BLKP(bp)))
+        {
+            PUT_PREV(GET_SUCC(NEXT_BLKP(bp)),GET_PREV(bp));
+        }
+        //再更新size
         size += GET_SIZE(HDRP(NEXT_BLKP(bp)));
         //先将头信息更新，再用头的信息去找脚
         PUT(HDRP(bp), PACK(size, PU_N));
         PUT(FTRP(bp), PACK(size, PU_N));
         //再将这个节点的前驱和后继分别置为NULL，等待插入
+
         PUT_PREV(bp,NULL);
         PUT_SUCC(bp,NULL);
+        //更改这个块之后的块的状态，按位与一个掩码，将其次低位置为0，标记为前块未用
+        PUT(FTRP(NEXT_BLKP(bp)), (GET(FTRP(NEXT_BLKP(bp))) & MASK_PN));        
         
     }
     else if (!is_prev_alloc && is_succ_alloc)
     {
         //前驱未被分配，后继被分配
-        //先更新size，同时切换bp到前驱的bp
+        //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
+        PUT_SUCC(GET_PREV(PREV_BLKP(bp)),GET_SUCC(bp));//前面节点的前驱 的后继更改为bp的后继
+        if (GET_SUCC(bp))
+        {
+            PUT_PREV(GET_SUCC(bp),GET_PREV(PREV_BLKP(bp)));
+        }
+        //再更新size
         size += GET_SIZE(HDRP(PREV_BLKP(bp)));
         bp = PREV_BLKP(bp);
 
@@ -247,12 +267,20 @@ static void *coalesce(void *bp)
         //最后分别将指针置为0，等待插入
         PUT_PREV(bp,NULL);
         PUT_SUCC(bp,NULL);
+        //更改这个块之后的块的状态，按位与一个掩码，将其次低位置为0，标记为前块未用
+        PUT(FTRP(NEXT_BLKP(bp)), (GET(FTRP(NEXT_BLKP(bp))) & MASK_PN));   
         
     }
     else 
     {
         //前驱未被占用，后继被占用
-        //先更新大小
+        //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
+        PUT_SUCC(GET_PREV(PREV_BLKP(bp)),GET_SUCC(NEXT_BLKP(bp)));//前面节点的前驱 的后继更改为bp的后继
+        if (GET_SUCC(NEXT_BLKP(bp)))
+        {
+            PUT_PREV(GET_SUCC(NEXT_BLKP(bp)),GET_PREV(PREV_BLKP(bp)));
+        }
+        //再更新size
         //注意，此时不先移动bp，否则就找不到脚了
         size += GET_SIZE(HDRP(PREV_BLKP(bp))) + GET_SIZE(FTRP(NEXT_BLKP(bp)));
         PUT(HDRP(PREV_BLKP(bp)), PACK(size, PU_N));
@@ -263,6 +291,8 @@ static void *coalesce(void *bp)
         //置NULL等待插入
         PUT_PREV(bp,NULL);
         PUT_SUCC(bp,NULL);
+        //更改这个块之后的块的状态，按位与一个掩码，将其次低位置为0，标记为前块未用
+        PUT(FTRP(NEXT_BLKP(bp)), (GET(FTRP(NEXT_BLKP(bp))) & MASK_PN));   
     }
     printf("\nout coalesce\n");
     return bp;
@@ -272,13 +302,19 @@ static void insert_node_LIFO(char *bp)
 {
     printf("\nin insert_node_LIFO\n");
     char *p_tmp = GET_SUCC(start_p);
-    if (bp)
+    if (p_tmp)
     {
         PUT_SUCC(bp,p_tmp);
         PUT_PREV(bp,start_p);
         PUT_SUCC(start_p, bp);
         PUT_PREV(p_tmp, bp);
     }
+    else
+    {
+        PUT_SUCC(start_p,bp);
+        PUT_PREV(bp,start_p);
+    }
+    
     printf("\nout insert_node_LIFO\n");
 }
 
