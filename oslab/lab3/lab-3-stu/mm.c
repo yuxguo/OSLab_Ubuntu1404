@@ -38,7 +38,7 @@
 
 #define GET_SIZE(p) (GET(p) & ~0x7)
 #define GET_ALLOC(p) (GET(p) & 0x1) //分别从p指向位置获取块大小和分配位。注意：p应该指向头/脚部
-#define GET_PERV_INFO(p) (GET(p) & 0x2)//get the pre block alloc info 
+#define GET_PREV_INFO(p) (GET(p) & 0x2)//get the pre block alloc info 
 
 #define HDRP(bp) ((char *)(bp) - WSIZE)
 #define FTRP(bp) ((char *)(bp) + GET_SIZE(HDRP(bp)) - DSIZE)
@@ -46,7 +46,7 @@
 #define NEXT_BLKP(bp) ((char *)(bp) + GET_SIZE(((char *)(bp) - WSIZE)))
 #define PREV_BLKP(bp) ((char *)(bp) - GET_SIZE(((char *)(bp) - DSIZE)))     //只要注意，bp指向有效区域开头
 
-#define GET_PERV(p) (GET(p))
+#define GET_PREV(p) (GET(p))
 #define PUT_PREV(p,val) (PUT(p,val))
 
 #define GET_SUCC(p) (GET( ((unsigned int *)(p) + 1)) )
@@ -104,7 +104,7 @@ static void *extend_heap(size_t words)
     
     bp -= (2*WSIZE);//bp is the last block of prev's addr
 
-    if (GET_PERV_INFO(HDRP(bp)) != 0)
+    if (GET_PREV_INFO(HDRP(bp)) != 0)
     {
         PUT(HDRP(bp), PACK(size, PU_N));
         PUT(FTRP(bp), PACK(size, PU_N));//change current header and footer
@@ -171,7 +171,7 @@ void mm_free(void *bp)
 {
     size_t size = GET_SIZE(HDRP(bp));
 
-    if (GET_PERV_INFO(HDRP(bp)) != 0)
+    if (GET_PREV_INFO(HDRP(bp)) != 0)
     {
         PUT(HDRP(bp), PACK(size, PU_N));
         PUT(FTRP(bp), PACK(size, PU_N));
@@ -189,7 +189,7 @@ void mm_free(void *bp)
 static void *coalesce(void *bp)
 {
     //从当前块头读出前一个块是否分配
-    size_t is_prev_alloc = GET_PERV_INFO(HDRP(bp));
+    size_t is_prev_alloc = GET_PREV_INFO(HDRP(bp));
     //通过块大小计算出后一块，看它是否分配
     size_t is_succ_alloc = GET_ALLOC(HDRP(NEXT_BLKP(bp)));
     //读出当前块的大小
@@ -213,7 +213,7 @@ static void *coalesce(void *bp)
             PUT(FTRP(bp),PACK(size,PU_N));
         }
     }
-    else if (prev_alloc && !succ_alloc)
+    else if (is_prev_alloc && !is_succ_alloc)
     {
         //前驱被分配，后继未被分配
         //先更新size
@@ -226,7 +226,7 @@ static void *coalesce(void *bp)
         PUT_SUCC(bp,NULL);
         
     }
-    else if (!prev_alloc && succ_alloc)
+    else if (!is_prev_alloc && is_succ_alloc)
     {
         //前驱未被分配，后继被分配
         //先更新size，同时切换bp到前驱的bp
@@ -268,7 +268,7 @@ static void insert_node_LIFO(char *bp)
         PUT_SUCC(bp,p_tmp);
         PUT_PREV(bp,start_p);
         PUT_SUCC(GET_SUCC(start_p), bp);
-        PUT_PREV(GET_PERV(p_tmp), bp);
+        PUT_PREV(GET_PREV(p_tmp), bp);
     }
     
 }
@@ -283,14 +283,14 @@ static void place(void *bp, size_t asize)
         PUT(HDRP(bp), PACK(asize,PU_U));
         PUT(HDRP(p_tmp),PACK(space-asize,PU_N));
         PUT_SUCC(p_tmp,GET_SUCC(bp));
-        PUT_PREV(p_tmp,GET_PERV(bp));
+        PUT_PREV(p_tmp,GET_PREV(bp));
         PUT(FTRP(p_tmp),PACK(space-asize,PU_N));
     }
     else
     {
         PUT(HDRP(bp), PACK(space,PU_U));
-        PUT_SUCC(GET_PERV(bp), GET_SUCC(bp));
-        PUT_PREV(GET_SUCC(bp), GET_PERV(bp));
+        PUT_SUCC(GET_PREV(bp), GET_SUCC(bp));
+        PUT_PREV(GET_SUCC(bp), GET_PREV(bp));
     }
 }
 
