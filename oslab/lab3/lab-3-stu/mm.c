@@ -38,13 +38,14 @@
 
 #define GET_SIZE(p) (GET(p) & ~0x7)
 #define GET_ALLOC(p) (GET(p) & 0x1) //分别从p指向位置获取块大小和分配位。注意：p应该指向头/脚部
-#define GET_PREV_INFO(p) (GET(p) & 0x2)//get the pre block alloc info 
+#define GET_PREV_INFO(p) (GET(p) & 0x2)//用次低位与0010按位与得到当前块的前一个块是否已使用 
 
 #define HDRP(bp) ((char *)(bp) - WSIZE)
 #define FTRP(bp) ((char *)(bp) + GET_SIZE(HDRP(bp)) - DSIZE)
 
 #define NEXT_BLKP(bp) ((char *)(bp) + GET_SIZE(((char *)(bp) - WSIZE)))
-#define PREV_BLKP(bp) ((char *)(bp) - GET_SIZE(((char *)(bp) - DSIZE)))     //只要注意，bp指向有效区域开头
+#define PREV_BLKP(bp) ((char *)(bp) - GET_SIZE(((char *)(bp) - DSIZE)))     
+//只要注意，bp指向有效区域开头
 
 #define GET_PREV(p) (GET(p))
 #define PUT_PREV(p,val) (PUT(p,val))
@@ -65,8 +66,8 @@ static void *coalesce(void *bp);
 static void place(void *bp, size_t asize);
 static void *find_fit(size_t asize);
 static void insert_node_LIFO(char *bp);
-static char *heap_listp=0;
-static char *start_p=0;
+static char *heap_listp = NULL;
+static char *start_p = NULL;
 
 /* 
  * mm_init - initialize the malloc package.
@@ -79,13 +80,13 @@ int mm_init(void)
 
     start_p = heap_listp + WSIZE;
     PUT(heap_listp, 0);// first block
-    PUT(heap_listp + (1*WSIZE), NULL);
-    PUT(heap_listp + (2*WSIZE), heap_listp + (6*WSIZE));
+    PUT(heap_listp + (1*WSIZE), (unsigned int)NULL);
+    PUT(heap_listp + (2*WSIZE), (unsigned int)(heap_listp + (6*WSIZE)) );
     PUT(heap_listp + (3*WSIZE), PACK(DSIZE, PN_U));
     PUT(heap_listp + (4*WSIZE), PACK(DSIZE, PN_U));
     PUT(heap_listp + (5*WSIZE), PACK(0, PN_U));     //lenth 0, previous not used
-    PUT(heap_listp + (6*WSIZE), start_p);           //previous start_p, also is bp 
-    PUT(heap_listp + (7*WSIZE), NULL);              //succeed is NULL
+    PUT(heap_listp + (6*WSIZE), (unsigned int)start_p);           //previous start_p, also is bp 
+    PUT(heap_listp + (7*WSIZE), (unsigned int)NULL);              //succeed is NULL
 
     heap_listp += (4*WSIZE);//heap start addr
 
@@ -98,11 +99,11 @@ static void *extend_heap(size_t words)
 {
     char *bp;
     size_t size;
-    size = (words % 2) ? (words+1) * WSIZE : words*WSIZE;       //
+    size = (words % 2) ? (words+1) * WSIZE : words*WSIZE;       
     if ((long)(bp = mem_sbrk(size)) == -1)
         return NULL;
     
-    bp -= (2*WSIZE);//bp is the last block of prev's addr
+    bp -= (2*WSIZE);//bp回到最后一个块的起始位置，回到有效载荷
 
     if (GET_PREV_INFO(HDRP(bp)) != 0)
     {
