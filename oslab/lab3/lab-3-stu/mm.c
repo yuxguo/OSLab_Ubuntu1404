@@ -161,6 +161,7 @@ void *mm_malloc(size_t size)
     
     if ((bp = find_fit(asize)) != NULL)
     {
+        printf("\n %x \n", asize);
         place(bp, asize);
         return bp;
     }//if can find a fit block
@@ -353,7 +354,7 @@ static void place(void *bp, size_t asize)
         PUT(HDRP(bp), PACK(space,PU_U));
         PUT(HDRP(NEXT_BLKP(bp)),(GET(HDRP(NEXT_BLKP(bp))) | MASK_PU ));
         
-        printf("\n %x, %x\, %x n",bp, GET_PREV(bp), GET_SUCC(bp));
+        printf("\n %x, %x, %x \n", bp, GET_PREV(bp), GET_SUCC(bp));
         if (GET_SUCC(bp))
         {
             PUT_PREV(GET_SUCC(bp), GET_PREV(bp));
