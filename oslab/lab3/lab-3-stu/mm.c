@@ -94,7 +94,7 @@ int mm_init(void)
     if ((bp = extend_heap(CHUNKSIZE/WSIZE)) == NULL)
         return -1;
 
-    insert_node_LIFO(bp);
+    
     printf("\nout mm_init\n");
     return 0;
 }// Done!
@@ -107,7 +107,7 @@ static void *extend_heap(size_t words)
     size = (words % 2) ? (words+1) * WSIZE : words*WSIZE; 
 
     //多申请的两个字用来放链表的两个指针
-    if ((long)(bp = mem_sbrk(size + 2*WSIZE)) == -1)
+    if ((long)(bp = mem_sbrk(size + WSIZE)) == -1)
         return NULL;
     
     
@@ -129,6 +129,7 @@ static void *extend_heap(size_t words)
     PUT_PREV(bp,NULL);       //next previous is bp
 
     printf("\nout extend_heap\n");
+    insert_node_LIFO(bp);
     return coalesce(bp);
 }
 
@@ -198,6 +199,7 @@ void mm_free(void *bp)
 }
 static void *coalesce(void *bp)
 {
+    // 合并的坑，因为这些空闲块在逻辑上面相邻，但是在地址上面不一定相邻，所以在合并的时候要分开讨论
     printf("\nin coalesce\n");
     //从当前块头读出前一个块是否分配
     size_t is_prev_alloc = GET_PREV_INFO(HDRP(bp));
@@ -211,12 +213,11 @@ static void *coalesce(void *bp)
         //若释放块的大小，大于空闲块所需要的最低大小，
         //则直接初始化为一个节点，等待插入链表
         //同时需要特别注意，将这个节点拿出来的同时还要将它的前驱节点和后继节点相连
-        PUT_SUCC(GET_PREV(bp), GET_SUCC(bp));//前驱节点的后继等于当前节点的后继
+        /*PUT_SUCC(GET_PREV(bp), GET_SUCC(bp));//前驱节点的后继等于当前节点的后继
         if (GET_SUCC(bp))
         {
             PUT_PREV(GET_SUCC(bp),GET_PREV(bp));
-        }
-
+        }*/
         PUT_PREV(bp,NULL);
         PUT_SUCC(bp,NULL);
         PUT(HDRP(bp),PACK(size,PU_N));
@@ -226,24 +227,27 @@ static void *coalesce(void *bp)
     }
     else if (is_prev_alloc && !is_succ_alloc)
     {
-        //前驱被分配，后继未被分配
+        //前驱被分配，后继未被分配(物理地址)
         //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
-        PUT_SUCC(GET_PREV(bp), GET_SUCC(NEXT_BLKP(bp)));//前驱节点的后继等于当前节点的后继
+        char *t2=(char *)NEXT_BLKP(bp); //get物理位置之后的那个节点
+        PUT_SUCC(GET_PREV(t2),GET_SUCC(t2));//t2逻辑前驱节点的后继 <==
         
-        if (GET_SUCC(NEXT_BLKP(bp)))
+        if (GET_SUCC(t2))//若t2节点的逻辑后继存在
         {
-            PUT_PREV(GET_SUCC(NEXT_BLKP(bp)),GET_PREV(bp));
-        }
+            PUT_PREV(GET_SUCC(t2),GET_PREV(t2));
+        }//至此，将t2节点从双向链表中独立出来了
+        
         //再更新size
         size += GET_SIZE(HDRP(NEXT_BLKP(bp)));
         //先将头信息更新，再用头的信息去找脚
         PUT(HDRP(bp), PACK(size, PU_N));
         PUT(FTRP(bp), PACK(size, PU_N));
-        //再将这个节点的前驱和后继分别置为NULL，等待插入
+        //至此，完成了将bp和t2合为一体（物理）
 
+        //再将这个节点的前驱和后继分别置为NULL，等待插入
         PUT_PREV(bp,NULL);
         PUT_SUCC(bp,NULL);
-        //更改这个块之后的块的状态，按位与一个掩码，将其次低位置为0，标记为前块未用
+        //更改这个块之后的块的状态（物理相邻），按位与一个掩码，将其次低位置为0，标记为前块未用
         PUT(HDRP(NEXT_BLKP(bp)), (GET(HDRP(NEXT_BLKP(bp))) & MASK_PN));        
         
     }
@@ -251,10 +255,11 @@ static void *coalesce(void *bp)
     {
         //前驱未被分配，后继被分配
         //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
-        PUT_SUCC(GET_PREV(PREV_BLKP(bp)),GET_SUCC(bp));//前面节点的前驱 的后继更改为bp的后继
-        if (GET_SUCC(bp))
+        char *t1=(char *)PREV_BLKP(bp);//另t1为bp物理地址上靠前的节点
+        PUT_SUCC(GET_PREV(t1),GET_SUCC(t1));//前面节点的前驱 的后继更改为bp的后继
+        if (GET_SUCC(t1))
         {
-            PUT_PREV(GET_SUCC(bp),GET_PREV(PREV_BLKP(bp)));
+            PUT_PREV(GET_SUCC(t1),GET_PREV(t1));
         }
         //再更新size
         size += GET_SIZE(HDRP(PREV_BLKP(bp)));
@@ -275,11 +280,19 @@ static void *coalesce(void *bp)
     {
         //前驱未被占用，后继被占用
         //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
-        PUT_SUCC(GET_PREV(PREV_BLKP(bp)),GET_SUCC(NEXT_BLKP(bp)));//前面节点的前驱 的后继更改为bp的后继
-        if (GET_SUCC(NEXT_BLKP(bp)))
+        char *t1=(char *)PREV_BLKP(bp);//另t1为bp物理地址上靠前的节点
+        char *t2=(char *)NEXT_BLKP(bp); //get物理位置之后的那个节点
+        PUT_SUCC(GET_PREV(t1),GET_SUCC(t1));//前面节点的前驱 的后继更改为bp的后继
+        if (GET_SUCC(t1))
         {
-            PUT_PREV(GET_SUCC(NEXT_BLKP(bp)),GET_PREV(PREV_BLKP(bp)));
+            PUT_PREV(GET_SUCC(t1),GET_PREV(t1));
         }
+
+        PUT_SUCC(GET_PREV(t2),GET_SUCC(t2));//t2逻辑前驱节点的后继 
+        if (GET_SUCC(t2))//若t2节点的逻辑后继存在
+        {
+            PUT_PREV(GET_SUCC(t2),GET_PREV(t2));
+        }//至此，将t2节点从双向链表中独立出来了
         //再更新size
         //注意，此时不先移动bp，否则就找不到脚了
         size += GET_SIZE(HDRP(PREV_BLKP(bp))) + GET_SIZE(FTRP(NEXT_BLKP(bp)));
@@ -338,7 +351,7 @@ static void place(void *bp, size_t asize)
         printf ("\n 22 \n");        
         PUT(HDRP(bp), PACK(space,PU_U));
         PUT(HDRP(NEXT_BLKP(bp)),(GET(HDRP(NEXT_BLKP(bp))) | MASK_PU ));
-        
+
         if (GET_SUCC(bp))
         {
             PUT_PREV(GET_SUCC(bp), GET_PREV(bp));
