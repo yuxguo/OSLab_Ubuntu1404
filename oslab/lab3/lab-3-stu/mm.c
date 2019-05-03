@@ -271,10 +271,11 @@ static void *coalesce(void *bp)
         {
             PUT_PREV(GET_SUCC(t1),GET_PREV(t1));
         }
+        printf("1");
         //再更新size
         size += GET_SIZE(HDRP(PREV_BLKP(bp)));
         bp = PREV_BLKP(bp);
-
+        printf("2");
         //先将头信息更新，再用头的信息去找脚
         //注意，前驱的前驱一定被占用
         PUT(HDRP(bp), PACK(size, PU_N));
@@ -282,6 +283,7 @@ static void *coalesce(void *bp)
         //最后分别将指针置为0，等待插入
         PUT_PREV(bp,NULL);
         PUT_SUCC(bp,NULL);
+        printf("3");
         //更改这个块之后的块的状态，按位与一个掩码，将其次低位置为0，标记为前块未用
         PUT(HDRP(NEXT_BLKP(bp)), (GET(HDRP(NEXT_BLKP(bp))) & MASK_PN));   
         
