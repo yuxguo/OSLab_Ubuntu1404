@@ -198,8 +198,8 @@ void mm_free(void *bp)
     }
     else
     {
-        PUT(HDRP(bp), PACK(size, 0));
-        PUT(FTRP(bp), PACK(size, 0));
+        PUT(HDRP(bp), PACK(size, PN_N));
+        PUT(FTRP(bp), PACK(size, PN_N));
     }
     //给要 free的块加上脚和头，再用coal合并
     coalesce(bp);
@@ -222,6 +222,7 @@ static void *coalesce(void *bp)
 
     if (is_prev_alloc && is_succ_alloc)
     {
+        printf("1");
         //若释放块的大小，大于空闲块所需要的最低大小，
         //则直接初始化为一个节点，等待插入链表
         //同时需要特别注意，将这个节点拿出来的同时还要将它的前驱节点和后继节点相连
@@ -239,6 +240,7 @@ static void *coalesce(void *bp)
     }
     else if (is_prev_alloc && !is_succ_alloc)
     {
+        printf("2");
         //前驱被分配，后继未被分配(物理地址)
         //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
         char *t2=(char *)NEXT_BLKP(bp); //get物理位置之后的那个节点
@@ -267,7 +269,7 @@ static void *coalesce(void *bp)
     {
         //前驱未被分配，后继被分配
         //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
-        printf("0");
+        printf("3");
         char *t1=(char *)PREV_BLKP(bp);//另t1为bp物理地址上靠前的节点
         printf(" t1=%x ", t1);
         char *p;
@@ -280,11 +282,11 @@ static void *coalesce(void *bp)
         {
             PUT_PREV(GET_SUCC(t1),GET_PREV(t1));
         }
-        printf("1");
+        //printf("1");
         //再更新size
         size += GET_SIZE(HDRP(PREV_BLKP(bp)));
         bp = PREV_BLKP(bp);
-        printf("2");
+        //printf("2");
         //先将头信息更新，再用头的信息去找脚
         //注意，前驱的前驱一定被占用
         PUT(HDRP(bp), PACK(size, PU_N));
@@ -292,13 +294,14 @@ static void *coalesce(void *bp)
         //最后分别将指针置为0，等待插入
         PUT_PREV(bp,NULL);
         PUT_SUCC(bp,NULL);
-        printf("3");
+        //printf("3");
         //更改这个块之后的块的状态，按位与一个掩码，将其次低位置为0，标记为前块未用
         PUT(HDRP(NEXT_BLKP(bp)), (GET(HDRP(NEXT_BLKP(bp))) & MASK_PN));   
         
     }
     else 
     {
+        printf("4");
         //前驱未被占用，后继被占用
         //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
         char *t1=(char *)PREV_BLKP(bp);//另t1为bp物理地址上靠前的节点
