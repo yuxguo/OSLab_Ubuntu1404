@@ -387,7 +387,7 @@ static void insert_node_level(char *bp)
     for (p = GET_SUCC(start_p[level]); p ;p=GET_SUCC(p))
     {
         p_prev=GET_PREV(p);
-        if (size>GET_SIZE(p))
+        if ((size-GET_SIZE(p))>100)
             continue;
         else
         {
