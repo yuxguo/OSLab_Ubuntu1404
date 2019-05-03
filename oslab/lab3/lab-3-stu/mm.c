@@ -167,6 +167,11 @@ void *mm_malloc(size_t size)
     }//if can find a fit block
 
     extendsize = MAX(asize, CHUNKSIZE);
+    char *p;
+    for (p =(char *)start_p; p; p=(char *)GET_SUCC(p))
+    {
+        printf("\n list=%x \n",p);
+    }
     //otherwise it will expand the heap range
     if (extend_heap(extendsize/WSIZE) == NULL)
         return NULL;
