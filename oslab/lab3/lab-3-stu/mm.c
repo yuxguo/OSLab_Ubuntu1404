@@ -133,12 +133,12 @@ static void *extend_heap(size_t words)
  */
 void *mm_malloc(size_t size)
 {
-    printf("No. %d malloc or free\n",++count);
-    char *p;
-    for (p =(char *)start_p; p; p=(char *)GET_SUCC(p))
-    {
-        printf("\n list=%x \n",p);
-    }
+    //printf("No. %d malloc or free\n",++count);
+    // char *p;
+    // for (p =(char *)start_p; p; p=(char *)GET_SUCC(p))
+    // {
+    //     printf("\n list=%x \n",p);
+    // }
     //确定要malloc的具体大小，调用findfit查找，再用place放置
     size_t asize;
     size_t extendsize;
@@ -179,7 +179,7 @@ void *mm_malloc(size_t size)
  */
 void mm_free(void *bp)
 {   
-     printf("No. %d malloc or free\n",count++);
+    //printf("No. %d malloc or free\n",count++);
 
     if (!bp)
         return ;
@@ -200,11 +200,11 @@ void mm_free(void *bp)
     char * t=coalesce(bp);
     //将合并好的块调用insert插入到链表中，修改算法再insert中
     insert_node_LIFO(t);
-    char *p;
-    for (p =(char *)start_p; p; p=(char *)GET_SUCC(p))
-    {
-        printf("\n list=%x \n",p);
-    }
+    // char *p;
+    // for (p =(char *)start_p; p; p=(char *)GET_SUCC(p))
+    // {
+    //     printf("\n list=%x \n",p);
+    // }
 }
 static void *coalesce(void *bp)
 {
