@@ -201,6 +201,8 @@ void mm_free(void *bp)
         PUT(HDRP(bp), PACK(size, PN_N));
         PUT(FTRP(bp), PACK(size, PN_N));
     }
+    PUT_PREV(bp,NULL);
+    PUT_SUCC(bp,NULL);
     //给要 free的块加上脚和头，再用coal合并
     coalesce(bp);
     //将合并好的块调用insert插入到链表中，修改算法再insert中
@@ -220,7 +222,9 @@ static void *coalesce(void *bp)
     printf ("\n %d, %d, %d \n", size, is_prev_alloc, is_succ_alloc);
     printf("\n %x, %x \n", bp,mem_sbrk(0));
 
-    if (is_prev_alloc && is_succ_alloc)
+    printf(" prev_blkp_bp= %x, size= %d",PREV_BLKP(bp), GET_SIZE(HDRP(PREV_BLKP(bp))));
+
+    if (is_prev_alloc==2 && is_succ_alloc==2)
     {
         printf("1");
         //若释放块的大小，大于空闲块所需要的最低大小，
@@ -238,7 +242,7 @@ static void *coalesce(void *bp)
         //更改这个块之后的块的状态，按位与一个掩码，将其次低位置为0，标记为前块未用
         PUT(HDRP(NEXT_BLKP(bp)), (GET(HDRP(NEXT_BLKP(bp))) & MASK_PN));
     }
-    else if (is_prev_alloc && !is_succ_alloc)
+    else if (is_prev_alloc==2 && is_succ_alloc==0)
     {
         printf("2");
         //前驱被分配，后继未被分配(物理地址)
@@ -265,7 +269,7 @@ static void *coalesce(void *bp)
         PUT(HDRP(NEXT_BLKP(bp)), (GET(HDRP(NEXT_BLKP(bp))) & MASK_PN));        
         
     }
-    else if (!is_prev_alloc && is_succ_alloc)
+    else if (is_prev_alloc==0 && is_succ_alloc==2)
     {
         //前驱未被分配，后继被分配
         //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
@@ -277,7 +281,7 @@ static void *coalesce(void *bp)
         {
             printf("\n list=%x \n",p);
         }
-        PUT_SUCC(GET_PREV(t1),GET_SUCC(t1));//前面节点的前驱 的后继更改为bp的后继
+        PUT_SUCC(GET_PREV(t1),GET_SUCC(t1));//前面节点的前驱 的后继更改为自己的后继
         if (GET_SUCC(t1))
         {
             PUT_PREV(GET_SUCC(t1),GET_PREV(t1));
