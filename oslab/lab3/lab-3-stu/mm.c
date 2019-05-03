@@ -339,7 +339,7 @@ static void place(void *bp, size_t asize)
 {
     printf("\nin place\n");
     size_t space = GET_SIZE(HDRP(bp));
-    printf("\n %d \n",(unsigned int)GET_SIZE(HDRP(GET_SUCC(start_p))) );
+    printf("\n %d, %d \n",(unsigned int)GET_SIZE(HDRP(GET_SUCC(start_p))), space );
     if (space - asize >= MIN_SIZE)
     {
         printf ("\n 11 \n");
