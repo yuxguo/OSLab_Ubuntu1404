@@ -72,34 +72,76 @@
 #define LEVEL_6 (1<<10)
 #define LEVEL_7 (1<<11)
 #define LEVEL_8 (1<<12)
+#define LEVEL_9 (1<<13)
 /*********************************************************/
 
 static void *extend_heap(size_t words);
 static void *coalesce(void *bp);
 static void place(void *bp, size_t asize);
 static void *find_fit(size_t asize);
-static void insert_node_LIFO(char *bp);
+static void insert_node_level(char *bp);
+static int which_level (size_t asize);
 static char *heap_listp = NULL;
-static char *start_p = NULL;
+static char *start_p[11] = {NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL};
 
+
+///
+static int which_level (size_t asize)
+{
+    if (asize>=0 && asize <=LEVEL_0)
+        return 0;
+    else if (asize>LEVEL_0 && asize<=LEVEL_1)
+        return 1;
+    else if (asize>LEVEL_1 && asize<=LEVEL_2)
+        return 2;
+    else if (asize>LEVEL_2 && asize<=LEVEL_3)
+        return 3;
+    else if (asize>LEVEL_3 && asize<=LEVEL_4)
+        return 4;
+    else if (asize>LEVEL_4 && asize<=LEVEL_5)
+        return 5;
+    else if (asize>LEVEL_5 && asize<=LEVEL_6)
+        return 6;
+    else if (asize>LEVEL_6 && asize<=LEVEL_7)
+        return 7;
+    else if (asize>LEVEL_7 && asize<=LEVEL_8)
+        return 8;
+    else if (asize>LEVEL_8 && asize<=LEVEL_9)
+        return 9;
+    else 
+        return 10;
+}
+///
 /* 
  * mm_init - initialize the malloc package.
  */
 int mm_init(void)
 {
     char *bp;
-    if ((heap_listp = mem_sbrk(6 * WSIZE)) == (void *) -1)
+    if ((heap_listp = mem_sbrk(14 * WSIZE)) == (void *) -1)
         return -1;
 
-    start_p = heap_listp + WSIZE;
+    int i;
+    for (i=0; i<11; ++i)
+    {
+        start_p[i]=heap_listp+((i+1)*WSIZE);
+    }
     PUT(heap_listp, 0);// first block
-    PUT(heap_listp + (1*WSIZE), NULL);
-    PUT(heap_listp + (2*WSIZE), NULL );
-    PUT(heap_listp + (3*WSIZE), PACK(DSIZE, PN_U));
-    PUT(heap_listp + (4*WSIZE), PACK(DSIZE, PN_U));
-    PUT(heap_listp + (5*WSIZE), PACK(0, PU_U));     //lenth 0, previous not used
+    PUT(heap_listp + (1*WSIZE), NULL);//0-16
+    PUT(heap_listp + (2*WSIZE), NULL );//17-32
+    PUT(heap_listp + (3*WSIZE), NULL );//33-64
+    PUT(heap_listp + (4*WSIZE), NULL );//65-128
+    PUT(heap_listp + (5*WSIZE), NULL );//129-256
+    PUT(heap_listp + (6*WSIZE), NULL );//257-512
+    PUT(heap_listp + (7*WSIZE), NULL );//513-1024
+    PUT(heap_listp + (8*WSIZE), NULL );//1025-2048
+    PUT(heap_listp + (9*WSIZE), NULL );//2048-4096
+    PUT(heap_listp + (10*WSIZE), NULL );//4097-8192
+    PUT(heap_listp + (11*WSIZE), NULL );//8193-...
+    PUT(heap_listp + (12*WSIZE), PACK(WSIZE, PN_U));
+    PUT(heap_listp + (13*WSIZE), PACK(0, PU_U));     //lenth 0, previous not used
 
-    heap_listp += (4*WSIZE);//heap start addr
+    heap_listp += (12*WSIZE);//heap start addr
     if ((bp = extend_heap(CHUNKSIZE/WSIZE)) == NULL)
         return -1;
     return 0;
@@ -312,23 +354,29 @@ static void *coalesce(void *bp)
     return bp;
 }
 
-static void insert_node_LIFO(char *bp)
+static void insert_node_level(char *bp)
 {
-    
-    char *p_tmp = GET_SUCC(start_p);
-    if (p_tmp)
+    size_t size=GET_SIZE(HDRP(bp));
+    int level = which_level(size);
+    char *p=NULL;
+    char *p_prev=start_p[level];
+    for (p = GET_SUCC(start_p[level]); p ;p=GET_SUCC(p))
     {
-        PUT_SUCC(bp,p_tmp);
-        PUT_PREV(bp,start_p);
-        PUT_SUCC(start_p, bp);
-        PUT_PREV(p_tmp, bp);
+        p_prev=GET_PREV(p);
+        if (size>GET_SIZE(p))
+            continue;
+        else
+        {
+            PUT_SUCC(bp,p);
+            PUT_PREV(bp,p_prev);
+            PUT_SUCC(p_prev, bp);
+            PUT_PREV(p, bp);
+            return;
+        }
     }
-    else
-    {
-        PUT_SUCC(start_p,bp);
-        PUT_PREV(bp,start_p);
-    }
-    
+    PUT_SUCC(p_prev,bp);
+    PUT_PREV(bp,p_prev);
+    return ;    
 }
 
 
@@ -341,14 +389,19 @@ static void place(void *bp, size_t asize)
         PUT(HDRP(bp), PACK(asize,PU_U));
         PUT(HDRP(p_tmp),PACK(space-asize,PU_N));
         PUT(FTRP(p_tmp),PACK(space-asize,PU_N));
-        PUT_SUCC(p_tmp,GET_SUCC(bp));
-        PUT_PREV(p_tmp,GET_PREV(bp));
+        
+        PUT_SUCC(p_tmp,NULL);
+        PUT_PREV(p_tmp,NULL);
 
-        if (GET_SUCC(p_tmp))
-        {
-            PUT_PREV(GET_SUCC(p_tmp), p_tmp);
-        }
-        PUT_SUCC(GET_PREV(p_tmp), p_tmp);
+        insert_node_level(p_tmp);
+        //PUT_SUCC(p_tmp,GET_SUCC(bp));
+        //PUT_PREV(p_tmp,GET_PREV(bp));
+
+        // if (GET_SUCC(p_tmp))
+        // {
+        //     PUT_PREV(GET_SUCC(p_tmp), p_tmp);
+        // }
+        // PUT_SUCC(GET_PREV(p_tmp), p_tmp);
         
     }
     else
@@ -367,14 +420,18 @@ static void place(void *bp, size_t asize)
 static void *find_fit(size_t asize)
 {
 	char *p;
-    for (p =(char *)GET_SUCC(start_p); p; p=(char *)GET_SUCC(p))
+    const int level=which_level(asize);
+    int l;
+    for (l=level;l<11;++l)
     {
-        if (GET_SIZE(HDRP(p)) >= asize)
+        for (p=(char *)GET_SUCC(start_p[l]); p ; p=GET_SUCC(p))
         {
-            return p;
+            if (GET_SIZE(HDRP(p))>=asize)
+                return p;
         }
     }
     return NULL;
+    
 }
 
 
