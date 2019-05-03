@@ -71,8 +71,7 @@ static void *find_fit(size_t asize);
 static void insert_node_LIFO(char *bp);
 static char *heap_listp = NULL;
 static char *start_p = NULL;
-static int count_malloc=0;
-static int count_free=0;
+static int count=0;
 
 /* 
  * mm_init - initialize the malloc package.
@@ -99,7 +98,6 @@ int mm_init(void)
 
 static void *extend_heap(size_t words)
 {
-    printf("\nin extend_heap\n");
     char *bp;
     size_t size;
     size = (words % 2) ? (words+1) * WSIZE : words*WSIZE; 
@@ -107,8 +105,6 @@ static void *extend_heap(size_t words)
     if ((long)(bp = mem_sbrk(size)) == -1)
         return NULL;
     
-    
-
     if (GET_PREV_INFO(HDRP(bp)) != 0)
     {
         PUT(HDRP(bp), PACK(size, PU_N));
@@ -125,7 +121,6 @@ static void *extend_heap(size_t words)
     PUT(HDRP(NEXT_BLKP(bp)), PACK(0, PN_U));//make next header
     PUT_PREV(bp,NULL);       //next previous is bp
 
-    printf("\nout extend_heap\n");
     
     char *t = coalesce(bp);
     insert_node_LIFO(t);
@@ -138,10 +133,8 @@ static void *extend_heap(size_t words)
  */
 void *mm_malloc(size_t size)
 {
-    
+    printf("No. %d malloc or free\n",++count);
     //确定要malloc的具体大小，调用findfit查找，再用place放置
-    printf("\nin mm_malloc\n");
-    printf("\nNo.%d malloc\n", ++count_malloc);
     size_t asize;
     size_t extendsize;
     char *bp;
@@ -160,7 +153,6 @@ void *mm_malloc(size_t size)
     
     if ((bp = find_fit(asize)) != NULL)
     {
-        printf("\n %d \n", asize);
         place(bp, asize);
         return bp;
     }//if can find a fit block
@@ -176,7 +168,6 @@ void *mm_malloc(size_t size)
         return NULL;
     bp = find_fit(asize);
     place(bp, asize);
-    printf("\nout mm_malloc\n");
     return bp;
 }
 
@@ -186,11 +177,12 @@ void *mm_malloc(size_t size)
  * mm_free - Freeing a block does nothing.
  */
 void mm_free(void *bp)
-{
-    printf("\n in mm_free \n");
-    printf("\nNo.%d malloc\n", ++count_malloc);
-    size_t size = GET_SIZE(HDRP(bp));
+{   
+     printf("No. %d malloc or free\n",count++);
 
+    if (!bp)
+        return ;
+    size_t size = GET_SIZE(HDRP(bp));
     if (GET_PREV_INFO(HDRP(bp)) != 0)
     {
         PUT(HDRP(bp), PACK(size, PU_N));
@@ -207,26 +199,21 @@ void mm_free(void *bp)
     coalesce(bp);
     //将合并好的块调用insert插入到链表中，修改算法再insert中
     insert_node_LIFO(bp);
-    printf("\n out mm_free \n");
 }
 static void *coalesce(void *bp)
 {
     // 合并的坑，因为这些空闲块在逻辑上面相邻，但是在地址上面不一定相邻，所以在合并的时候要分开讨论
-    printf("\nin coalesce\n");
     //从当前块头读出前一个块是否分配
     size_t is_prev_alloc = GET_PREV_INFO(HDRP(bp));
     //通过块大小计算出后一块，看它是否分配
     size_t is_succ_alloc = GET_ALLOC(HDRP(NEXT_BLKP(bp)));
     //读出当前块的大小
     size_t size = GET_SIZE(HDRP(bp));
-    printf ("\n %d, %d, %d \n", size, is_prev_alloc, is_succ_alloc);
-    //printf("\n %x, %x \n", bp,mem_sbrk(0));
 
-    printf(" prev_blkp_bp= %x, size= %d",PREV_BLKP(bp), GET_SIZE(HDRP(PREV_BLKP(bp))));
 
     if (is_prev_alloc==2 && is_succ_alloc==1)
     {
-        printf("1");
+        
         //若释放块的大小，大于空闲块所需要的最低大小，
         //则直接初始化为一个节点，等待插入链表
         //同时需要特别注意，将这个节点拿出来的同时还要将它的前驱节点和后继节点相连
@@ -244,7 +231,6 @@ static void *coalesce(void *bp)
     }
     else if (is_prev_alloc==2 && is_succ_alloc==0)
     {
-        printf("2");
         //前驱被分配，后继未被分配(物理地址)
         //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
         char *t2=(char *)NEXT_BLKP(bp); //get物理位置之后的那个节点
@@ -273,7 +259,6 @@ static void *coalesce(void *bp)
     {
         //前驱未被分配，后继被分配
         //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
-        printf("3");
         unsigned int *t1=(unsigned int *)PREV_BLKP(bp);//另t1为bp物理地址上靠前的节点
         printf(" t1=%x ", t1);
         char *p;
@@ -305,7 +290,6 @@ static void *coalesce(void *bp)
     }
     else 
     {
-        printf("4");
         //前驱未被占用，后继被占用
         //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
         char *t1=(char *)PREV_BLKP(bp);//另t1为bp物理地址上靠前的节点
@@ -335,16 +319,13 @@ static void *coalesce(void *bp)
         //更改这个块之后的块的状态，按位与一个掩码，将其次低位置为0，标记为前块未用
         PUT(HDRP(NEXT_BLKP(bp)), (GET(HDRP(NEXT_BLKP(bp))) & MASK_PN));   
     }
-    printf("\nout coalesce\n");
     return bp;
 }
 
 static void insert_node_LIFO(char *bp)
 {
-    printf("\nin insert_node_LIFO\n");
     
     char *p_tmp = GET_SUCC(start_p);
-    printf("\n %x, %x \n", bp, p_tmp);
     if (p_tmp)
     {
         PUT_SUCC(bp,p_tmp);
@@ -358,18 +339,14 @@ static void insert_node_LIFO(char *bp)
         PUT_PREV(bp,start_p);
     }
     
-    printf("\nout insert_node_LIFO\n");
 }
 
 
 static void place(void *bp, size_t asize)
 {
-    printf("\nin place\n");
     size_t space = GET_SIZE(HDRP(bp));
-    printf("\n %d, %d \n",(unsigned int)GET_SIZE(HDRP(GET_SUCC(start_p))), space );
     if (space - asize >= MIN_SIZE)
     {
-        printf ("\n 11 \n");
         char *p_tmp = bp + asize; 
         PUT(HDRP(bp), PACK(asize,PU_U));
         PUT(HDRP(p_tmp),PACK(space-asize,PU_N));
@@ -386,35 +363,27 @@ static void place(void *bp, size_t asize)
     }
     else
     {
-        printf ("\n 22 \n");        
         PUT(HDRP(bp), PACK(space,PU_U));
         PUT(HDRP(NEXT_BLKP(bp)),(GET(HDRP(NEXT_BLKP(bp))) | MASK_PU ));
         
-        printf("\n %x, %x, %x \n", bp, GET_PREV(bp), GET_SUCC(bp));
         if (GET_SUCC(bp))
         {
             PUT_PREV(GET_SUCC(bp), GET_PREV(bp));
         }
-        printf("\n 33 \n");
         PUT_SUCC(GET_PREV(bp), GET_SUCC(bp));
     }
-    printf("\nout_place\n");
 }
 
 static void *find_fit(size_t asize)
 {
-    printf("\nin find_fit\n");
 	char *p;
     for (p =(char *)GET_SUCC(start_p); p; p=(char *)GET_SUCC(p))
     {
-        printf("\n %x \n",p);
         if (GET_SIZE(HDRP(p)) >= asize)
         {
-            printf("\nout find_fit\n");
             return p;
         }
     }
-    printf("\nout find_fit\n");
     return NULL;
 }
 
