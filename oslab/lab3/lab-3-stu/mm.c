@@ -350,24 +350,39 @@ static void insert_node_level(char *bp)
 {
     size_t size=GET_SIZE(HDRP(bp));
     int level = which_level(size);
-    char *p=NULL;
-    char *p_prev=start_p[level];
-    for (p = GET_SUCC(start_p[level]); p ;p=GET_SUCC(p))
+    
+    char *p_tmp = GET_SUCC(start_p[level]);
+    if (p_tmp)
     {
-        p_prev=GET_PREV(p);
-        if (size>GET_SIZE(p))
-            continue;
-        else
-        {
-            PUT_SUCC(bp,p);
-            PUT_PREV(bp,p_prev);
-            PUT_SUCC(p_prev, bp);
-            PUT_PREV(p, bp);
-            return;
-        }
+        PUT_SUCC(bp,p_tmp);
+        PUT_PREV(bp,start_p[level]);
+        PUT_SUCC(start_p[level], bp);
+        PUT_PREV(p_tmp, bp);
     }
-    PUT_SUCC(p_prev,bp);
-    PUT_PREV(bp,p_prev);
+    else
+    {
+        PUT_SUCC(start_p[level],bp);
+        PUT_PREV(bp,start_p[level]);
+    }
+    // char *p=NULL;
+    // char *p_prev=start_p[level];
+
+    // for (p = GET_SUCC(start_p[level]); p ;p=GET_SUCC(p))
+    // {
+    //     p_prev=GET_PREV(p);
+    //     if (size>GET_SIZE(p))
+    //         continue;
+    //     else
+    //     {
+    //         PUT_SUCC(bp,p);
+    //         PUT_PREV(bp,p_prev);
+    //         PUT_SUCC(p_prev, bp);
+    //         PUT_PREV(p, bp);
+    //         return;
+    //     }
+    // }
+    // PUT_SUCC(p_prev,bp);
+    // PUT_PREV(bp,p_prev);
     return ;    
 }
 
