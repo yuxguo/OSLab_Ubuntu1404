@@ -161,7 +161,7 @@ void *mm_malloc(size_t size)
     
     if ((bp = find_fit(asize)) != NULL)
     {
-        printf("\n %x \n", asize);
+        printf("\n %d \n", asize);
         place(bp, asize);
         return bp;
     }//if can find a fit block
