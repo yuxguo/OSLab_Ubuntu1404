@@ -265,7 +265,14 @@ static void *coalesce(void *bp)
     {
         //前驱未被分配，后继被分配
         //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
+        printf("0");
         char *t1=(char *)PREV_BLKP(bp);//另t1为bp物理地址上靠前的节点
+        printf(" t1=%x ", t1);
+        char *p;
+        for (p =(char *)start_p; p; p=(char *)GET_SUCC(p))
+        {
+            printf("\n list=%x \n",p);
+        }
         PUT_SUCC(GET_PREV(t1),GET_SUCC(t1));//前面节点的前驱 的后继更改为bp的后继
         if (GET_SUCC(t1))
         {
@@ -408,6 +415,34 @@ static void *find_fit(size_t asize)
  */
 void *mm_realloc(void *ptr, size_t size)
 {
-    return NULL;
+    size_t oldsize;
+    void *newptr;
+
+    /* If size == 0 then this is just free, and we return NULL. */
+    if(size == 0) {
+        mm_free(ptr);
+        return 0;
+    }
+
+    /* If oldptr is NULL, then this is just malloc. */
+    if(ptr == NULL) {
+        return mm_malloc(size);
+    }
+
+    newptr = mm_malloc(size);
+
+    /* If realloc() fails the original block is left untouched  */
+    if(!newptr) {
+        return 0;
+    }
+
+    /* Copy the old data. */
+    oldsize = GET_SIZE(HDRP(ptr));
+    if(size < oldsize) oldsize = size;
+    memcpy(newptr, ptr, oldsize);
+
+    /* Free the old block. */
+    mm_free(ptr);
+    return newptr;
 }
 
