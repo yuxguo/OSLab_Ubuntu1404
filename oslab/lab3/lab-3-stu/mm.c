@@ -47,11 +47,11 @@
 #define PREV_BLKP(bp) ((char *)(bp) - GET_SIZE(((char *)(bp) - DSIZE)))     
 //只要注意，bp指向有效区域开头
 
-#define GET_PREV(p) (GET(p))
-#define PUT_PREV(p,val) (PUT(p,val))
+#define GET_SUCC(p) (GET(p))
+#define PUT_SUCC(p,val) (PUT(p,val))
 
-#define GET_SUCC(p) (*((unsigned int *)(p) + 1))
-#define PUT_SUCC(p,val) (*((unsigned int *)(p) + 1) = (val))
+#define GET_PREV(p) (*((unsigned int *)(p) + 1))
+#define PUT_PREV(p,val) (*((unsigned int *)(p) + 1) = (val))
 
 #define MIN_SIZE 16
 
@@ -427,7 +427,7 @@ static void *find_fit(size_t asize)
     int l;
     for (l=level;l<11;++l)
     {
-        for (p=(char *)GET_SUCC(start_p[l]); p ; p=GET_SUCC(p))
+        for (p=GET_SUCC(start_p[l]); p ; p=GET_SUCC(p))
         {
             if (GET_SIZE(HDRP(p))>=asize)
                 return p;
