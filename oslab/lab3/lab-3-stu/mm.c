@@ -224,7 +224,7 @@ static void *coalesce(void *bp)
 
     printf(" prev_blkp_bp= %x, size= %d",PREV_BLKP(bp), GET_SIZE(HDRP(PREV_BLKP(bp))));
 
-    if (is_prev_alloc==2 && is_succ_alloc==2)
+    if (is_prev_alloc==2 && is_succ_alloc==1)
     {
         printf("1");
         //若释放块的大小，大于空闲块所需要的最低大小，
@@ -269,7 +269,7 @@ static void *coalesce(void *bp)
         PUT(HDRP(NEXT_BLKP(bp)), (GET(HDRP(NEXT_BLKP(bp))) & MASK_PN));        
         
     }
-    else if (is_prev_alloc==0 && is_succ_alloc==2)
+    else if (is_prev_alloc==0 && is_succ_alloc==1)
     {
         //前驱未被分配，后继被分配
         //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
