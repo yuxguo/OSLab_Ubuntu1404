@@ -95,6 +95,7 @@ int mm_init(void)
         return -1;
 
     printf("\n %d \n", (unsigned int)mem_sbrk(0)-(unsigned int)heap_listp-2*WSIZE );
+    printf("\n %d \n",(unsigned int)GET_SIZE(HDRP(GET_SUCC(start_p))) );
     printf("\nout mm_init\n");
     return 0;
 }// Done!
