@@ -106,8 +106,7 @@ static void *extend_heap(size_t words)
     size_t size;
     size = (words % 2) ? (words+1) * WSIZE : words*WSIZE; 
 
-    //多申请的两个字用来放链表的两个指针
-    if ((long)(bp = mem_sbrk(size + WSIZE)) == -1)
+    if ((long)(bp = mem_sbrk(size)) == -1)
         return NULL;
     
     
