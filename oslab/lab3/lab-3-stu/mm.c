@@ -67,10 +67,15 @@
 #define LEVEL_1 (100)
 #define LEVEL_2 (500)
 #define LEVEL_3 (1000)
-#define LEVEL_4 (1800)
-#define LEVEL_5 (2600)
-#define LEVEL_6 (3800)
-#define LEVEL_7 (5000)
+#define LEVEL_4 (1500)
+#define LEVEL_5 (2000)
+#define LEVEL_6 (2500)
+#define LEVEL_7 (3000)
+#define LEVEL_8 (3500)
+#define LEVEL_9 (4000)
+#define LEVEL_10 (6000)
+#define LEVEL_11 (8000)
+#define NUMBERS 13
 /*********************************************************/
 
 static void *extend_heap(size_t words);
@@ -80,7 +85,7 @@ static void *find_fit(size_t asize);
 static void insert_node_level(char *bp);
 static int which_level (size_t asize);
 static char *heap_listp = NULL;
-static char *start_p[9] = {NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL};
+static char *start_p[NUMBERS];
 
 
 ///
@@ -102,8 +107,16 @@ static int which_level (size_t asize)
         return 6;
     else if (asize>LEVEL_6 && asize<=LEVEL_7)
         return 7;
-    else 
+    else if (asize>LEVEL_7 && asize<=LEVEL_8)
         return 8;
+    else if (asize>LEVEL_8 && asize<=LEVEL_9)
+        return 9;
+    else if (asize>LEVEL_9 && asize<=LEVEL_10)
+        return 10;
+    else if (asize>LEVEL_10 && asize<=LEVEL_11)
+        return 11;
+    else
+        return 12;
 }
 ///
 /* 
@@ -112,28 +125,32 @@ static int which_level (size_t asize)
 int mm_init(void)
 {
     char *bp;
-    if ((heap_listp = mem_sbrk(12 * WSIZE)) == (void *) -1)
+    if ((heap_listp = mem_sbrk(16 * WSIZE)) == (void *) -1)
         return -1;
 
     int i;
-    for (i=0; i<9; ++i)
+    for (i=0; i<NUMBERS; ++i)
     {
         start_p[i]=heap_listp+((i+1)*WSIZE);
     }
     PUT(heap_listp, 0);// first block
-    PUT(heap_listp + (1*WSIZE), NULL);//0-32
-    PUT(heap_listp + (2*WSIZE), NULL );//33-64
-    PUT(heap_listp + (3*WSIZE), NULL );//65-128
-    PUT(heap_listp + (4*WSIZE), NULL );//129-256
-    PUT(heap_listp + (5*WSIZE), NULL );//257-512
-    PUT(heap_listp + (6*WSIZE), NULL );//513-1024
-    PUT(heap_listp + (7*WSIZE), NULL );//1025-2048
-    PUT(heap_listp + (8*WSIZE), NULL );//2049-4096
-    PUT(heap_listp + (9*WSIZE), NULL );//4097 -
-    PUT(heap_listp + (10*WSIZE), PACK(WSIZE, PN_U));
-    PUT(heap_listp + (11*WSIZE), PACK(0, PU_U));     //lenth 0, previous not used
+    PUT(heap_listp + (1*WSIZE), NULL);//1
+    PUT(heap_listp + (2*WSIZE), NULL );//2
+    PUT(heap_listp + (3*WSIZE), NULL );//3
+    PUT(heap_listp + (4*WSIZE), NULL );//4
+    PUT(heap_listp + (5*WSIZE), NULL );//5
+    PUT(heap_listp + (6*WSIZE), NULL );//6
+    PUT(heap_listp + (7*WSIZE), NULL );//7  1025-2048
+    PUT(heap_listp + (8*WSIZE), NULL );//8 2049-4096
+    PUT(heap_listp + (9*WSIZE), NULL );//9 4097 -
+    PUT(heap_listp + (10*WSIZE), NULL );//10 4097 -
+    PUT(heap_listp + (11*WSIZE), NULL );//11 4097 -
+    PUT(heap_listp + (12*WSIZE), NULL );//12 4097 -
+    PUT(heap_listp + (13*WSIZE), NULL );//13 4097 -
+    PUT(heap_listp + (14*WSIZE), PACK(WSIZE, PN_U));
+    PUT(heap_listp + (15*WSIZE), PACK(0, PU_U));     //lenth 0, previous not used
 
-    heap_listp += (10*WSIZE);//heap start addr
+    heap_listp += (14*WSIZE);//heap start addr
     if ((bp = extend_heap(2*CHUNKSIZE/WSIZE)) == NULL)
         return -1;
     return 0;
@@ -432,7 +449,7 @@ static void *find_fit(size_t asize)
 	char *p;
     const int level=which_level(asize);
     int l;
-    for (l=level;l<9;++l)
+    for (l=level;l<NUMBERS;++l)
     {
         for (p=GET_SUCC(start_p[l]); p ; p=GET_SUCC(p))
         {
