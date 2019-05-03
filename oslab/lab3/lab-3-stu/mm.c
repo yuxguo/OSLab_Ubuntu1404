@@ -62,6 +62,16 @@
 
 #define MASK_PU 0x00000002
 #define MASK_PN 0xfffffffd 
+
+#define LEVEL_0 (1<<4)
+#define LEVEL_1 (1<<5)
+#define LEVEL_2 (1<<6)
+#define LEVEL_3 (1<<7)
+#define LEVEL_4 (1<<8)
+#define LEVEL_5 (1<<9)
+#define LEVEL_6 (1<<10)
+#define LEVEL_7 (1<<11)
+#define LEVEL_8 (1<<12)
 /*********************************************************/
 
 static void *extend_heap(size_t words);
