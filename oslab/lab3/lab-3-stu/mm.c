@@ -71,6 +71,7 @@ static void *find_fit(size_t asize);
 static void insert_node_LIFO(char *bp);
 static char *heap_listp = NULL;
 static char *start_p = NULL;
+static int count=0;
 
 /* 
  * mm_init - initialize the malloc package.
@@ -136,6 +137,7 @@ static void *extend_heap(size_t words)
  */
 void *mm_malloc(size_t size)
 {
+    printf("%d\n", ++count);
     //确定要malloc的具体大小，调用findfit查找，再用place放置
     printf("\nin mm_malloc\n");
     size_t asize;
