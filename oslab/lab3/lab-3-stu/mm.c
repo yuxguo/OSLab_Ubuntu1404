@@ -204,6 +204,7 @@ void mm_free(void *bp)
     PUT_PREV(bp,NULL);
     PUT_SUCC(bp,NULL);
     //给要 free的块加上脚和头，再用coal合并
+    PUT(HDRP(NEXT_BLKP(bp)), (GET(HDRP(NEXT_BLKP(bp))) & MASK_PN));
     coalesce(bp);
     //将合并好的块调用insert插入到链表中，修改算法再insert中
     insert_node_LIFO(bp);
