@@ -220,7 +220,7 @@ static void *coalesce(void *bp)
     //读出当前块的大小
     size_t size = GET_SIZE(HDRP(bp));
     printf ("\n %d, %d, %d \n", size, is_prev_alloc, is_succ_alloc);
-    printf("\n %x, %x \n", bp,mem_sbrk(0));
+    //printf("\n %x, %x \n", bp,mem_sbrk(0));
 
     printf(" prev_blkp_bp= %x, size= %d",PREV_BLKP(bp), GET_SIZE(HDRP(PREV_BLKP(bp))));
 
