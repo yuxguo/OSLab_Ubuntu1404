@@ -219,15 +219,6 @@ static void *coalesce(void *bp)
 
     if (is_prev_alloc==2 && is_succ_alloc==1)
     {
-        
-        //若释放块的大小，大于空闲块所需要的最低大小，
-        //则直接初始化为一个节点，等待插入链表
-        //同时需要特别注意，将这个节点拿出来的同时还要将它的前驱节点和后继节点相连
-        /*PUT_SUCC(GET_PREV(bp), GET_SUCC(bp));//前驱节点的后继等于当前节点的后继
-        if (GET_SUCC(bp))
-        {
-            PUT_PREV(GET_SUCC(bp),GET_PREV(bp));
-        }*/
         PUT_PREV(bp,NULL);
         PUT_SUCC(bp,NULL);
         PUT(HDRP(bp),PACK(size,PU_N));
@@ -265,7 +256,7 @@ static void *coalesce(void *bp)
     {
         //前驱未被分配，后继被分配
         //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
-        unsigned int *t1=(unsigned int *)PREV_BLKP(bp);//另t1为bp物理地址上靠前的节点
+        char *t1=(char *)PREV_BLKP(bp);//另t1为bp物理地址上靠前的节点
         printf(" t1=%x ", t1);
         char *p;
         for (p =(char *)start_p; p; p=(char *)GET_SUCC(p))
