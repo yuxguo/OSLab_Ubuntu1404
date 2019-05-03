@@ -94,7 +94,7 @@ int mm_init(void)
     if ((bp = extend_heap(CHUNKSIZE/WSIZE)) == NULL)
         return -1;
 
-    
+    printf("\n %d \n", (unsigned int)mem_sbrk(0)-(unsigned int)heap_listp-2*WSIZE );
     printf("\nout mm_init\n");
     return 0;
 }// Done!
@@ -208,6 +208,7 @@ static void *coalesce(void *bp)
     size_t is_succ_alloc = GET_ALLOC(HDRP(NEXT_BLKP(bp)));
     //读出当前块的大小
     size_t size = GET_SIZE(HDRP(bp));
+    printf
 
     if (is_prev_alloc && is_succ_alloc)
     {
