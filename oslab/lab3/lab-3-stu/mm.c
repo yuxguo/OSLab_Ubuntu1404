@@ -217,7 +217,7 @@ static void *coalesce(void *bp)
     size_t is_succ_alloc = GET_ALLOC(HDRP(NEXT_BLKP(bp)));
     //读出当前块的大小
     size_t size = GET_SIZE(HDRP(bp));
-    printf ("\n %d, %d \n", is_prev_alloc, is_succ_alloc);
+    printf ("\n %d, %d, %d \n", size, is_prev_alloc, is_succ_alloc);
     printf("\n %x, %x \n", bp,mem_sbrk(0));
 
     if (is_prev_alloc && is_succ_alloc)
@@ -270,7 +270,7 @@ static void *coalesce(void *bp)
         //前驱未被分配，后继被分配
         //先不更新size，用未增加的size找到当前块的后继的后继，将链表维护完整
         printf("3");
-        char *t1=(char *)PREV_BLKP(bp);//另t1为bp物理地址上靠前的节点
+        unsigned int *t1=(unsigned int *)PREV_BLKP(bp);//另t1为bp物理地址上靠前的节点
         printf(" t1=%x ", t1);
         char *p;
         for (p =(char *)start_p; p; p=(char *)GET_SUCC(p))
