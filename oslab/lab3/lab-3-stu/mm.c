@@ -63,14 +63,14 @@
 #define MASK_PU 0x00000002
 #define MASK_PN 0xfffffffd 
 
-#define LEVEL_0 (1<<5)
-#define LEVEL_1 (1<<6)
-#define LEVEL_2 (1<<7)
-#define LEVEL_3 (1<<8)
-#define LEVEL_4 (1<<9)
-#define LEVEL_5 (1<<10)
-#define LEVEL_6 (1<<11)
-#define LEVEL_7 (1<<12)
+#define LEVEL_0 (32)
+#define LEVEL_1 (100)
+#define LEVEL_2 (500)
+#define LEVEL_3 (1000)
+#define LEVEL_4 (1800)
+#define LEVEL_5 (2600)
+#define LEVEL_6 (3800)
+#define LEVEL_7 (5000)
 /*********************************************************/
 
 static void *extend_heap(size_t words);
@@ -134,7 +134,7 @@ int mm_init(void)
     PUT(heap_listp + (11*WSIZE), PACK(0, PU_U));     //lenth 0, previous not used
 
     heap_listp += (10*WSIZE);//heap start addr
-    if ((bp = extend_heap(CHUNKSIZE/WSIZE)) == NULL)
+    if ((bp = extend_heap(2*CHUNKSIZE/WSIZE)) == NULL)
         return -1;
     return 0;
 }// Done!
@@ -364,25 +364,25 @@ static void insert_node_level(char *bp)
         PUT_SUCC(start_p[level],bp);
         PUT_PREV(bp,start_p[level]);
     }
-    // char *p=NULL;
-    // char *p_prev=start_p[level];
+    /*char *p=NULL;
+    char *p_prev=start_p[level];
 
-    // for (p = GET_SUCC(start_p[level]); p ;p=GET_SUCC(p))
-    // {
-    //     p_prev=GET_PREV(p);
-    //     if (size>GET_SIZE(p))
-    //         continue;
-    //     else
-    //     {
-    //         PUT_SUCC(bp,p);
-    //         PUT_PREV(bp,p_prev);
-    //         PUT_SUCC(p_prev, bp);
-    //         PUT_PREV(p, bp);
-    //         return;
-    //     }
-    // }
-    // PUT_SUCC(p_prev,bp);
-    // PUT_PREV(bp,p_prev);
+    for (p = GET_SUCC(start_p[level]); p ;p=GET_SUCC(p))
+    {
+        p_prev=GET_PREV(p);
+        if (size>GET_SIZE(p))
+            continue;
+        else
+        {
+            PUT_SUCC(bp,p);
+            PUT_PREV(bp,p_prev);
+            PUT_SUCC(p_prev, bp);
+            PUT_PREV(p, bp);
+            return;
+        }
+    }
+    PUT_SUCC(p_prev,bp);
+    PUT_PREV(bp,p_prev);*/
     return ;    
 }
 
