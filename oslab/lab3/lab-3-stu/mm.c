@@ -365,9 +365,9 @@ static void *coalesce(void *bp)
 
 static void insert_node_level(char *bp)
 {
-    /*size_t size=GET_SIZE(HDRP(bp));
+    size_t size=GET_SIZE(HDRP(bp));
     int level = which_level(size);
-    
+    /*
     char *p_tmp = GET_SUCC(start_p[level]);
     if (p_tmp)
     {
