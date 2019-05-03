@@ -317,7 +317,9 @@ static void *coalesce(void *bp)
 static void insert_node_LIFO(char *bp)
 {
     printf("\nin insert_node_LIFO\n");
+    
     char *p_tmp = GET_SUCC(start_p);
+    printf("\n %x, %x \n", bp, p_tmp);
     if (p_tmp)
     {
         PUT_SUCC(bp,p_tmp);
