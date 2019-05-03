@@ -211,7 +211,7 @@ static void *coalesce(void *bp)
     //读出当前块的大小
     size_t size = GET_SIZE(HDRP(bp));
     printf ("\n %d, %d \n", is_prev_alloc, is_succ_alloc);
-    printf("\n %x \n", bp);
+    printf("\n %x, %x \n", bp,mem_sbrk(0));
 
     if (is_prev_alloc && is_succ_alloc)
     {
