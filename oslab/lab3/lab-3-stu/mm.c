@@ -117,7 +117,7 @@ static void *extend_heap(size_t words)
     
 
     //PUT_SUCC(bp,NULL);       //bp's succeed is next
-    //PUT(HDRP(NEXT_BLKP(bp)), PACK(0, PN_U));//make next header
+    PUT(HDRP(NEXT_BLKP(bp)), PACK(0, PN_U));//make next header
     //PUT_PREV(bp,NULL);       //next previous is bp
 
     
