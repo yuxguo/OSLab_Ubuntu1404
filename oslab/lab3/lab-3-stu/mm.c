@@ -170,6 +170,7 @@ void *mm_malloc(size_t size)
     //otherwise it will expand the heap range
     if ((bp = extend_heap(extendsize/WSIZE)) == NULL)
         return NULL;
+    bp = find_fit(asize);
     place(bp, asize);
     printf("\nout mm_malloc\n");
     return bp;
