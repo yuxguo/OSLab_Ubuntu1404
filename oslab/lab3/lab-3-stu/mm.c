@@ -116,7 +116,7 @@ int mm_init(void)
         return -1;
 
     int i;
-    for (i=0; i<11; ++i)
+    for (i=0; i<9; ++i)
     {
         start_p[i]=heap_listp+((i+1)*WSIZE);
     }
