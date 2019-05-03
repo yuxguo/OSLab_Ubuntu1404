@@ -188,6 +188,7 @@ void *mm_malloc(size_t size)
  */
 void mm_free(void *bp)
 {
+    printf("\n in mm_free \n");
     size_t size = GET_SIZE(HDRP(bp));
 
     if (GET_PREV_INFO(HDRP(bp)) != 0)
@@ -204,6 +205,7 @@ void mm_free(void *bp)
     coalesce(bp);
     //将合并好的块调用insert插入到链表中，修改算法再insert中
     insert_node_LIFO(bp);
+    printf("\n out mm_free \n");
 }
 static void *coalesce(void *bp)
 {
