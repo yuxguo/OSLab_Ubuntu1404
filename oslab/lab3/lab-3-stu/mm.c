@@ -174,7 +174,7 @@ static void *extend_heap(size_t words)
 
     
     char *t = coalesce(bp);
-    insert_node_LIFO(t);
+    insert_node_level(t);
 }
 
 
@@ -245,7 +245,7 @@ void mm_free(void *bp)
     //给要 free的块加上脚和头，再用coal合并
     char * t=coalesce(bp);
     //将合并好的块调用insert插入到链表中，修改算法再insert中
-    insert_node_LIFO(t);
+    insert_node_level(t);
 }
 static void *coalesce(void *bp)
 {
@@ -390,19 +390,22 @@ static void place(void *bp, size_t asize)
         PUT(HDRP(p_tmp),PACK(space-asize,PU_N));
         PUT(FTRP(p_tmp),PACK(space-asize,PU_N));
         
-        PUT_SUCC(p_tmp,NULL);
-        PUT_PREV(p_tmp,NULL);
 
-        insert_node_level(p_tmp);
-        //PUT_SUCC(p_tmp,GET_SUCC(bp));
-        //PUT_PREV(p_tmp,GET_PREV(bp));
-
+        PUT_SUCC(GET_PREV(bp),GET_SUCC(bp));
+        
+        if (GET_SUCC(bp))
+        {
+            PUT_PREV(GET_SUCC(bp),GET_PREV(bp));
+        }
+        
         // if (GET_SUCC(p_tmp))
         // {
         //     PUT_PREV(GET_SUCC(p_tmp), p_tmp);
         // }
         // PUT_SUCC(GET_PREV(p_tmp), p_tmp);
-        
+        PUT_SUCC(p_tmp,NULL);
+        PUT_PREV(p_tmp,NULL);
+        insert_node_level(p_tmp);
     }
     else
     {
