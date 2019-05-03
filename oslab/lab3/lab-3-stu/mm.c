@@ -168,7 +168,7 @@ void *mm_malloc(size_t size)
 
     extendsize = MAX(asize, CHUNKSIZE);
     //otherwise it will expand the heap range
-    if ((bp = extend_heap(extendsize/WSIZE)) == NULL)
+    if (extend_heap(extendsize/WSIZE) == NULL)
         return NULL;
     bp = find_fit(asize);
     place(bp, asize);
@@ -211,6 +211,7 @@ static void *coalesce(void *bp)
     //读出当前块的大小
     size_t size = GET_SIZE(HDRP(bp));
     printf ("\n %d, %d \n", is_prev_alloc, is_succ_alloc);
+    printf("\n %x \n", bp);
 
     if (is_prev_alloc && is_succ_alloc)
     {
