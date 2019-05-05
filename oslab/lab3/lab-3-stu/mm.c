@@ -26,7 +26,7 @@
 /*********************************************************/
 #define WSIZE 4     //word lenth
 #define DSIZE 8     //data block lenth
-#define CHUNKSIZE ((1 << 12)+16)  //heap size incrment  
+#define CHUNKSIZE (1 << 12)  //heap size incrment  
 
 #define MAX(x,y) ((x) > (y) ? (x) : (y))    //max number in x,y
 
@@ -89,7 +89,6 @@ static int which_level (size_t asize);
 
 static void *mm_malloc_common(size_t size);
 
-static int mm_re_init(void);
 
 
 
@@ -161,16 +160,12 @@ int mm_init(void)
     PUT(heap_listp + (15*WSIZE), PACK(0, PU_U));     //lenth 0, previous not used
 
     heap_listp += (14*WSIZE);//heap start addr
-    if ((bp = extend_heap(CHUNKSIZE/WSIZE)) == NULL)
+    if ((bp = extend_heap(2*CHUNKSIZE/WSIZE)+16) == NULL)
         return -1;
     return 0;
 }// Done!
 
 
-static int mm_re_init()
-{
-    return 0;
-}
 
 static void *extend_heap(size_t words)
 {
