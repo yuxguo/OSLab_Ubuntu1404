@@ -90,8 +90,6 @@ static void insert_node_level(char *bp);
 static int which_level (size_t asize);
 
 static void *mm_malloc_common(size_t size);
-static void *mm_malloc_binary_bal(size_t size);
-static void *mm_malloc_binbal2_bal(size_t size);
 
 static int mm_re_init(void);
 
@@ -100,9 +98,6 @@ static int mm_re_init(void);
 static char *heap_listp = NULL;
 static char *start_p[NUMBERS];
 
-static int first;
-static int mode;
-static int count;
 
 
 ///
@@ -141,8 +136,6 @@ static int which_level (size_t asize)
  */
 int mm_init(void)
 {
-    first=1;
-    count=0;
     char *bp;
     if ((heap_listp = mem_sbrk(16 * WSIZE)) == (void *) -1)
         return -1;
@@ -178,7 +171,7 @@ int mm_init(void)
 
 static int mm_re_init()
 {
-
+    return 0;
 }
 
 static void *extend_heap(size_t words)
@@ -218,37 +211,9 @@ static void *extend_heap(size_t words)
  */
 void *mm_malloc(size_t size)
 {
-    if ((first && (size==16)) || (first && (size ==64)))
-    {
-        if (size==16)
-            mode=2;
-        else if (size ==64)
-            mode=1;
-    }
-    else
-    {
-        mode=0;
-    }
-    first=0;
-    if (mode==0)
-        return mm_malloc_common(size);
-    else if (mode==1)
-        return mm_malloc_binary_bal(size);
-    else if (mode ==2)
-        return mm_malloc_binbal2_bal(size);
-    else 
-        return NULL;
+    return mm_malloc_common(size);
 }
 
-static void *mm_malloc_binary_bal(size_t size)
-{
-    return NULL;
-}
-
-static void *mm_malloc_binbal2_bal(size_t size)
-{
-    return NULL;
-}
 
 static void *mm_malloc_common(size_t size)
 {
@@ -467,27 +432,48 @@ static void place(void *bp, size_t asize)
     size_t space = GET_SIZE(HDRP(bp));
     if (space - asize >= MIN_SIZE)
     {
-        char *p_tmp = bp + asize; 
-        PUT(HDRP(bp), PACK(asize,PU_U));
-        PUT(HDRP(p_tmp),PACK(space-asize,PU_N));
-        PUT(FTRP(p_tmp),PACK(space-asize,PU_N));
+        if (asize <100)
+        {
+            char *p_tmp = bp + asize; 
+            PUT(HDRP(bp), PACK(asize,PU_U));
+            PUT(HDRP(p_tmp),PACK(space-asize,PU_N));
+            PUT(FTRP(p_tmp),PACK(space-asize,PU_N));
         
 
-        PUT_SUCC(GET_PREV(bp),GET_SUCC(bp));
+            PUT_SUCC(GET_PREV(bp),GET_SUCC(bp));
         
-        if (GET_SUCC(bp))
-        {
-            PUT_PREV(GET_SUCC(bp),GET_PREV(bp));
-        }
+            if (GET_SUCC(bp))
+            {
+                PUT_PREV(GET_SUCC(bp),GET_PREV(bp));
+            }
         
         // if (GET_SUCC(p_tmp))
         // {
         //     PUT_PREV(GET_SUCC(p_tmp), p_tmp);
         // }
         // PUT_SUCC(GET_PREV(p_tmp), p_tmp);
-        PUT_SUCC(p_tmp,NULL);
-        PUT_PREV(p_tmp,NULL);
-        insert_node_level(p_tmp);
+            PUT_SUCC(p_tmp,NULL);
+            PUT_PREV(p_tmp,NULL);
+            insert_node_level(p_tmp);
+        }
+        else 
+        {
+            char *p_tmp = bp;
+            bp = bp+space-asize;
+            PUT(HDRP(bp), PACK(asize, PN_U));
+            PUT(HDRP(p_tmp), PACK(space-asize, PU_N));
+            PUT(HDRP(p_tmp), PACK(space-asize, PU_N));
+
+            PUT_SUCC(GET_PREV(p_tmp),GET_SUCC(p_tmp));
+        
+            if (GET_SUCC(p_tmp))
+            {
+                PUT_PREV(GET_SUCC(p_tmp),GET_PREV(p_tmp));
+            }
+            PUT_SUCC(p_tmp,NULL);
+            PUT_PREV(p_tmp,NULL);
+            insert_node_level(p_tmp);
+        }
     }
     else
     {
