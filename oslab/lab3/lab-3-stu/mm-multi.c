@@ -84,17 +84,8 @@ static void place(void *bp, size_t asize);
 static void *find_fit(size_t asize);
 static void insert_node_level(char *bp);
 static int which_level (size_t asize);
-
-static void *mm_malloc_common(size_t size);
-static void *mm_malloc_binary_bal(size_t size);
-static void *mm_malloc_binbal2_bal(size_t size);
-
-
 static char *heap_listp = NULL;
 static char *start_p[NUMBERS];
-
-static int first;
-static int mode;
 
 
 ///
@@ -133,7 +124,6 @@ static int which_level (size_t asize)
  */
 int mm_init(void)
 {
-    first=1;
     char *bp;
     if ((heap_listp = mem_sbrk(16 * WSIZE)) == (void *) -1)
         return -1;
@@ -203,40 +193,7 @@ static void *extend_heap(size_t words)
  */
 void *mm_malloc(size_t size)
 {
-    if ((first && (size==16)) || (first && (size ==64)))
-    {
-        if (size==16)
-            mode=2;
-        else if (size ==64)
-            mode=1;
-    }
-    else
-    {
-        mode=0;
-    }
-    first=0;
-    if (mode==0)
-        return mm_malloc_common(size);
-    else if (mode==1)
-        return mm_malloc_binary_bal(size);
-    else if (mode ==2)
-        return mm_malloc_binbal2_bal(size);
-    else 
-        return NULL;
-}
-
-static void *mm_malloc_binary_bal(size_t size)
-{
-    return NULL;
-}
-
-static void *mm_malloc_binbal2_bal(size_t size)
-{
-    return NULL;
-}
-
-static void *mm_malloc_common(size_t size)
-{
+    
     //确定要malloc的具体大小，调用findfit查找，再用place放置
     size_t asize;
     size_t extendsize;
@@ -269,6 +226,7 @@ static void *mm_malloc_common(size_t size)
     place(bp, asize);
     return bp;
 }
+
 
 
 /*
@@ -503,8 +461,6 @@ static void *find_fit(size_t asize)
     return NULL;
     
 }
-
-
 
 
 /*
