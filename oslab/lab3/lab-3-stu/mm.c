@@ -442,6 +442,10 @@ static void insert_node_level(char *bp)
             return;
         }
     }
+    if (p_prev != start_p[level])
+    {
+        p_prev == GET_SUCC(p_prev);
+    }
     PUT_SUCC(p_prev,bp);
     PUT_PREV(bp,p_prev);
     return ;    
