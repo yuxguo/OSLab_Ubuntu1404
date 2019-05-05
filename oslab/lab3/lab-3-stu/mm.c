@@ -84,7 +84,7 @@
 
 static void *extend_heap(size_t words);
 static void *coalesce(void *bp);
-static void place(void *bp, size_t asize);
+static void *place(void *bp, size_t asize);
 static void *find_fit(size_t asize);
 static void insert_node_level(char *bp);
 static int which_level (size_t asize);
@@ -236,8 +236,7 @@ static void *mm_malloc_common(size_t size)
     
     if ((bp = find_fit(asize)) != NULL)
     {
-        place(bp, asize);
-        return bp;
+        return place(bp, asize);
     }//if can find a fit block
 
     extendsize = MAX(asize, CHUNKSIZE);
@@ -246,8 +245,7 @@ static void *mm_malloc_common(size_t size)
     if (extend_heap(extendsize/WSIZE) == NULL)
         return NULL;
     bp = find_fit(asize);
-    place(bp, asize);
-    return bp;
+    return place(bp, asize);
 }
 
 
@@ -427,7 +425,7 @@ static void insert_node_level(char *bp)
 }
 
 
-static void place(void *bp, size_t asize)
+static void *place(void *bp, size_t asize)
 {
     size_t space = GET_SIZE(HDRP(bp));
     if (space - asize >= MIN_SIZE)
@@ -486,6 +484,7 @@ static void place(void *bp, size_t asize)
         }
         PUT_SUCC(GET_PREV(bp), GET_SUCC(bp));
     }
+    return bp;
 }
 
 static void *find_fit(size_t asize)
