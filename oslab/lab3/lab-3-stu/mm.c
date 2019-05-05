@@ -430,7 +430,7 @@ static void *place(void *bp, size_t asize)
     size_t space = GET_SIZE(HDRP(bp));
     if (space - asize >= MIN_SIZE)
     {
-        if (1)
+        if (asize<100)
         {
             char *p_tmp = bp + asize; 
             PUT(HDRP(bp), PACK(asize,PU_U));
@@ -454,7 +454,7 @@ static void *place(void *bp, size_t asize)
             PUT_PREV(p_tmp,NULL);
             insert_node_level(p_tmp);
         }
-        /*else 
+        else 
         {
             char *p_tmp = bp;
             PUT_SUCC(GET_PREV(p_tmp),GET_SUCC(p_tmp));
@@ -472,7 +472,7 @@ static void *place(void *bp, size_t asize)
             PUT_SUCC(p_tmp,NULL);
             PUT_PREV(p_tmp,NULL);
             insert_node_level(p_tmp);
-        }*/
+        }
     }
     else
     {
