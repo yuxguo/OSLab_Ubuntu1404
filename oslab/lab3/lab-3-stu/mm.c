@@ -210,7 +210,7 @@ void *mm_malloc(size_t size)
     //确定要malloc的具体大小，调用findfit查找，再用place放置
     if (first_malloc)
     {
-        if (size == 64 || size == 16)
+        if (size == 64 )
         {
             mode =1;
         }
@@ -243,7 +243,7 @@ void *mm_malloc(size_t size)
 
     if (first_extend && mode)
     {
-        extendsize = MAX(asize, CHUNKSIZE);//512000-2*CHUNKSIZE-16;
+        extendsize = 2048000-2*CHUNKSIZE-16;
         mode=0;
     }
     else
