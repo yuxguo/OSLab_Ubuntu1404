@@ -428,10 +428,10 @@ static void insert_node_level(char *bp)
     char *p=NULL;
     char *p_prev=start_p[level];
 
-    for (p = GET_SUCC(start_p[level]); p ;p=GET_SUCC(p))
+    for (p = GET_SUCC(start_p[level]); p!=NULL ;p=GET_SUCC(p))
     {
         p_prev=GET_PREV(p);
-        if (size<GET_SIZE(p))
+        if (size>GET_SIZE(p))
             continue;
         else
         {
