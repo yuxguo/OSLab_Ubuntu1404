@@ -243,7 +243,7 @@ void *mm_malloc(size_t size)
 
     if (first_extend && mode)
     {
-        extendsize = 512000-2*CHUNKSIZE-16;
+        extendsize = MAX(asize, CHUNKSIZE);//512000-2*CHUNKSIZE-16;
         mode=0;
     }
     else
