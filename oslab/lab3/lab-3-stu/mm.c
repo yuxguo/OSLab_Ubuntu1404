@@ -26,7 +26,7 @@
 /*********************************************************/
 #define WSIZE 4     //word lenth
 #define DSIZE 8     //data block lenth
-#define CHUNKSIZE (1 << 12)  //heap size incrment  
+#define CHUNKSIZE ((1 << 12)+16)  //heap size incrment  
 
 #define MAX(x,y) ((x) > (y) ? (x) : (y))    //max number in x,y
 
@@ -78,8 +78,6 @@
 #define NUMBERS 13
 
 
-#define COUNT1 4000
-#define COUNT2 8000
 /*********************************************************/
 
 static void *extend_heap(size_t words);
