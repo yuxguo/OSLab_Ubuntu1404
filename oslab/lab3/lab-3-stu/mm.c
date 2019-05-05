@@ -64,17 +64,17 @@
 #define MASK_PN 0xfffffffd 
 
 #define LEVEL_0 (32)
-#define LEVEL_1 (100)
-#define LEVEL_2 (500)
-#define LEVEL_3 (900)
-#define LEVEL_4 (1300)
-#define LEVEL_5 (1700)
-#define LEVEL_6 (2100)
-#define LEVEL_7 (2500)
-#define LEVEL_8 (3500)
-#define LEVEL_9 (8000)
-#define LEVEL_10 (15000)
-#define LEVEL_11 (20000)
+#define LEVEL_1 (64)
+#define LEVEL_2 (128)
+#define LEVEL_3 (256)
+#define LEVEL_4 (512)
+#define LEVEL_5 (1024)
+#define LEVEL_6 (1536)
+#define LEVEL_7 (2048)
+#define LEVEL_8 (3072)
+#define LEVEL_9 (4096)
+#define LEVEL_10 (8192)
+#define LEVEL_11 (16384)
 #define NUMBERS 13
 
 
