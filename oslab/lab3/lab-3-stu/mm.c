@@ -160,7 +160,7 @@ int mm_init(void)
     PUT(heap_listp + (15*WSIZE), PACK(0, PU_U));     //lenth 0, previous not used
 
     heap_listp += (14*WSIZE);//heap start addr
-    if ((bp = extend_heap(2*CHUNKSIZE/WSIZE)+32) == NULL)
+    if ((bp = extend_heap(2*CHUNKSIZE/WSIZE+4)) == NULL)
         return -1;
     return 0;
 }// Done!
