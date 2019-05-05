@@ -460,7 +460,7 @@ static void *place(void *bp, size_t asize)
             bp = bp+space-asize;
             PUT(HDRP(bp), PACK(asize, PN_U));
             PUT(HDRP(p_tmp), PACK(space-asize, PU_N));
-            PUT(HDRP(p_tmp), PACK(space-asize, PU_N));
+            PUT(FTRP(p_tmp), PACK(space-asize, PU_N));
 
             PUT_SUCC(GET_PREV(p_tmp),GET_SUCC(p_tmp));
         
