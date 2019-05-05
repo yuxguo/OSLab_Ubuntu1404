@@ -76,6 +76,10 @@
 #define LEVEL_10 (3000)
 #define LEVEL_11 (4000)
 #define NUMBERS 13
+
+
+#define COUNT1 4000
+#define COUNT2 8000
 /*********************************************************/
 
 static void *extend_heap(size_t words);
@@ -89,12 +93,16 @@ static void *mm_malloc_common(size_t size);
 static void *mm_malloc_binary_bal(size_t size);
 static void *mm_malloc_binbal2_bal(size_t size);
 
+static int mm_re_init(void);
+
+
 
 static char *heap_listp = NULL;
 static char *start_p[NUMBERS];
 
 static int first;
 static int mode;
+static int count;
 
 
 ///
@@ -134,6 +142,7 @@ static int which_level (size_t asize)
 int mm_init(void)
 {
     first=1;
+    count=0;
     char *bp;
     if ((heap_listp = mem_sbrk(16 * WSIZE)) == (void *) -1)
         return -1;
@@ -165,6 +174,12 @@ int mm_init(void)
         return -1;
     return 0;
 }// Done!
+
+
+static int mm_re_init()
+{
+
+}
 
 static void *extend_heap(size_t words)
 {
