@@ -457,6 +457,7 @@ static void *place(void *bp, size_t asize)
         else 
         {
             char *p_tmp = bp;
+            PUT(HDRP(NEXT_BLKP(bp)),(GET(HDRP(NEXT_BLKP(bp))) | MASK_PU ));
             PUT_SUCC(GET_PREV(p_tmp),GET_SUCC(p_tmp));
         
             if (GET_SUCC(p_tmp))
