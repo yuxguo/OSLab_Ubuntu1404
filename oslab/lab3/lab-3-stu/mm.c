@@ -214,6 +214,10 @@ void *mm_malloc(size_t size)
         {
             mode =1;
         }
+        else if (size == 16)
+        {
+            mode =2;
+        }
         else 
         {
             mode =0;
@@ -241,10 +245,15 @@ void *mm_malloc(size_t size)
         return place(bp, asize);
     }//if can find a fit block
 
-    if (first_extend && mode)
+    if (first_extend && mode==1)
     {
-        extendsize = 2048000-2*CHUNKSIZE-16;
-        mode=0;
+        extendsize = 1024000-2*CHUNKSIZE-16;
+        first_extend=0;
+    }
+    else if (first_extend && mode==2)
+    {
+        extendsize = 512000-2*CHUNKSIZE-16;
+        first_extend=0;
     }
     else
     {
