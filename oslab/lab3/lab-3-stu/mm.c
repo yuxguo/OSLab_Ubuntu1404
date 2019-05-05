@@ -65,16 +65,16 @@
 
 #define LEVEL_0 (32)
 #define LEVEL_1 (100)
-#define LEVEL_2 (300)
-#define LEVEL_3 (500)
-#define LEVEL_4 (700)
-#define LEVEL_5 (900)
-#define LEVEL_6 (1100)
-#define LEVEL_7 (1500)
-#define LEVEL_8 (2000)
-#define LEVEL_9 (2500)
-#define LEVEL_10 (3000)
-#define LEVEL_11 (4000)
+#define LEVEL_2 (500)
+#define LEVEL_3 (900)
+#define LEVEL_4 (1300)
+#define LEVEL_5 (1700)
+#define LEVEL_6 (2100)
+#define LEVEL_7 (2500)
+#define LEVEL_8 (3500)
+#define LEVEL_9 (8000)
+#define LEVEL_10 (15000)
+#define LEVEL_11 (20000)
 #define NUMBERS 13
 
 
