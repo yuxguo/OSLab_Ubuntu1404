@@ -411,7 +411,7 @@ static void insert_node_level(char *bp)
     size_t size=GET_SIZE(HDRP(bp));
     int level = which_level(size);
     
-    char *p_tmp = GET_SUCC(start_p[level]);
+    /*char *p_tmp = GET_SUCC(start_p[level]);
     if (p_tmp)
     {
         PUT_SUCC(bp,p_tmp);
@@ -423,8 +423,8 @@ static void insert_node_level(char *bp)
     {
         PUT_SUCC(start_p[level],bp);
         PUT_PREV(bp,start_p[level]);
-    }
-    /*
+    }*/
+    
     char *p=NULL;
     char *p_prev=start_p[level];
 
@@ -443,7 +443,7 @@ static void insert_node_level(char *bp)
         }
     }
     PUT_SUCC(p_prev,bp);
-    PUT_PREV(bp,p_prev);*/
+    PUT_PREV(bp,p_prev);
     return ;    
 }
 
