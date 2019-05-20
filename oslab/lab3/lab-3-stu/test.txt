@@ -1,0 +1,15639 @@
+Using default tracefiles in ./traces/
+Measuring performance with gettimeofday().
+
+Testing mm malloc
+Reading tracefile: amptjp-bal.rep
+Checking mm_malloc for correctness, 
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 2, 1 
+ prev_blkp_bp= b61eb018, size= 81
+out coalesce
+
+in insert_node_LIFO
+
+ b61eb020, 0 
+
+out insert_node_LIFO
+
+in mm_malloc
+
+No.1 malloc
+
+in find_fit
+
+ b61eb020 
+
+out find_fit
+
+ 2048 
+
+in place
+
+ 4096, 4096 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.2 malloc
+
+in find_fit
+
+ b61eb820 
+
+out find_fit
+
+ 2048 
+
+in place
+
+ 2048, 2048 
+
+ 22 
+
+ b61eb820, b61eb00c, 0 
+
+ 33 
+
+out_place
+
+in mm_malloc
+
+No.3 malloc
+
+in find_fit
+
+out find_fit
+
+ list=b61eb00c 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 2, 1 
+ prev_blkp_bp= b61eb820, size= 20481
+out coalesce
+
+in insert_node_LIFO
+
+ b61ec020, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61ec020 
+
+out find_fit
+
+in place
+
+ 4096, 4096 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.4 malloc
+
+in find_fit
+
+ b61ec058 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61ec058 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61ec058, size= 40403 t1=b61ec058 
+ list=b61eb00c 
+
+ list=b61ec058 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61ec058, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61ec058 
+
+out find_fit
+
+in place
+
+ 8136, 8136 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.5 malloc
+
+in find_fit
+
+ b61ed048 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61ed048 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61ed048, size= 40563 t1=b61ed048 
+ list=b61eb00c 
+
+ list=b61ed048 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61ed048, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61ed048 
+
+out find_fit
+
+in place
+
+ 8152, 8152 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.6 malloc
+
+in find_fit
+
+ b61ee038 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61ee038 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61ee038, size= 40723 t1=b61ee038 
+ list=b61eb00c 
+
+ list=b61ee038 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61ee038, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61ee038 
+
+out find_fit
+
+in place
+
+ 8168, 8168 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.7 malloc
+
+in find_fit
+
+ b61ef028 
+
+out find_fit
+
+ 4080 
+
+in place
+
+ 4088, 4088 
+
+ 22 
+
+ b61ef028, b61eb00c, 0 
+
+ 33 
+
+out_place
+
+in mm_malloc
+
+No.8 malloc
+
+in find_fit
+
+out find_fit
+
+ list=b61eb00c 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 2, 1 
+ prev_blkp_bp= b61ef028, size= 40881
+out coalesce
+
+in insert_node_LIFO
+
+ b61f0020, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61f0020 
+
+out find_fit
+
+in place
+
+ 4096, 4096 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.9 malloc
+
+in find_fit
+
+ b61f1010 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61f1010 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61f1010, size= 163 t1=b61f1010 
+ list=b61eb00c 
+
+ list=b61f1010 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61f1010, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61f1010 
+
+out find_fit
+
+in place
+
+ 4112, 4112 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.10 malloc
+
+in find_fit
+
+ b61f2000 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61f2000 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61f2000, size= 323 t1=b61f2000 
+ list=b61eb00c 
+
+ list=b61f2000 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61f2000, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61f2000 
+
+out find_fit
+
+in place
+
+ 4128, 4128 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.11 malloc
+
+in find_fit
+
+ b61f23f8 
+
+out find_fit
+
+ 512 
+
+in place
+
+ 3112, 3112 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.12 malloc
+
+in find_fit
+
+ b61f25f8 
+
+out find_fit
+
+ 1016 
+
+in place
+
+ 2600, 2600 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.13 malloc
+
+in find_fit
+
+ b61f29f0 
+
+out find_fit
+
+ 48 
+
+in place
+
+ 1584, 1584 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.14 malloc
+
+in find_fit
+
+ b61f2a20 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61f2a20 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61f2a20, size= 15363 t1=b61f2a20 
+ list=b61eb00c 
+
+ list=b61f2a20 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61f2a20, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61f2a20 
+
+out find_fit
+
+in place
+
+ 5632, 5632 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.15 malloc
+
+in find_fit
+
+ b61f3a10 
+
+out find_fit
+
+ 80 
+
+in place
+
+ 1552, 1552 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.16 malloc
+
+in find_fit
+
+ b61f3a60 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61f3a60 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61f3a60, size= 14723 t1=b61f3a60 
+ list=b61eb00c 
+
+ list=b61f3a60 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61f3a60, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61f3a60 
+
+out find_fit
+
+in place
+
+ 5568, 5568 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.17 malloc
+
+in find_fit
+
+ b61f4a50 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61f4a50 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61f4a50, size= 14883 t1=b61f4a50 
+ list=b61eb00c 
+
+ list=b61f4a50 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61f4a50, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61f4a50 
+
+out find_fit
+
+in place
+
+ 5584, 5584 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.18 malloc
+
+in find_fit
+
+ b61f5a40 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61f5a40 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61f5a40, size= 15043 t1=b61f5a40 
+ list=b61eb00c 
+
+ list=b61f5a40 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61f5a40, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61f5a40 
+
+out find_fit
+
+in place
+
+ 5600, 5600 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.19 malloc
+
+in find_fit
+
+ b61f6a30 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61f6a30 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61f6a30, size= 15203 t1=b61f6a30 
+ list=b61eb00c 
+
+ list=b61f6a30 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61f6a30, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61f6a30 
+
+out find_fit
+
+in place
+
+ 5616, 5616 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.20 malloc
+
+in find_fit
+
+ b61f7a20 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61f7a20 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61f7a20, size= 15363 t1=b61f7a20 
+ list=b61eb00c 
+
+ list=b61f7a20 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61f7a20, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61f7a20 
+
+out find_fit
+
+in place
+
+ 5632, 5632 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.21 malloc
+
+in find_fit
+
+ b61f8a10 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61f8a10 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61f8a10, size= 15523 t1=b61f8a10 
+ list=b61eb00c 
+
+ list=b61f8a10 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61f8a10, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61f8a10 
+
+out find_fit
+
+in place
+
+ 5648, 5648 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.22 malloc
+
+in find_fit
+
+ b61f9a00 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61f9a00 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61f9a00, size= 15683 t1=b61f9a00 
+ list=b61eb00c 
+
+ list=b61f9a00 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61f9a00, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61f9a00 
+
+out find_fit
+
+in place
+
+ 5664, 5664 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.23 malloc
+
+in find_fit
+
+ b61fa9f0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61fa9f0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61fa9f0, size= 15843 t1=b61fa9f0 
+ list=b61eb00c 
+
+ list=b61fa9f0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61fa9f0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61fa9f0 
+
+out find_fit
+
+in place
+
+ 5680, 5680 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.24 malloc
+
+in find_fit
+
+ b61fb9e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61fb9e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61fb9e0, size= 16003 t1=b61fb9e0 
+ list=b61eb00c 
+
+ list=b61fb9e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61fb9e0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61fb9e0 
+
+out find_fit
+
+in place
+
+ 5696, 5696 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.25 malloc
+
+in find_fit
+
+ b61fc9d0 
+
+out find_fit
+
+ 48 
+
+in place
+
+ 1616, 1616 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.26 malloc
+
+in find_fit
+
+ b61fca00 
+
+out find_fit
+
+ 48 
+
+in place
+
+ 1568, 1568 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.27 malloc
+
+in find_fit
+
+ b61fca30 
+
+out find_fit
+
+ 48 
+
+in place
+
+ 1520, 1520 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.28 malloc
+
+in find_fit
+
+ b61fca60 
+
+out find_fit
+
+ 48 
+
+in place
+
+ 1472, 1472 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.29 malloc
+
+in find_fit
+
+ b61fca90 
+
+out find_fit
+
+ 48 
+
+in place
+
+ 1424, 1424 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.30 malloc
+
+in find_fit
+
+ b61fcac0 
+
+out find_fit
+
+ 48 
+
+in place
+
+ 1376, 1376 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.31 malloc
+
+in find_fit
+
+ b61fcaf0 
+
+out find_fit
+
+ 48 
+
+in place
+
+ 1328, 1328 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.32 malloc
+
+in find_fit
+
+ b61fcb20 
+
+out find_fit
+
+ 48 
+
+in place
+
+ 1280, 1280 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.33 malloc
+
+in find_fit
+
+ b61fcb50 
+
+out find_fit
+
+ 48 
+
+in place
+
+ 1232, 1232 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.34 malloc
+
+in find_fit
+
+ b61fcb80 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61fcb80 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61fcb80, size= 11843 t1=b61fcb80 
+ list=b61eb00c 
+
+ list=b61fcb80 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61fcb80, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61fcb80 
+
+out find_fit
+
+in place
+
+ 5280, 5280 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.35 malloc
+
+in find_fit
+
+ b61fdb70 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 1200, 1200 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.36 malloc
+
+in find_fit
+
+ b61fdd40 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 736, 736 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.37 malloc
+
+in find_fit
+
+ b61fdf10 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61fdf10 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61fdf10, size= 2723 t1=b61fdf10 
+ list=b61eb00c 
+
+ list=b61fdf10 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61fdf10, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61fdf10 
+
+out find_fit
+
+in place
+
+ 4368, 4368 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.38 malloc
+
+in find_fit
+
+ b61fe0e0 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 3904, 3904 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.39 malloc
+
+in find_fit
+
+ b61fe2b0 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 3440, 3440 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.40 malloc
+
+in find_fit
+
+ b61fe480 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 2976, 2976 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.41 malloc
+
+in find_fit
+
+ b61fe650 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 2512, 2512 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.42 malloc
+
+in find_fit
+
+ b61fe820 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 2048, 2048 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.43 malloc
+
+in find_fit
+
+ b61fe9f0 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 1584, 1584 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.44 malloc
+
+in find_fit
+
+ b61febc0 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 1120, 1120 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.45 malloc
+
+in find_fit
+
+ b61fed90 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 656, 656 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.46 malloc
+
+in find_fit
+
+ b61fef60 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61fef60 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61fef60, size= 1923 t1=b61fef60 
+ list=b61eb00c 
+
+ list=b61fef60 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61fef60, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61fef60 
+
+out find_fit
+
+in place
+
+ 4288, 4288 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.47 malloc
+
+in find_fit
+
+ b61ff130 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 3824, 3824 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.48 malloc
+
+in find_fit
+
+ b61ff300 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 3360, 3360 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.49 malloc
+
+in find_fit
+
+ b61ff4d0 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 2896, 2896 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.50 malloc
+
+in find_fit
+
+ b61ff6a0 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 2432, 2432 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.51 malloc
+
+in find_fit
+
+ b61ff870 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 1968, 1968 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.52 malloc
+
+in find_fit
+
+ b61ffa40 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 1504, 1504 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.53 malloc
+
+in find_fit
+
+ b61ffc10 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 1040, 1040 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.54 malloc
+
+in find_fit
+
+ b61ffde0 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 576, 576 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.55 malloc
+
+in find_fit
+
+ b61fffb0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b61fffb0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b61fffb0, size= 1123 t1=b61fffb0 
+ list=b61eb00c 
+
+ list=b61fffb0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b61fffb0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b61fffb0 
+
+out find_fit
+
+in place
+
+ 4208, 4208 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.56 malloc
+
+in find_fit
+
+ b6200180 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 3744, 3744 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.57 malloc
+
+in find_fit
+
+ b6200350 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 3280, 3280 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.58 malloc
+
+in find_fit
+
+ b6200520 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 2816, 2816 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.59 malloc
+
+in find_fit
+
+ b62006f0 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 2352, 2352 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.60 malloc
+
+in find_fit
+
+ b62008c0 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 1888, 1888 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.61 malloc
+
+in find_fit
+
+ b6200a90 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 1424, 1424 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.62 malloc
+
+in find_fit
+
+ b6200c60 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 960, 960 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.63 malloc
+
+in find_fit
+
+ b6200e30 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 496, 496 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.64 malloc
+
+in find_fit
+
+ b6201000 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6201000 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6201000, size= 323 t1=b6201000 
+ list=b61eb00c 
+
+ list=b6201000 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6201000, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6201000 
+
+out find_fit
+
+in place
+
+ 4128, 4128 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.65 malloc
+
+in find_fit
+
+ b62011d0 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 3664, 3664 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.66 malloc
+
+in find_fit
+
+ b62013a0 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 3200, 3200 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.67 malloc
+
+in find_fit
+
+ b6201570 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 2736, 2736 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.68 malloc
+
+in find_fit
+
+ b6201740 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 2272, 2272 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.69 malloc
+
+in find_fit
+
+ b6201910 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 1808, 1808 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.70 malloc
+
+in find_fit
+
+ b6201ae0 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 1344, 1344 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.71 malloc
+
+in find_fit
+
+ b6201cb0 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 880, 880 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.72 malloc
+
+in find_fit
+
+ b6201e80 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6201e80 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6201e80, size= 4163 t1=b6201e80 
+ list=b61eb00c 
+
+ list=b6201e80 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6201e80, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6201e80 
+
+out find_fit
+
+in place
+
+ 4512, 4512 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.73 malloc
+
+in find_fit
+
+ b6202050 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 4048, 4048 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.74 malloc
+
+in find_fit
+
+ b6202220 
+
+out find_fit
+
+ 464 
+
+in place
+
+ 3584, 3584 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.75 malloc
+
+in find_fit
+
+ b62023f0 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 3120, 3120 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.76 malloc
+
+in find_fit
+
+ b6202400 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 3104, 3104 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.77 malloc
+
+in find_fit
+
+ b6202410 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 3088, 3088 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.78 malloc
+
+in find_fit
+
+ b6202420 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 3072, 3072 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.79 malloc
+
+in find_fit
+
+ b6202430 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6202430 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6202430, size= 30563 t1=b6202430 
+ list=b61eb00c 
+
+ list=b6202430 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6202430, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6202430 
+
+out find_fit
+
+in place
+
+ 7152, 7152 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.80 malloc
+
+in find_fit
+
+ b6203420 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 3072, 3072 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.81 malloc
+
+in find_fit
+
+ b6203430 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 3056, 3056 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.82 malloc
+
+in find_fit
+
+ b6203440 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 3040, 3040 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.83 malloc
+
+in find_fit
+
+ b6203450 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 3024, 3024 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.84 malloc
+
+in find_fit
+
+ b6203460 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 3008, 3008 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.85 malloc
+
+in find_fit
+
+ b6203470 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2992, 2992 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.86 malloc
+
+in find_fit
+
+ b6203480 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2976, 2976 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.87 malloc
+
+in find_fit
+
+ b6203490 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2960, 2960 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.88 malloc
+
+in find_fit
+
+ b62034a0 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2944, 2944 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.89 malloc
+
+in find_fit
+
+ b62034b0 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2928, 2928 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.90 malloc
+
+in find_fit
+
+ b62034c0 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2912, 2912 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.91 malloc
+
+in find_fit
+
+ b62034d0 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2896, 2896 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.92 malloc
+
+in find_fit
+
+ b62034e0 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2880, 2880 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.93 malloc
+
+in find_fit
+
+ b62034f0 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2864, 2864 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.94 malloc
+
+in find_fit
+
+ b6203500 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2848, 2848 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.95 malloc
+
+in find_fit
+
+ b6203510 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2832, 2832 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.96 malloc
+
+in find_fit
+
+ b6203520 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2816, 2816 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.97 malloc
+
+in find_fit
+
+ b6203530 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2800, 2800 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.98 malloc
+
+in find_fit
+
+ b6203540 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2784, 2784 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.99 malloc
+
+in find_fit
+
+ b6203550 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2768, 2768 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.100 malloc
+
+in find_fit
+
+ b6203560 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2752, 2752 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.101 malloc
+
+in find_fit
+
+ b6203570 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2736, 2736 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.102 malloc
+
+in find_fit
+
+ b6203580 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2720, 2720 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.103 malloc
+
+in find_fit
+
+ b6203590 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2704, 2704 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.104 malloc
+
+in find_fit
+
+ b62035a0 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2688, 2688 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.105 malloc
+
+in find_fit
+
+ b62035b0 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2672, 2672 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.106 malloc
+
+in find_fit
+
+ b62035c0 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2656, 2656 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.107 malloc
+
+in find_fit
+
+ b62035d0 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2640, 2640 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.108 malloc
+
+in find_fit
+
+ b62035e0 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2624, 2624 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.109 malloc
+
+in find_fit
+
+ b62035f0 
+
+out find_fit
+
+ 24 
+
+in place
+
+ 2608, 2608 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.110 malloc
+
+in find_fit
+
+ b6203608 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2584, 2584 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.111 malloc
+
+in find_fit
+
+ b6203618 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2568, 2568 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.112 malloc
+
+in find_fit
+
+ b6203628 
+
+out find_fit
+
+ 24 
+
+in place
+
+ 2552, 2552 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.113 malloc
+
+in find_fit
+
+ b6203640 
+
+out find_fit
+
+ 24 
+
+in place
+
+ 2528, 2528 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.114 malloc
+
+in find_fit
+
+ b6203658 
+
+out find_fit
+
+ 24 
+
+in place
+
+ 2504, 2504 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.115 malloc
+
+in find_fit
+
+ b6203670 
+
+out find_fit
+
+ 24 
+
+in place
+
+ 2480, 2480 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.116 malloc
+
+in find_fit
+
+ b6203688 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2456, 2456 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.117 malloc
+
+in find_fit
+
+ b6203698 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2440, 2440 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.118 malloc
+
+in find_fit
+
+ b62036a8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2424, 2424 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.119 malloc
+
+in find_fit
+
+ b62036b8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2408, 2408 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.120 malloc
+
+in find_fit
+
+ b62036c8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2392, 2392 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.121 malloc
+
+in find_fit
+
+ b62036d8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2376, 2376 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.122 malloc
+
+in find_fit
+
+ b62036e8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2360, 2360 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.123 malloc
+
+in find_fit
+
+ b62036f8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2344, 2344 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.124 malloc
+
+in find_fit
+
+ b6203708 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2328, 2328 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.125 malloc
+
+in find_fit
+
+ b6203718 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2312, 2312 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.126 malloc
+
+in find_fit
+
+ b6203728 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2296, 2296 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.127 malloc
+
+in find_fit
+
+ b6203738 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2280, 2280 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.128 malloc
+
+in find_fit
+
+ b6203748 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2264, 2264 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.129 malloc
+
+in find_fit
+
+ b6203758 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2248, 2248 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.130 malloc
+
+in find_fit
+
+ b6203768 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2232, 2232 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.131 malloc
+
+in find_fit
+
+ b6203778 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2216, 2216 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.132 malloc
+
+in find_fit
+
+ b6203788 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2200, 2200 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.133 malloc
+
+in find_fit
+
+ b6203798 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2184, 2184 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.134 malloc
+
+in find_fit
+
+ b62037a8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2168, 2168 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.135 malloc
+
+in find_fit
+
+ b62037b8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2152, 2152 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.136 malloc
+
+in find_fit
+
+ b62037c8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2136, 2136 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.137 malloc
+
+in find_fit
+
+ b62037d8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2120, 2120 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.138 malloc
+
+in find_fit
+
+ b62037e8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2104, 2104 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.139 malloc
+
+in find_fit
+
+ b62037f8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2088, 2088 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.140 malloc
+
+in find_fit
+
+ b6203808 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2072, 2072 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.141 malloc
+
+in find_fit
+
+ b6203818 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2056, 2056 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.142 malloc
+
+in find_fit
+
+ b6203828 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2040, 2040 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.143 malloc
+
+in find_fit
+
+ b6203838 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2024, 2024 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.144 malloc
+
+in find_fit
+
+ b6203848 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 2008, 2008 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.145 malloc
+
+in find_fit
+
+ b6203858 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1992, 1992 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.146 malloc
+
+in find_fit
+
+ b6203868 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1976, 1976 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.147 malloc
+
+in find_fit
+
+ b6203878 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1960, 1960 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.148 malloc
+
+in find_fit
+
+ b6203888 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1944, 1944 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.149 malloc
+
+in find_fit
+
+ b6203898 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1928, 1928 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.150 malloc
+
+in find_fit
+
+ b62038a8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1912, 1912 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.151 malloc
+
+in find_fit
+
+ b62038b8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1896, 1896 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.152 malloc
+
+in find_fit
+
+ b62038c8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1880, 1880 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.153 malloc
+
+in find_fit
+
+ b62038d8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1864, 1864 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.154 malloc
+
+in find_fit
+
+ b62038e8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1848, 1848 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.155 malloc
+
+in find_fit
+
+ b62038f8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1832, 1832 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.156 malloc
+
+in find_fit
+
+ b6203908 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1816, 1816 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.157 malloc
+
+in find_fit
+
+ b6203918 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1800, 1800 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.158 malloc
+
+in find_fit
+
+ b6203928 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1784, 1784 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.159 malloc
+
+in find_fit
+
+ b6203938 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1768, 1768 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.160 malloc
+
+in find_fit
+
+ b6203948 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1752, 1752 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.161 malloc
+
+in find_fit
+
+ b6203958 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1736, 1736 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.162 malloc
+
+in find_fit
+
+ b6203968 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1720, 1720 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.163 malloc
+
+in find_fit
+
+ b6203978 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1704, 1704 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.164 malloc
+
+in find_fit
+
+ b6203988 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1688, 1688 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.165 malloc
+
+in find_fit
+
+ b6203998 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1672, 1672 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.166 malloc
+
+in find_fit
+
+ b62039a8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1656, 1656 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.167 malloc
+
+in find_fit
+
+ b62039b8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1640, 1640 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.168 malloc
+
+in find_fit
+
+ b62039c8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1624, 1624 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.169 malloc
+
+in find_fit
+
+ b62039d8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1608, 1608 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.170 malloc
+
+in find_fit
+
+ b62039e8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1592, 1592 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.171 malloc
+
+in find_fit
+
+ b62039f8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1576, 1576 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.172 malloc
+
+in find_fit
+
+ b6203a08 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1560, 1560 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.173 malloc
+
+in find_fit
+
+ b6203a18 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1544, 1544 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.174 malloc
+
+in find_fit
+
+ b6203a28 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1528, 1528 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.175 malloc
+
+in find_fit
+
+ b6203a38 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1512, 1512 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.176 malloc
+
+in find_fit
+
+ b6203a48 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1496, 1496 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.177 malloc
+
+in find_fit
+
+ b6203a58 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1480, 1480 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.178 malloc
+
+in find_fit
+
+ b6203a68 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1464, 1464 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.179 malloc
+
+in find_fit
+
+ b6203a78 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1448, 1448 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.180 malloc
+
+in find_fit
+
+ b6203a88 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1432, 1432 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.181 malloc
+
+in find_fit
+
+ b6203a98 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1416, 1416 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.182 malloc
+
+in find_fit
+
+ b6203aa8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1400, 1400 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.183 malloc
+
+in find_fit
+
+ b6203ab8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1384, 1384 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.184 malloc
+
+in find_fit
+
+ b6203ac8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1368, 1368 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.185 malloc
+
+in find_fit
+
+ b6203ad8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1352, 1352 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.186 malloc
+
+in find_fit
+
+ b6203ae8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1336, 1336 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.187 malloc
+
+in find_fit
+
+ b6203af8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1320, 1320 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.188 malloc
+
+in find_fit
+
+ b6203b08 
+
+out find_fit
+
+ 24 
+
+in place
+
+ 1304, 1304 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.189 malloc
+
+in find_fit
+
+ b6203b20 
+
+out find_fit
+
+ 24 
+
+in place
+
+ 1280, 1280 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.190 malloc
+
+in find_fit
+
+ b6203b38 
+
+out find_fit
+
+ 24 
+
+in place
+
+ 1256, 1256 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.191 malloc
+
+in find_fit
+
+ b6203b50 
+
+out find_fit
+
+ 24 
+
+in place
+
+ 1232, 1232 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.192 malloc
+
+in find_fit
+
+ b6203b68 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1208, 1208 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.193 malloc
+
+in find_fit
+
+ b6203b78 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1192, 1192 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.194 malloc
+
+in find_fit
+
+ b6203b88 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1176, 1176 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.195 malloc
+
+in find_fit
+
+ b6203b98 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1160, 1160 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.196 malloc
+
+in find_fit
+
+ b6203ba8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1144, 1144 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.197 malloc
+
+in find_fit
+
+ b6203bb8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1128, 1128 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.198 malloc
+
+in find_fit
+
+ b6203bc8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1112, 1112 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.199 malloc
+
+in find_fit
+
+ b6203bd8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1096, 1096 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.200 malloc
+
+in find_fit
+
+ b6203be8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1080, 1080 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.201 malloc
+
+in find_fit
+
+ b6203bf8 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1064, 1064 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.202 malloc
+
+in find_fit
+
+ b6203c08 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1048, 1048 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.203 malloc
+
+in find_fit
+
+ b6203c18 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1032, 1032 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.204 malloc
+
+in find_fit
+
+ b6203c28 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1016, 1016 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.205 malloc
+
+in find_fit
+
+ b6203c38 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1000, 1000 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.206 malloc
+
+in find_fit
+
+ b6203c48 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 984, 984 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.207 malloc
+
+in find_fit
+
+ b6203c58 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 968, 968 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.208 malloc
+
+in find_fit
+
+ b6203c68 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6203c68 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6203c68, size= 9523 t1=b6203c68 
+ list=b61eb00c 
+
+ list=b6203c68 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6203c68, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6203c68 
+
+out find_fit
+
+in place
+
+ 5048, 5048 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.209 malloc
+
+in find_fit
+
+ b6204c58 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6204c58 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6204c58, size= 9683 t1=b6204c58 
+ list=b61eb00c 
+
+ list=b6204c58 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6204c58, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6204c58 
+
+out find_fit
+
+in place
+
+ 5064, 5064 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+ in mm_free 
+
+No.210 malloc
+
+in coalesce
+
+ 4080, 2, 0 
+ prev_blkp_bp= b6204c58, size= 40802
+out coalesce
+
+in insert_node_LIFO
+
+ b6204c58, 0 
+
+out insert_node_LIFO
+
+ out mm_free 
+
+in mm_malloc
+
+No.211 malloc
+
+in find_fit
+
+ b6204c58 
+
+out find_fit
+
+ 4080 
+
+in place
+
+ 5064, 5064 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.212 malloc
+
+in find_fit
+
+ b6205c48 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6205c48 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6205c48, size= 9843 t1=b6205c48 
+ list=b61eb00c 
+
+ list=b6205c48 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6205c48, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6205c48 
+
+out find_fit
+
+in place
+
+ 5080, 5080 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.213 malloc
+
+in find_fit
+
+ b6206c38 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6206c38 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6206c38, size= 10003 t1=b6206c38 
+ list=b61eb00c 
+
+ list=b6206c38 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6206c38, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6206c38 
+
+out find_fit
+
+in place
+
+ 5096, 5096 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.214 malloc
+
+in find_fit
+
+ b6207c28 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6207c28 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6207c28, size= 10163 t1=b6207c28 
+ list=b61eb00c 
+
+ list=b6207c28 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6207c28, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6207c28 
+
+out find_fit
+
+in place
+
+ 5112, 5112 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.215 malloc
+
+in find_fit
+
+ b6208c18 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6208c18 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6208c18, size= 10323 t1=b6208c18 
+ list=b61eb00c 
+
+ list=b6208c18 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6208c18, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6208c18 
+
+out find_fit
+
+in place
+
+ 5128, 5128 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.216 malloc
+
+in find_fit
+
+ b6209c08 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6209c08 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6209c08, size= 10483 t1=b6209c08 
+ list=b61eb00c 
+
+ list=b6209c08 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6209c08, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6209c08 
+
+out find_fit
+
+in place
+
+ 5144, 5144 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.217 malloc
+
+in find_fit
+
+ b620abf8 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b620abf8 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b620abf8, size= 10643 t1=b620abf8 
+ list=b61eb00c 
+
+ list=b620abf8 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b620abf8, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b620abf8 
+
+out find_fit
+
+in place
+
+ 5160, 5160 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.218 malloc
+
+in find_fit
+
+ b620bbe8 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b620bbe8 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b620bbe8, size= 10803 t1=b620bbe8 
+ list=b61eb00c 
+
+ list=b620bbe8 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b620bbe8, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b620bbe8 
+
+out find_fit
+
+in place
+
+ 5176, 5176 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.219 malloc
+
+in find_fit
+
+ b620cbd8 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b620cbd8 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b620cbd8, size= 10963 t1=b620cbd8 
+ list=b61eb00c 
+
+ list=b620cbd8 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b620cbd8, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b620cbd8 
+
+out find_fit
+
+in place
+
+ 5192, 5192 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.220 malloc
+
+in find_fit
+
+ b620dbc8 
+
+out find_fit
+
+ 24 
+
+in place
+
+ 1112, 1112 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.221 malloc
+
+in find_fit
+
+ b620dbe0 
+
+out find_fit
+
+ 16 
+
+in place
+
+ 1088, 1088 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.222 malloc
+
+in find_fit
+
+ b620dbf0 
+
+out find_fit
+
+ 56 
+
+in place
+
+ 1072, 1072 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.223 malloc
+
+in find_fit
+
+ b620dc28 
+
+out find_fit
+
+ 32 
+
+in place
+
+ 1016, 1016 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.224 malloc
+
+in find_fit
+
+ b620dc48 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b620dc48 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 8216, 0, 1 
+ prev_blkp_bp= b620dc48, size= 9843 t1=b620dc48 
+ list=b61eb00c 
+
+ list=b620dc48 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b620dc48, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b620dc48 
+
+out find_fit
+
+in place
+
+ 9200, 9200 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.225 malloc
+
+in find_fit
+
+ b620fc60 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b620fc60 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 8216, 0, 1 
+ prev_blkp_bp= b620fc60, size= 9843 t1=b620fc60 
+ list=b61eb00c 
+
+ list=b620fc60 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b620fc60, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b620fc60 
+
+out find_fit
+
+in place
+
+ 9200, 9200 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.226 malloc
+
+in find_fit
+
+ b6211c78 
+
+out find_fit
+
+ 88 
+
+in place
+
+ 984, 984 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.227 malloc
+
+in find_fit
+
+ b6211cd0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6211cd0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6211cd0, size= 8963 t1=b6211cd0 
+ list=b61eb00c 
+
+ list=b6211cd0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6211cd0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6211cd0 
+
+out find_fit
+
+in place
+
+ 4992, 4992 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.228 malloc
+
+in find_fit
+
+ b6212cc0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6212cc0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6212cc0, size= 9123 t1=b6212cc0 
+ list=b61eb00c 
+
+ list=b6212cc0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6212cc0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6212cc0 
+
+out find_fit
+
+in place
+
+ 5008, 5008 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.229 malloc
+
+in find_fit
+
+ b6213cb0 
+
+out find_fit
+
+ 80 
+
+in place
+
+ 928, 928 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.230 malloc
+
+in find_fit
+
+ b6213d00 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6213d00 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6213d00, size= 8483 t1=b6213d00 
+ list=b61eb00c 
+
+ list=b6213d00 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6213d00, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6213d00 
+
+out find_fit
+
+in place
+
+ 4944, 4944 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.231 malloc
+
+in find_fit
+
+ b6214cf0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6214cf0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6214cf0, size= 8643 t1=b6214cf0 
+ list=b61eb00c 
+
+ list=b6214cf0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6214cf0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6214cf0 
+
+out find_fit
+
+in place
+
+ 4960, 4960 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.232 malloc
+
+in find_fit
+
+ b6215ce0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6215ce0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6215ce0, size= 8803 t1=b6215ce0 
+ list=b61eb00c 
+
+ list=b6215ce0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6215ce0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6215ce0 
+
+out find_fit
+
+in place
+
+ 4976, 4976 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.233 malloc
+
+in find_fit
+
+ b6216cd0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6216cd0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6216cd0, size= 8963 t1=b6216cd0 
+ list=b61eb00c 
+
+ list=b6216cd0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6216cd0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6216cd0 
+
+out find_fit
+
+in place
+
+ 4992, 4992 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.234 malloc
+
+in find_fit
+
+ b6217cc0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6217cc0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6217cc0, size= 9123 t1=b6217cc0 
+ list=b61eb00c 
+
+ list=b6217cc0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6217cc0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6217cc0 
+
+out find_fit
+
+in place
+
+ 5008, 5008 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.235 malloc
+
+in find_fit
+
+ b6218cb0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6218cb0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6218cb0, size= 9283 t1=b6218cb0 
+ list=b61eb00c 
+
+ list=b6218cb0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6218cb0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6218cb0 
+
+out find_fit
+
+in place
+
+ 5024, 5024 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.236 malloc
+
+in find_fit
+
+ b6219ca0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6219ca0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6219ca0, size= 9443 t1=b6219ca0 
+ list=b61eb00c 
+
+ list=b6219ca0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6219ca0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6219ca0 
+
+out find_fit
+
+in place
+
+ 5040, 5040 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.237 malloc
+
+in find_fit
+
+ b621ac90 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b621ac90 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b621ac90, size= 9603 t1=b621ac90 
+ list=b61eb00c 
+
+ list=b621ac90 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b621ac90, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b621ac90 
+
+out find_fit
+
+in place
+
+ 5056, 5056 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.238 malloc
+
+in find_fit
+
+ b621bc80 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b621bc80 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b621bc80, size= 9763 t1=b621bc80 
+ list=b61eb00c 
+
+ list=b621bc80 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b621bc80, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b621bc80 
+
+out find_fit
+
+in place
+
+ 5072, 5072 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.239 malloc
+
+in find_fit
+
+ b621cc70 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b621cc70 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b621cc70, size= 9923 t1=b621cc70 
+ list=b61eb00c 
+
+ list=b621cc70 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b621cc70, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b621cc70 
+
+out find_fit
+
+in place
+
+ 5088, 5088 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.240 malloc
+
+in find_fit
+
+ b621dc60 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b621dc60 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b621dc60, size= 10083 t1=b621dc60 
+ list=b61eb00c 
+
+ list=b621dc60 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b621dc60, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b621dc60 
+
+out find_fit
+
+in place
+
+ 5104, 5104 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.241 malloc
+
+in find_fit
+
+ b621ec50 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b621ec50 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b621ec50, size= 10243 t1=b621ec50 
+ list=b61eb00c 
+
+ list=b621ec50 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b621ec50, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b621ec50 
+
+out find_fit
+
+in place
+
+ 5120, 5120 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.242 malloc
+
+in find_fit
+
+ b621fc40 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b621fc40 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b621fc40, size= 10403 t1=b621fc40 
+ list=b61eb00c 
+
+ list=b621fc40 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b621fc40, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b621fc40 
+
+out find_fit
+
+in place
+
+ 5136, 5136 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.243 malloc
+
+in find_fit
+
+ b6220c30 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6220c30 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6220c30, size= 10563 t1=b6220c30 
+ list=b61eb00c 
+
+ list=b6220c30 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6220c30, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6220c30 
+
+out find_fit
+
+in place
+
+ 5152, 5152 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.244 malloc
+
+in find_fit
+
+ b6221c20 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6221c20 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6221c20, size= 10723 t1=b6221c20 
+ list=b61eb00c 
+
+ list=b6221c20 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6221c20, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6221c20 
+
+out find_fit
+
+in place
+
+ 5168, 5168 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.245 malloc
+
+in find_fit
+
+ b6222c10 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6222c10 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6222c10, size= 10883 t1=b6222c10 
+ list=b61eb00c 
+
+ list=b6222c10 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6222c10, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6222c10 
+
+out find_fit
+
+in place
+
+ 5184, 5184 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.246 malloc
+
+in find_fit
+
+ b6223c00 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6223c00 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6223c00, size= 11043 t1=b6223c00 
+ list=b61eb00c 
+
+ list=b6223c00 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6223c00, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6223c00 
+
+out find_fit
+
+in place
+
+ 5200, 5200 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.247 malloc
+
+in find_fit
+
+ b6224bf0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6224bf0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6224bf0, size= 11203 t1=b6224bf0 
+ list=b61eb00c 
+
+ list=b6224bf0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6224bf0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6224bf0 
+
+out find_fit
+
+in place
+
+ 5216, 5216 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.248 malloc
+
+in find_fit
+
+ b6225be0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6225be0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6225be0, size= 11363 t1=b6225be0 
+ list=b61eb00c 
+
+ list=b6225be0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6225be0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6225be0 
+
+out find_fit
+
+in place
+
+ 5232, 5232 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.249 malloc
+
+in find_fit
+
+ b6226bd0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6226bd0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6226bd0, size= 11523 t1=b6226bd0 
+ list=b61eb00c 
+
+ list=b6226bd0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6226bd0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6226bd0 
+
+out find_fit
+
+in place
+
+ 5248, 5248 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.250 malloc
+
+in find_fit
+
+ b6227bc0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6227bc0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6227bc0, size= 11683 t1=b6227bc0 
+ list=b61eb00c 
+
+ list=b6227bc0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6227bc0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6227bc0 
+
+out find_fit
+
+in place
+
+ 5264, 5264 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.251 malloc
+
+in find_fit
+
+ b6228bb0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6228bb0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6228bb0, size= 11843 t1=b6228bb0 
+ list=b61eb00c 
+
+ list=b6228bb0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6228bb0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6228bb0 
+
+out find_fit
+
+in place
+
+ 5280, 5280 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.252 malloc
+
+in find_fit
+
+ b6229ba0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6229ba0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6229ba0, size= 12003 t1=b6229ba0 
+ list=b61eb00c 
+
+ list=b6229ba0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6229ba0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6229ba0 
+
+out find_fit
+
+in place
+
+ 5296, 5296 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.253 malloc
+
+in find_fit
+
+ b622ab90 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b622ab90 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b622ab90, size= 12163 t1=b622ab90 
+ list=b61eb00c 
+
+ list=b622ab90 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b622ab90, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b622ab90 
+
+out find_fit
+
+in place
+
+ 5312, 5312 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.254 malloc
+
+in find_fit
+
+ b622bb80 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b622bb80 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b622bb80, size= 12323 t1=b622bb80 
+ list=b61eb00c 
+
+ list=b622bb80 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b622bb80, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b622bb80 
+
+out find_fit
+
+in place
+
+ 5328, 5328 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.255 malloc
+
+in find_fit
+
+ b622cb70 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b622cb70 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b622cb70, size= 12483 t1=b622cb70 
+ list=b61eb00c 
+
+ list=b622cb70 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b622cb70, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b622cb70 
+
+out find_fit
+
+in place
+
+ 5344, 5344 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.256 malloc
+
+in find_fit
+
+ b622db60 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b622db60 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b622db60, size= 12643 t1=b622db60 
+ list=b61eb00c 
+
+ list=b622db60 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b622db60, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b622db60 
+
+out find_fit
+
+in place
+
+ 5360, 5360 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.257 malloc
+
+in find_fit
+
+ b622eb50 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b622eb50 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b622eb50, size= 12803 t1=b622eb50 
+ list=b61eb00c 
+
+ list=b622eb50 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b622eb50, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b622eb50 
+
+out find_fit
+
+in place
+
+ 5376, 5376 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.258 malloc
+
+in find_fit
+
+ b622fb40 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b622fb40 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b622fb40, size= 12963 t1=b622fb40 
+ list=b61eb00c 
+
+ list=b622fb40 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b622fb40, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b622fb40 
+
+out find_fit
+
+in place
+
+ 5392, 5392 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.259 malloc
+
+in find_fit
+
+ b6230b30 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6230b30 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6230b30, size= 13123 t1=b6230b30 
+ list=b61eb00c 
+
+ list=b6230b30 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6230b30, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6230b30 
+
+out find_fit
+
+in place
+
+ 5408, 5408 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.260 malloc
+
+in find_fit
+
+ b6231b20 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6231b20 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6231b20, size= 13283 t1=b6231b20 
+ list=b61eb00c 
+
+ list=b6231b20 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6231b20, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6231b20 
+
+out find_fit
+
+in place
+
+ 5424, 5424 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.261 malloc
+
+in find_fit
+
+ b6232b10 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6232b10 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6232b10, size= 13443 t1=b6232b10 
+ list=b61eb00c 
+
+ list=b6232b10 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6232b10, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6232b10 
+
+out find_fit
+
+in place
+
+ 5440, 5440 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.262 malloc
+
+in find_fit
+
+ b6233b00 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6233b00 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6233b00, size= 13603 t1=b6233b00 
+ list=b61eb00c 
+
+ list=b6233b00 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6233b00, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6233b00 
+
+out find_fit
+
+in place
+
+ 5456, 5456 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.263 malloc
+
+in find_fit
+
+ b6234af0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6234af0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6234af0, size= 13763 t1=b6234af0 
+ list=b61eb00c 
+
+ list=b6234af0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6234af0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6234af0 
+
+out find_fit
+
+in place
+
+ 5472, 5472 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.264 malloc
+
+in find_fit
+
+ b6235ae0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6235ae0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6235ae0, size= 13923 t1=b6235ae0 
+ list=b61eb00c 
+
+ list=b6235ae0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6235ae0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6235ae0 
+
+out find_fit
+
+in place
+
+ 5488, 5488 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.265 malloc
+
+in find_fit
+
+ b6236ad0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6236ad0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6236ad0, size= 14083 t1=b6236ad0 
+ list=b61eb00c 
+
+ list=b6236ad0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6236ad0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6236ad0 
+
+out find_fit
+
+in place
+
+ 5504, 5504 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.266 malloc
+
+in find_fit
+
+ b6237ac0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6237ac0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6237ac0, size= 14243 t1=b6237ac0 
+ list=b61eb00c 
+
+ list=b6237ac0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6237ac0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6237ac0 
+
+out find_fit
+
+in place
+
+ 5520, 5520 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.267 malloc
+
+in find_fit
+
+ b6238ab0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6238ab0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6238ab0, size= 14403 t1=b6238ab0 
+ list=b61eb00c 
+
+ list=b6238ab0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6238ab0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6238ab0 
+
+out find_fit
+
+in place
+
+ 5536, 5536 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.268 malloc
+
+in find_fit
+
+ b6239aa0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6239aa0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6239aa0, size= 14563 t1=b6239aa0 
+ list=b61eb00c 
+
+ list=b6239aa0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6239aa0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6239aa0 
+
+out find_fit
+
+in place
+
+ 5552, 5552 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.269 malloc
+
+in find_fit
+
+ b623aa90 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b623aa90 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b623aa90, size= 14723 t1=b623aa90 
+ list=b61eb00c 
+
+ list=b623aa90 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b623aa90, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b623aa90 
+
+out find_fit
+
+in place
+
+ 5568, 5568 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.270 malloc
+
+in find_fit
+
+ b623ba80 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b623ba80 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b623ba80, size= 14883 t1=b623ba80 
+ list=b61eb00c 
+
+ list=b623ba80 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b623ba80, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b623ba80 
+
+out find_fit
+
+in place
+
+ 5584, 5584 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.271 malloc
+
+in find_fit
+
+ b623ca70 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b623ca70 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b623ca70, size= 15043 t1=b623ca70 
+ list=b61eb00c 
+
+ list=b623ca70 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b623ca70, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b623ca70 
+
+out find_fit
+
+in place
+
+ 5600, 5600 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.272 malloc
+
+in find_fit
+
+ b623da60 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b623da60 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b623da60, size= 15203 t1=b623da60 
+ list=b61eb00c 
+
+ list=b623da60 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b623da60, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b623da60 
+
+out find_fit
+
+in place
+
+ 5616, 5616 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.273 malloc
+
+in find_fit
+
+ b623ea50 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b623ea50 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b623ea50, size= 15363 t1=b623ea50 
+ list=b61eb00c 
+
+ list=b623ea50 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b623ea50, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b623ea50 
+
+out find_fit
+
+in place
+
+ 5632, 5632 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.274 malloc
+
+in find_fit
+
+ b623fa40 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b623fa40 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b623fa40, size= 15523 t1=b623fa40 
+ list=b61eb00c 
+
+ list=b623fa40 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b623fa40, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b623fa40 
+
+out find_fit
+
+in place
+
+ 5648, 5648 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.275 malloc
+
+in find_fit
+
+ b6240a30 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6240a30 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6240a30, size= 15683 t1=b6240a30 
+ list=b61eb00c 
+
+ list=b6240a30 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6240a30, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6240a30 
+
+out find_fit
+
+in place
+
+ 5664, 5664 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.276 malloc
+
+in find_fit
+
+ b6241a20 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6241a20 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6241a20, size= 15843 t1=b6241a20 
+ list=b61eb00c 
+
+ list=b6241a20 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6241a20, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6241a20 
+
+out find_fit
+
+in place
+
+ 5680, 5680 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.277 malloc
+
+in find_fit
+
+ b6242a10 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6242a10 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6242a10, size= 16003 t1=b6242a10 
+ list=b61eb00c 
+
+ list=b6242a10 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6242a10, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6242a10 
+
+out find_fit
+
+in place
+
+ 5696, 5696 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.278 malloc
+
+in find_fit
+
+ b6243a00 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6243a00 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6243a00, size= 16163 t1=b6243a00 
+ list=b61eb00c 
+
+ list=b6243a00 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6243a00, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6243a00 
+
+out find_fit
+
+in place
+
+ 5712, 5712 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.279 malloc
+
+in find_fit
+
+ b62449f0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62449f0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62449f0, size= 16323 t1=b62449f0 
+ list=b61eb00c 
+
+ list=b62449f0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62449f0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62449f0 
+
+out find_fit
+
+in place
+
+ 5728, 5728 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.280 malloc
+
+in find_fit
+
+ b62459e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62459e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62459e0, size= 16483 t1=b62459e0 
+ list=b61eb00c 
+
+ list=b62459e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62459e0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62459e0 
+
+out find_fit
+
+in place
+
+ 5744, 5744 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.281 malloc
+
+in find_fit
+
+ b62469d0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62469d0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62469d0, size= 16643 t1=b62469d0 
+ list=b61eb00c 
+
+ list=b62469d0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62469d0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62469d0 
+
+out find_fit
+
+in place
+
+ 5760, 5760 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.282 malloc
+
+in find_fit
+
+ b62479c0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62479c0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62479c0, size= 16803 t1=b62479c0 
+ list=b61eb00c 
+
+ list=b62479c0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62479c0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62479c0 
+
+out find_fit
+
+in place
+
+ 5776, 5776 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.283 malloc
+
+in find_fit
+
+ b62489b0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62489b0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62489b0, size= 16963 t1=b62489b0 
+ list=b61eb00c 
+
+ list=b62489b0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62489b0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62489b0 
+
+out find_fit
+
+in place
+
+ 5792, 5792 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.284 malloc
+
+in find_fit
+
+ b62499a0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62499a0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62499a0, size= 17123 t1=b62499a0 
+ list=b61eb00c 
+
+ list=b62499a0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62499a0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62499a0 
+
+out find_fit
+
+in place
+
+ 5808, 5808 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.285 malloc
+
+in find_fit
+
+ b624a990 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b624a990 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b624a990, size= 17283 t1=b624a990 
+ list=b61eb00c 
+
+ list=b624a990 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b624a990, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b624a990 
+
+out find_fit
+
+in place
+
+ 5824, 5824 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.286 malloc
+
+in find_fit
+
+ b624b980 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b624b980 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b624b980, size= 17443 t1=b624b980 
+ list=b61eb00c 
+
+ list=b624b980 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b624b980, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b624b980 
+
+out find_fit
+
+in place
+
+ 5840, 5840 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.287 malloc
+
+in find_fit
+
+ b624c970 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b624c970 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b624c970, size= 17603 t1=b624c970 
+ list=b61eb00c 
+
+ list=b624c970 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b624c970, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b624c970 
+
+out find_fit
+
+in place
+
+ 5856, 5856 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.288 malloc
+
+in find_fit
+
+ b624d960 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b624d960 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b624d960, size= 17763 t1=b624d960 
+ list=b61eb00c 
+
+ list=b624d960 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b624d960, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b624d960 
+
+out find_fit
+
+in place
+
+ 5872, 5872 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.289 malloc
+
+in find_fit
+
+ b624e950 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b624e950 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b624e950, size= 17923 t1=b624e950 
+ list=b61eb00c 
+
+ list=b624e950 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b624e950, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b624e950 
+
+out find_fit
+
+in place
+
+ 5888, 5888 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.290 malloc
+
+in find_fit
+
+ b624f940 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b624f940 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b624f940, size= 18083 t1=b624f940 
+ list=b61eb00c 
+
+ list=b624f940 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b624f940, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b624f940 
+
+out find_fit
+
+in place
+
+ 5904, 5904 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.291 malloc
+
+in find_fit
+
+ b6250930 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6250930 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6250930, size= 18243 t1=b6250930 
+ list=b61eb00c 
+
+ list=b6250930 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6250930, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6250930 
+
+out find_fit
+
+in place
+
+ 5920, 5920 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.292 malloc
+
+in find_fit
+
+ b6251920 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6251920 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6251920, size= 18403 t1=b6251920 
+ list=b61eb00c 
+
+ list=b6251920 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6251920, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6251920 
+
+out find_fit
+
+in place
+
+ 5936, 5936 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.293 malloc
+
+in find_fit
+
+ b6252910 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6252910 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6252910, size= 18563 t1=b6252910 
+ list=b61eb00c 
+
+ list=b6252910 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6252910, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6252910 
+
+out find_fit
+
+in place
+
+ 5952, 5952 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.294 malloc
+
+in find_fit
+
+ b6253900 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6253900 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6253900, size= 18723 t1=b6253900 
+ list=b61eb00c 
+
+ list=b6253900 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6253900, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6253900 
+
+out find_fit
+
+in place
+
+ 5968, 5968 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.295 malloc
+
+in find_fit
+
+ b62548f0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62548f0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62548f0, size= 18883 t1=b62548f0 
+ list=b61eb00c 
+
+ list=b62548f0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62548f0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62548f0 
+
+out find_fit
+
+in place
+
+ 5984, 5984 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.296 malloc
+
+in find_fit
+
+ b62558e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62558e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62558e0, size= 19043 t1=b62558e0 
+ list=b61eb00c 
+
+ list=b62558e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62558e0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62558e0 
+
+out find_fit
+
+in place
+
+ 6000, 6000 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.297 malloc
+
+in find_fit
+
+ b62568d0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62568d0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62568d0, size= 19203 t1=b62568d0 
+ list=b61eb00c 
+
+ list=b62568d0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62568d0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62568d0 
+
+out find_fit
+
+in place
+
+ 6016, 6016 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.298 malloc
+
+in find_fit
+
+ b62578c0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62578c0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62578c0, size= 19363 t1=b62578c0 
+ list=b61eb00c 
+
+ list=b62578c0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62578c0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62578c0 
+
+out find_fit
+
+in place
+
+ 6032, 6032 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.299 malloc
+
+in find_fit
+
+ b62588b0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62588b0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62588b0, size= 19523 t1=b62588b0 
+ list=b61eb00c 
+
+ list=b62588b0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62588b0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62588b0 
+
+out find_fit
+
+in place
+
+ 6048, 6048 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.300 malloc
+
+in find_fit
+
+ b62598a0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62598a0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62598a0, size= 19683 t1=b62598a0 
+ list=b61eb00c 
+
+ list=b62598a0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62598a0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62598a0 
+
+out find_fit
+
+in place
+
+ 6064, 6064 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.301 malloc
+
+in find_fit
+
+ b625a890 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b625a890 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b625a890, size= 19843 t1=b625a890 
+ list=b61eb00c 
+
+ list=b625a890 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b625a890, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b625a890 
+
+out find_fit
+
+in place
+
+ 6080, 6080 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.302 malloc
+
+in find_fit
+
+ b625b880 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b625b880 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b625b880, size= 20003 t1=b625b880 
+ list=b61eb00c 
+
+ list=b625b880 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b625b880, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b625b880 
+
+out find_fit
+
+in place
+
+ 6096, 6096 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.303 malloc
+
+in find_fit
+
+ b625c870 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b625c870 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b625c870, size= 20163 t1=b625c870 
+ list=b61eb00c 
+
+ list=b625c870 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b625c870, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b625c870 
+
+out find_fit
+
+in place
+
+ 6112, 6112 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.304 malloc
+
+in find_fit
+
+ b625d860 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b625d860 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b625d860, size= 20323 t1=b625d860 
+ list=b61eb00c 
+
+ list=b625d860 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b625d860, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b625d860 
+
+out find_fit
+
+in place
+
+ 6128, 6128 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.305 malloc
+
+in find_fit
+
+ b625e850 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b625e850 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b625e850, size= 20483 t1=b625e850 
+ list=b61eb00c 
+
+ list=b625e850 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b625e850, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b625e850 
+
+out find_fit
+
+in place
+
+ 6144, 6144 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.306 malloc
+
+in find_fit
+
+ b625f840 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b625f840 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b625f840, size= 20643 t1=b625f840 
+ list=b61eb00c 
+
+ list=b625f840 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b625f840, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b625f840 
+
+out find_fit
+
+in place
+
+ 6160, 6160 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.307 malloc
+
+in find_fit
+
+ b6260830 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6260830 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6260830, size= 20803 t1=b6260830 
+ list=b61eb00c 
+
+ list=b6260830 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6260830, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6260830 
+
+out find_fit
+
+in place
+
+ 6176, 6176 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.308 malloc
+
+in find_fit
+
+ b6261820 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6261820 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6261820, size= 20963 t1=b6261820 
+ list=b61eb00c 
+
+ list=b6261820 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6261820, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6261820 
+
+out find_fit
+
+in place
+
+ 6192, 6192 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.309 malloc
+
+in find_fit
+
+ b6262810 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6262810 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6262810, size= 21123 t1=b6262810 
+ list=b61eb00c 
+
+ list=b6262810 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6262810, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6262810 
+
+out find_fit
+
+in place
+
+ 6208, 6208 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.310 malloc
+
+in find_fit
+
+ b6263800 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6263800 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6263800, size= 21283 t1=b6263800 
+ list=b61eb00c 
+
+ list=b6263800 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6263800, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6263800 
+
+out find_fit
+
+in place
+
+ 6224, 6224 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.311 malloc
+
+in find_fit
+
+ b62647f0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62647f0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62647f0, size= 21443 t1=b62647f0 
+ list=b61eb00c 
+
+ list=b62647f0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62647f0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62647f0 
+
+out find_fit
+
+in place
+
+ 6240, 6240 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.312 malloc
+
+in find_fit
+
+ b62657e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62657e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62657e0, size= 21603 t1=b62657e0 
+ list=b61eb00c 
+
+ list=b62657e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62657e0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62657e0 
+
+out find_fit
+
+in place
+
+ 6256, 6256 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.313 malloc
+
+in find_fit
+
+ b62667d0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62667d0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62667d0, size= 21763 t1=b62667d0 
+ list=b61eb00c 
+
+ list=b62667d0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62667d0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62667d0 
+
+out find_fit
+
+in place
+
+ 6272, 6272 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.314 malloc
+
+in find_fit
+
+ b62677c0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62677c0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62677c0, size= 21923 t1=b62677c0 
+ list=b61eb00c 
+
+ list=b62677c0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62677c0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62677c0 
+
+out find_fit
+
+in place
+
+ 6288, 6288 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.315 malloc
+
+in find_fit
+
+ b62687b0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62687b0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62687b0, size= 22083 t1=b62687b0 
+ list=b61eb00c 
+
+ list=b62687b0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62687b0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62687b0 
+
+out find_fit
+
+in place
+
+ 6304, 6304 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.316 malloc
+
+in find_fit
+
+ b62697a0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62697a0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62697a0, size= 22243 t1=b62697a0 
+ list=b61eb00c 
+
+ list=b62697a0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62697a0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62697a0 
+
+out find_fit
+
+in place
+
+ 6320, 6320 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.317 malloc
+
+in find_fit
+
+ b626a790 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b626a790 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b626a790, size= 22403 t1=b626a790 
+ list=b61eb00c 
+
+ list=b626a790 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b626a790, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b626a790 
+
+out find_fit
+
+in place
+
+ 6336, 6336 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.318 malloc
+
+in find_fit
+
+ b626b780 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b626b780 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b626b780, size= 22563 t1=b626b780 
+ list=b61eb00c 
+
+ list=b626b780 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b626b780, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b626b780 
+
+out find_fit
+
+in place
+
+ 6352, 6352 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.319 malloc
+
+in find_fit
+
+ b626c770 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b626c770 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b626c770, size= 22723 t1=b626c770 
+ list=b61eb00c 
+
+ list=b626c770 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b626c770, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b626c770 
+
+out find_fit
+
+in place
+
+ 6368, 6368 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.320 malloc
+
+in find_fit
+
+ b626d760 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b626d760 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b626d760, size= 22883 t1=b626d760 
+ list=b61eb00c 
+
+ list=b626d760 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b626d760, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b626d760 
+
+out find_fit
+
+in place
+
+ 6384, 6384 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.321 malloc
+
+in find_fit
+
+ b626e750 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b626e750 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b626e750, size= 23043 t1=b626e750 
+ list=b61eb00c 
+
+ list=b626e750 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b626e750, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b626e750 
+
+out find_fit
+
+in place
+
+ 6400, 6400 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.322 malloc
+
+in find_fit
+
+ b626f740 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b626f740 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b626f740, size= 23203 t1=b626f740 
+ list=b61eb00c 
+
+ list=b626f740 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b626f740, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b626f740 
+
+out find_fit
+
+in place
+
+ 6416, 6416 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.323 malloc
+
+in find_fit
+
+ b6270730 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6270730 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6270730, size= 23363 t1=b6270730 
+ list=b61eb00c 
+
+ list=b6270730 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6270730, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6270730 
+
+out find_fit
+
+in place
+
+ 6432, 6432 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.324 malloc
+
+in find_fit
+
+ b6271720 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6271720 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6271720, size= 23523 t1=b6271720 
+ list=b61eb00c 
+
+ list=b6271720 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6271720, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6271720 
+
+out find_fit
+
+in place
+
+ 6448, 6448 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.325 malloc
+
+in find_fit
+
+ b6272710 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6272710 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6272710, size= 23683 t1=b6272710 
+ list=b61eb00c 
+
+ list=b6272710 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6272710, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6272710 
+
+out find_fit
+
+in place
+
+ 6464, 6464 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.326 malloc
+
+in find_fit
+
+ b6273700 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6273700 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6273700, size= 23843 t1=b6273700 
+ list=b61eb00c 
+
+ list=b6273700 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6273700, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6273700 
+
+out find_fit
+
+in place
+
+ 6480, 6480 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.327 malloc
+
+in find_fit
+
+ b62746f0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62746f0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62746f0, size= 24003 t1=b62746f0 
+ list=b61eb00c 
+
+ list=b62746f0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62746f0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62746f0 
+
+out find_fit
+
+in place
+
+ 6496, 6496 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.328 malloc
+
+in find_fit
+
+ b62756e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62756e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62756e0, size= 24163 t1=b62756e0 
+ list=b61eb00c 
+
+ list=b62756e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62756e0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62756e0 
+
+out find_fit
+
+in place
+
+ 6512, 6512 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.329 malloc
+
+in find_fit
+
+ b62766d0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62766d0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62766d0, size= 24323 t1=b62766d0 
+ list=b61eb00c 
+
+ list=b62766d0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62766d0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62766d0 
+
+out find_fit
+
+in place
+
+ 6528, 6528 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.330 malloc
+
+in find_fit
+
+ b62776c0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62776c0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62776c0, size= 24483 t1=b62776c0 
+ list=b61eb00c 
+
+ list=b62776c0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62776c0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62776c0 
+
+out find_fit
+
+in place
+
+ 6544, 6544 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.331 malloc
+
+in find_fit
+
+ b62786b0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62786b0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62786b0, size= 24643 t1=b62786b0 
+ list=b61eb00c 
+
+ list=b62786b0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62786b0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62786b0 
+
+out find_fit
+
+in place
+
+ 6560, 6560 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.332 malloc
+
+in find_fit
+
+ b62796a0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62796a0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62796a0, size= 24803 t1=b62796a0 
+ list=b61eb00c 
+
+ list=b62796a0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62796a0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62796a0 
+
+out find_fit
+
+in place
+
+ 6576, 6576 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.333 malloc
+
+in find_fit
+
+ b627a690 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b627a690 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b627a690, size= 24963 t1=b627a690 
+ list=b61eb00c 
+
+ list=b627a690 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b627a690, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b627a690 
+
+out find_fit
+
+in place
+
+ 6592, 6592 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.334 malloc
+
+in find_fit
+
+ b627b680 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b627b680 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b627b680, size= 25123 t1=b627b680 
+ list=b61eb00c 
+
+ list=b627b680 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b627b680, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b627b680 
+
+out find_fit
+
+in place
+
+ 6608, 6608 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.335 malloc
+
+in find_fit
+
+ b627c670 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b627c670 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b627c670, size= 25283 t1=b627c670 
+ list=b61eb00c 
+
+ list=b627c670 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b627c670, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b627c670 
+
+out find_fit
+
+in place
+
+ 6624, 6624 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.336 malloc
+
+in find_fit
+
+ b627d660 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b627d660 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b627d660, size= 25443 t1=b627d660 
+ list=b61eb00c 
+
+ list=b627d660 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b627d660, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b627d660 
+
+out find_fit
+
+in place
+
+ 6640, 6640 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.337 malloc
+
+in find_fit
+
+ b627e650 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b627e650 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b627e650, size= 25603 t1=b627e650 
+ list=b61eb00c 
+
+ list=b627e650 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b627e650, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b627e650 
+
+out find_fit
+
+in place
+
+ 6656, 6656 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.338 malloc
+
+in find_fit
+
+ b627f640 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b627f640 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b627f640, size= 25763 t1=b627f640 
+ list=b61eb00c 
+
+ list=b627f640 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b627f640, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b627f640 
+
+out find_fit
+
+in place
+
+ 6672, 6672 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.339 malloc
+
+in find_fit
+
+ b6280630 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6280630 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6280630, size= 25923 t1=b6280630 
+ list=b61eb00c 
+
+ list=b6280630 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6280630, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6280630 
+
+out find_fit
+
+in place
+
+ 6688, 6688 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.340 malloc
+
+in find_fit
+
+ b6281620 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6281620 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6281620, size= 26083 t1=b6281620 
+ list=b61eb00c 
+
+ list=b6281620 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6281620, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6281620 
+
+out find_fit
+
+in place
+
+ 6704, 6704 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.341 malloc
+
+in find_fit
+
+ b6282610 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6282610 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6282610, size= 26243 t1=b6282610 
+ list=b61eb00c 
+
+ list=b6282610 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6282610, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6282610 
+
+out find_fit
+
+in place
+
+ 6720, 6720 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.342 malloc
+
+in find_fit
+
+ b6283600 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6283600 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6283600, size= 26403 t1=b6283600 
+ list=b61eb00c 
+
+ list=b6283600 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6283600, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6283600 
+
+out find_fit
+
+in place
+
+ 6736, 6736 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.343 malloc
+
+in find_fit
+
+ b62845f0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62845f0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62845f0, size= 26563 t1=b62845f0 
+ list=b61eb00c 
+
+ list=b62845f0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62845f0, 0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62845f0 
+
+out find_fit
+
+in place
+
+ 6752, 6752 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.344 malloc
+
+in find_fit
+
+ b62855e0 
+
+out find_fit
+
+ 80 
+
+in place
+
+ 2672, 2672 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.345 malloc
+
+in find_fit
+
+ b6285630 
+
+out find_fit
+
+ 168 
+
+in place
+
+ 2592, 2592 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.346 malloc
+
+in find_fit
+
+ b62856d8 
+
+out find_fit
+
+ 128 
+
+in place
+
+ 2424, 2424 
+
+ 11 
+
+out_place
+
+ in mm_free 
+
+No.347 malloc
+
+in coalesce
+
+ 128, 2, 0 
+ prev_blkp_bp= b62856d8, size= 1282
+out coalesce
+
+in insert_node_LIFO
+
+ b62856d8, 0 
+
+out insert_node_LIFO
+
+ out mm_free 
+
+ in mm_free 
+
+No.348 malloc
+
+in coalesce
+
+ 80, 2, 1 
+ prev_blkp_bp= b62855e0, size= 801
+out coalesce
+
+in insert_node_LIFO
+
+ b62855e0, b62856d8 
+
+out insert_node_LIFO
+
+ out mm_free 
+
+in mm_malloc
+
+No.349 malloc
+
+in find_fit
+
+ b62855e0 
+
+ b62856d8 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62855e0 
+
+ list=b62856d8 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62856d8, size= 24243 t1=b62856d8 
+ list=b61eb00c 
+
+ list=b62855e0 
+
+ list=b62856d8 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62856d8, b62855e0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62856d8 
+
+out find_fit
+
+in place
+
+ 6520, 6520 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.350 malloc
+
+in find_fit
+
+ b62866c8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62866c8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62866c8, size= 24403 t1=b62866c8 
+ list=b61eb00c 
+
+ list=b62866c8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62866c8, b62855e0 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62866c8 
+
+out find_fit
+
+in place
+
+ 6536, 6536 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.351 malloc
+
+in find_fit
+
+ b62876b8 
+
+out find_fit
+
+ 80 
+
+in place
+
+ 2456, 2456 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.352 malloc
+
+in find_fit
+
+ b6287708 
+
+out find_fit
+
+ 168 
+
+in place
+
+ 2376, 2376 
+
+ 11 
+
+out_place
+
+ in mm_free 
+
+No.353 malloc
+
+in coalesce
+
+ 80, 2, 1 
+ prev_blkp_bp= b62876b8, size= 801
+out coalesce
+
+in insert_node_LIFO
+
+ b62876b8, b62877b0 
+
+out insert_node_LIFO
+
+ out mm_free 
+
+in mm_malloc
+
+No.354 malloc
+
+in find_fit
+
+ b62876b8 
+
+out find_fit
+
+ 80 
+
+in place
+
+ 80, 80 
+
+ 22 
+
+ b62876b8, b61eb00c, b62877b0 
+
+ 33 
+
+out_place
+
+in mm_malloc
+
+No.355 malloc
+
+in find_fit
+
+ b62877b0 
+
+out find_fit
+
+ 168 
+
+in place
+
+ 2208, 2208 
+
+ 11 
+
+out_place
+
+ in mm_free 
+
+No.356 malloc
+
+in coalesce
+
+ 80, 2, 1 
+ prev_blkp_bp= b62876b8, size= 801
+out coalesce
+
+in insert_node_LIFO
+
+ b62876b8, b6287858 
+
+out insert_node_LIFO
+
+ out mm_free 
+
+in mm_malloc
+
+No.357 malloc
+
+in find_fit
+
+ b62876b8 
+
+out find_fit
+
+ 80 
+
+in place
+
+ 80, 80 
+
+ 22 
+
+ b62876b8, b61eb00c, b6287858 
+
+ 33 
+
+out_place
+
+in mm_malloc
+
+No.358 malloc
+
+in find_fit
+
+ b6287858 
+
+out find_fit
+
+ 168 
+
+in place
+
+ 2040, 2040 
+
+ 11 
+
+out_place
+
+ in mm_free 
+
+No.359 malloc
+
+in coalesce
+
+ 80, 2, 1 
+ prev_blkp_bp= b62876b8, size= 801
+out coalesce
+
+in insert_node_LIFO
+
+ b62876b8, b6287900 
+
+out insert_node_LIFO
+
+ out mm_free 
+
+in mm_malloc
+
+No.360 malloc
+
+in find_fit
+
+ b62876b8 
+
+out find_fit
+
+ 80 
+
+in place
+
+ 80, 80 
+
+ 22 
+
+ b62876b8, b61eb00c, b6287900 
+
+ 33 
+
+out_place
+
+in mm_malloc
+
+No.361 malloc
+
+in find_fit
+
+ b6287900 
+
+out find_fit
+
+ 168 
+
+in place
+
+ 1872, 1872 
+
+ 11 
+
+out_place
+
+ in mm_free 
+
+No.362 malloc
+
+in coalesce
+
+ 80, 2, 1 
+ prev_blkp_bp= b62876b8, size= 801
+out coalesce
+
+in insert_node_LIFO
+
+ b62876b8, b62879a8 
+
+out insert_node_LIFO
+
+ out mm_free 
+
+in mm_malloc
+
+No.363 malloc
+
+in find_fit
+
+ b62876b8 
+
+ b62879a8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62876b8 
+
+ list=b62879a8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62879a8, size= 17043 t1=b62879a8 
+ list=b61eb00c 
+
+ list=b62876b8 
+
+ list=b62879a8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62879a8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62879a8 
+
+out find_fit
+
+in place
+
+ 5800, 5800 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.364 malloc
+
+in find_fit
+
+ b6288998 
+
+out find_fit
+
+ 80 
+
+in place
+
+ 1720, 1720 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.365 malloc
+
+in find_fit
+
+ b62889e8 
+
+out find_fit
+
+ 168 
+
+in place
+
+ 1640, 1640 
+
+ 11 
+
+out_place
+
+ in mm_free 
+
+No.366 malloc
+
+in coalesce
+
+ 80, 2, 1 
+ prev_blkp_bp= b6288998, size= 801
+out coalesce
+
+in insert_node_LIFO
+
+ b6288998, b6288a90 
+
+out insert_node_LIFO
+
+ out mm_free 
+
+in mm_malloc
+
+No.367 malloc
+
+in find_fit
+
+ b6288998 
+
+out find_fit
+
+ 80 
+
+in place
+
+ 80, 80 
+
+ 22 
+
+ b6288998, b61eb00c, b6288a90 
+
+ 33 
+
+out_place
+
+in mm_malloc
+
+No.368 malloc
+
+in find_fit
+
+ b6288a90 
+
+out find_fit
+
+ 168 
+
+in place
+
+ 1472, 1472 
+
+ 11 
+
+out_place
+
+ in mm_free 
+
+No.369 malloc
+
+in coalesce
+
+ 80, 2, 1 
+ prev_blkp_bp= b6288998, size= 801
+out coalesce
+
+in insert_node_LIFO
+
+ b6288998, b6288b38 
+
+out insert_node_LIFO
+
+ out mm_free 
+
+in mm_malloc
+
+No.370 malloc
+
+in find_fit
+
+ b6288998 
+
+out find_fit
+
+ 80 
+
+in place
+
+ 80, 80 
+
+ 22 
+
+ b6288998, b61eb00c, b6288b38 
+
+ 33 
+
+out_place
+
+in mm_malloc
+
+No.371 malloc
+
+in find_fit
+
+ b6288b38 
+
+out find_fit
+
+ 168 
+
+in place
+
+ 1304, 1304 
+
+ 11 
+
+out_place
+
+ in mm_free 
+
+No.372 malloc
+
+in coalesce
+
+ 80, 2, 1 
+ prev_blkp_bp= b6288998, size= 801
+out coalesce
+
+in insert_node_LIFO
+
+ b6288998, b6288be0 
+
+out insert_node_LIFO
+
+ out mm_free 
+
+in mm_malloc
+
+No.373 malloc
+
+in find_fit
+
+ b6288998 
+
+out find_fit
+
+ 80 
+
+in place
+
+ 80, 80 
+
+ 22 
+
+ b6288998, b61eb00c, b6288be0 
+
+ 33 
+
+out_place
+
+in mm_malloc
+
+No.374 malloc
+
+in find_fit
+
+ b6288be0 
+
+out find_fit
+
+ 168 
+
+in place
+
+ 1136, 1136 
+
+ 11 
+
+out_place
+
+ in mm_free 
+
+No.375 malloc
+
+in coalesce
+
+ 80, 2, 1 
+ prev_blkp_bp= b6288998, size= 801
+out coalesce
+
+in insert_node_LIFO
+
+ b6288998, b6288c88 
+
+out insert_node_LIFO
+
+ out mm_free 
+
+in mm_malloc
+
+No.376 malloc
+
+in find_fit
+
+ b6288998 
+
+out find_fit
+
+ 80 
+
+in place
+
+ 80, 80 
+
+ 22 
+
+ b6288998, b61eb00c, b6288c88 
+
+ 33 
+
+out_place
+
+in mm_malloc
+
+No.377 malloc
+
+in find_fit
+
+ b6288c88 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6288c88 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6288c88, size= 9683 t1=b6288c88 
+ list=b61eb00c 
+
+ list=b6288c88 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6288c88, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6288c88 
+
+out find_fit
+
+in place
+
+ 5064, 5064 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.378 malloc
+
+in find_fit
+
+ b6289c78 
+
+out find_fit
+
+ 80 
+
+in place
+
+ 984, 984 
+
+ 11 
+
+out_place
+
+in mm_malloc
+
+No.379 malloc
+
+in find_fit
+
+ b6289cc8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6289cc8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6289cc8, size= 9043 t1=b6289cc8 
+ list=b61eb00c 
+
+ list=b6289cc8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6289cc8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6289cc8 
+
+out find_fit
+
+in place
+
+ 5000, 5000 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.380 malloc
+
+in find_fit
+
+ b628acb8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b628acb8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b628acb8, size= 9203 t1=b628acb8 
+ list=b61eb00c 
+
+ list=b628acb8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b628acb8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b628acb8 
+
+out find_fit
+
+in place
+
+ 5016, 5016 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.381 malloc
+
+in find_fit
+
+ b628bca8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b628bca8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b628bca8, size= 9363 t1=b628bca8 
+ list=b61eb00c 
+
+ list=b628bca8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b628bca8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b628bca8 
+
+out find_fit
+
+in place
+
+ 5032, 5032 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.382 malloc
+
+in find_fit
+
+ b628cc98 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b628cc98 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b628cc98, size= 9523 t1=b628cc98 
+ list=b61eb00c 
+
+ list=b628cc98 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b628cc98, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b628cc98 
+
+out find_fit
+
+in place
+
+ 5048, 5048 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.383 malloc
+
+in find_fit
+
+ b628dc88 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b628dc88 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b628dc88, size= 9683 t1=b628dc88 
+ list=b61eb00c 
+
+ list=b628dc88 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b628dc88, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b628dc88 
+
+out find_fit
+
+in place
+
+ 5064, 5064 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.384 malloc
+
+in find_fit
+
+ b628ec78 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b628ec78 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b628ec78, size= 9843 t1=b628ec78 
+ list=b61eb00c 
+
+ list=b628ec78 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b628ec78, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b628ec78 
+
+out find_fit
+
+in place
+
+ 5080, 5080 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.385 malloc
+
+in find_fit
+
+ b628fc68 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b628fc68 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b628fc68, size= 10003 t1=b628fc68 
+ list=b61eb00c 
+
+ list=b628fc68 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b628fc68, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b628fc68 
+
+out find_fit
+
+in place
+
+ 5096, 5096 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.386 malloc
+
+in find_fit
+
+ b6290c58 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6290c58 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6290c58, size= 10163 t1=b6290c58 
+ list=b61eb00c 
+
+ list=b6290c58 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6290c58, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6290c58 
+
+out find_fit
+
+in place
+
+ 5112, 5112 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.387 malloc
+
+in find_fit
+
+ b6291c48 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6291c48 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6291c48, size= 10323 t1=b6291c48 
+ list=b61eb00c 
+
+ list=b6291c48 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6291c48, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6291c48 
+
+out find_fit
+
+in place
+
+ 5128, 5128 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.388 malloc
+
+in find_fit
+
+ b6292c38 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6292c38 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6292c38, size= 10483 t1=b6292c38 
+ list=b61eb00c 
+
+ list=b6292c38 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6292c38, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6292c38 
+
+out find_fit
+
+in place
+
+ 5144, 5144 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.389 malloc
+
+in find_fit
+
+ b6293c28 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6293c28 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6293c28, size= 10643 t1=b6293c28 
+ list=b61eb00c 
+
+ list=b6293c28 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6293c28, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6293c28 
+
+out find_fit
+
+in place
+
+ 5160, 5160 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.390 malloc
+
+in find_fit
+
+ b6294c18 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6294c18 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6294c18, size= 10803 t1=b6294c18 
+ list=b61eb00c 
+
+ list=b6294c18 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6294c18, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6294c18 
+
+out find_fit
+
+in place
+
+ 5176, 5176 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.391 malloc
+
+in find_fit
+
+ b6295c08 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6295c08 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6295c08, size= 10963 t1=b6295c08 
+ list=b61eb00c 
+
+ list=b6295c08 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6295c08, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6295c08 
+
+out find_fit
+
+in place
+
+ 5192, 5192 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.392 malloc
+
+in find_fit
+
+ b6296bf8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6296bf8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6296bf8, size= 11123 t1=b6296bf8 
+ list=b61eb00c 
+
+ list=b6296bf8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6296bf8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6296bf8 
+
+out find_fit
+
+in place
+
+ 5208, 5208 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.393 malloc
+
+in find_fit
+
+ b6297be8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6297be8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6297be8, size= 11283 t1=b6297be8 
+ list=b61eb00c 
+
+ list=b6297be8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6297be8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6297be8 
+
+out find_fit
+
+in place
+
+ 5224, 5224 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.394 malloc
+
+in find_fit
+
+ b6298bd8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6298bd8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6298bd8, size= 11443 t1=b6298bd8 
+ list=b61eb00c 
+
+ list=b6298bd8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6298bd8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6298bd8 
+
+out find_fit
+
+in place
+
+ 5240, 5240 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.395 malloc
+
+in find_fit
+
+ b6299bc8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b6299bc8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b6299bc8, size= 11603 t1=b6299bc8 
+ list=b61eb00c 
+
+ list=b6299bc8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b6299bc8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b6299bc8 
+
+out find_fit
+
+in place
+
+ 5256, 5256 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.396 malloc
+
+in find_fit
+
+ b629abb8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b629abb8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b629abb8, size= 11763 t1=b629abb8 
+ list=b61eb00c 
+
+ list=b629abb8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b629abb8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b629abb8 
+
+out find_fit
+
+in place
+
+ 5272, 5272 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.397 malloc
+
+in find_fit
+
+ b629bba8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b629bba8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b629bba8, size= 11923 t1=b629bba8 
+ list=b61eb00c 
+
+ list=b629bba8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b629bba8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b629bba8 
+
+out find_fit
+
+in place
+
+ 5288, 5288 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.398 malloc
+
+in find_fit
+
+ b629cb98 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b629cb98 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b629cb98, size= 12083 t1=b629cb98 
+ list=b61eb00c 
+
+ list=b629cb98 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b629cb98, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b629cb98 
+
+out find_fit
+
+in place
+
+ 5304, 5304 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.399 malloc
+
+in find_fit
+
+ b629db88 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b629db88 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b629db88, size= 12243 t1=b629db88 
+ list=b61eb00c 
+
+ list=b629db88 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b629db88, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b629db88 
+
+out find_fit
+
+in place
+
+ 5320, 5320 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.400 malloc
+
+in find_fit
+
+ b629eb78 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b629eb78 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b629eb78, size= 12403 t1=b629eb78 
+ list=b61eb00c 
+
+ list=b629eb78 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b629eb78, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b629eb78 
+
+out find_fit
+
+in place
+
+ 5336, 5336 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.401 malloc
+
+in find_fit
+
+ b629fb68 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b629fb68 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b629fb68, size= 12563 t1=b629fb68 
+ list=b61eb00c 
+
+ list=b629fb68 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b629fb68, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b629fb68 
+
+out find_fit
+
+in place
+
+ 5352, 5352 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.402 malloc
+
+in find_fit
+
+ b62a0b58 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62a0b58 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62a0b58, size= 12723 t1=b62a0b58 
+ list=b61eb00c 
+
+ list=b62a0b58 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62a0b58, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62a0b58 
+
+out find_fit
+
+in place
+
+ 5368, 5368 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.403 malloc
+
+in find_fit
+
+ b62a1b48 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62a1b48 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62a1b48, size= 12883 t1=b62a1b48 
+ list=b61eb00c 
+
+ list=b62a1b48 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62a1b48, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62a1b48 
+
+out find_fit
+
+in place
+
+ 5384, 5384 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.404 malloc
+
+in find_fit
+
+ b62a2b38 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62a2b38 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62a2b38, size= 13043 t1=b62a2b38 
+ list=b61eb00c 
+
+ list=b62a2b38 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62a2b38, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62a2b38 
+
+out find_fit
+
+in place
+
+ 5400, 5400 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.405 malloc
+
+in find_fit
+
+ b62a3b28 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62a3b28 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62a3b28, size= 13203 t1=b62a3b28 
+ list=b61eb00c 
+
+ list=b62a3b28 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62a3b28, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62a3b28 
+
+out find_fit
+
+in place
+
+ 5416, 5416 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.406 malloc
+
+in find_fit
+
+ b62a4b18 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62a4b18 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62a4b18, size= 13363 t1=b62a4b18 
+ list=b61eb00c 
+
+ list=b62a4b18 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62a4b18, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62a4b18 
+
+out find_fit
+
+in place
+
+ 5432, 5432 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.407 malloc
+
+in find_fit
+
+ b62a5b08 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62a5b08 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62a5b08, size= 13523 t1=b62a5b08 
+ list=b61eb00c 
+
+ list=b62a5b08 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62a5b08, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62a5b08 
+
+out find_fit
+
+in place
+
+ 5448, 5448 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.408 malloc
+
+in find_fit
+
+ b62a6af8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62a6af8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62a6af8, size= 13683 t1=b62a6af8 
+ list=b61eb00c 
+
+ list=b62a6af8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62a6af8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62a6af8 
+
+out find_fit
+
+in place
+
+ 5464, 5464 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.409 malloc
+
+in find_fit
+
+ b62a7ae8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62a7ae8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62a7ae8, size= 13843 t1=b62a7ae8 
+ list=b61eb00c 
+
+ list=b62a7ae8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62a7ae8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62a7ae8 
+
+out find_fit
+
+in place
+
+ 5480, 5480 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.410 malloc
+
+in find_fit
+
+ b62a8ad8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62a8ad8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62a8ad8, size= 14003 t1=b62a8ad8 
+ list=b61eb00c 
+
+ list=b62a8ad8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62a8ad8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62a8ad8 
+
+out find_fit
+
+in place
+
+ 5496, 5496 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.411 malloc
+
+in find_fit
+
+ b62a9ac8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62a9ac8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62a9ac8, size= 14163 t1=b62a9ac8 
+ list=b61eb00c 
+
+ list=b62a9ac8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62a9ac8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62a9ac8 
+
+out find_fit
+
+in place
+
+ 5512, 5512 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.412 malloc
+
+in find_fit
+
+ b62aaab8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62aaab8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62aaab8, size= 14323 t1=b62aaab8 
+ list=b61eb00c 
+
+ list=b62aaab8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62aaab8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62aaab8 
+
+out find_fit
+
+in place
+
+ 5528, 5528 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.413 malloc
+
+in find_fit
+
+ b62abaa8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62abaa8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62abaa8, size= 14483 t1=b62abaa8 
+ list=b61eb00c 
+
+ list=b62abaa8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62abaa8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62abaa8 
+
+out find_fit
+
+in place
+
+ 5544, 5544 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.414 malloc
+
+in find_fit
+
+ b62aca98 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62aca98 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62aca98, size= 14643 t1=b62aca98 
+ list=b61eb00c 
+
+ list=b62aca98 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62aca98, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62aca98 
+
+out find_fit
+
+in place
+
+ 5560, 5560 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.415 malloc
+
+in find_fit
+
+ b62ada88 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62ada88 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62ada88, size= 14803 t1=b62ada88 
+ list=b61eb00c 
+
+ list=b62ada88 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62ada88, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62ada88 
+
+out find_fit
+
+in place
+
+ 5576, 5576 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.416 malloc
+
+in find_fit
+
+ b62aea78 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62aea78 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62aea78, size= 14963 t1=b62aea78 
+ list=b61eb00c 
+
+ list=b62aea78 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62aea78, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62aea78 
+
+out find_fit
+
+in place
+
+ 5592, 5592 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.417 malloc
+
+in find_fit
+
+ b62afa68 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62afa68 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62afa68, size= 15123 t1=b62afa68 
+ list=b61eb00c 
+
+ list=b62afa68 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62afa68, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62afa68 
+
+out find_fit
+
+in place
+
+ 5608, 5608 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.418 malloc
+
+in find_fit
+
+ b62b0a58 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62b0a58 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62b0a58, size= 15283 t1=b62b0a58 
+ list=b61eb00c 
+
+ list=b62b0a58 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62b0a58, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62b0a58 
+
+out find_fit
+
+in place
+
+ 5624, 5624 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.419 malloc
+
+in find_fit
+
+ b62b1a48 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62b1a48 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62b1a48, size= 15443 t1=b62b1a48 
+ list=b61eb00c 
+
+ list=b62b1a48 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62b1a48, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62b1a48 
+
+out find_fit
+
+in place
+
+ 5640, 5640 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.420 malloc
+
+in find_fit
+
+ b62b2a38 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62b2a38 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62b2a38, size= 15603 t1=b62b2a38 
+ list=b61eb00c 
+
+ list=b62b2a38 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62b2a38, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62b2a38 
+
+out find_fit
+
+in place
+
+ 5656, 5656 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.421 malloc
+
+in find_fit
+
+ b62b3a28 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62b3a28 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62b3a28, size= 15763 t1=b62b3a28 
+ list=b61eb00c 
+
+ list=b62b3a28 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62b3a28, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62b3a28 
+
+out find_fit
+
+in place
+
+ 5672, 5672 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.422 malloc
+
+in find_fit
+
+ b62b4a18 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62b4a18 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62b4a18, size= 15923 t1=b62b4a18 
+ list=b61eb00c 
+
+ list=b62b4a18 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62b4a18, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62b4a18 
+
+out find_fit
+
+in place
+
+ 5688, 5688 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.423 malloc
+
+in find_fit
+
+ b62b5a08 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62b5a08 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62b5a08, size= 16083 t1=b62b5a08 
+ list=b61eb00c 
+
+ list=b62b5a08 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62b5a08, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62b5a08 
+
+out find_fit
+
+in place
+
+ 5704, 5704 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.424 malloc
+
+in find_fit
+
+ b62b69f8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62b69f8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62b69f8, size= 16243 t1=b62b69f8 
+ list=b61eb00c 
+
+ list=b62b69f8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62b69f8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62b69f8 
+
+out find_fit
+
+in place
+
+ 5720, 5720 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.425 malloc
+
+in find_fit
+
+ b62b79e8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62b79e8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62b79e8, size= 16403 t1=b62b79e8 
+ list=b61eb00c 
+
+ list=b62b79e8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62b79e8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62b79e8 
+
+out find_fit
+
+in place
+
+ 5736, 5736 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.426 malloc
+
+in find_fit
+
+ b62b89d8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62b89d8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62b89d8, size= 16563 t1=b62b89d8 
+ list=b61eb00c 
+
+ list=b62b89d8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62b89d8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62b89d8 
+
+out find_fit
+
+in place
+
+ 5752, 5752 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.427 malloc
+
+in find_fit
+
+ b62b99c8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62b99c8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62b99c8, size= 16723 t1=b62b99c8 
+ list=b61eb00c 
+
+ list=b62b99c8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62b99c8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62b99c8 
+
+out find_fit
+
+in place
+
+ 5768, 5768 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+ in mm_free 
+
+No.428 malloc
+
+in coalesce
+
+ 4080, 2, 1 
+ prev_blkp_bp= b62aaab8, size= 40801
+out coalesce
+
+in insert_node_LIFO
+
+ b62aaab8, b62ba9b8 
+
+out insert_node_LIFO
+
+ out mm_free 
+
+ in mm_free 
+
+No.429 malloc
+
+in coalesce
+
+ 4080, 2, 1 
+ prev_blkp_bp= b62b79e8, size= 40801
+out coalesce
+
+in insert_node_LIFO
+
+ b62b79e8, b62aaab8 
+
+out insert_node_LIFO
+
+ out mm_free 
+
+in mm_malloc
+
+No.430 malloc
+
+in find_fit
+
+ b62b79e8 
+
+out find_fit
+
+ 4080 
+
+in place
+
+ 4080, 4080 
+
+ 22 
+
+ b62b79e8, b61eb00c, b62aaab8 
+
+ 33 
+
+out_place
+
+in mm_malloc
+
+No.431 malloc
+
+in find_fit
+
+ b62aaab8 
+
+out find_fit
+
+ 4080 
+
+in place
+
+ 4080, 4080 
+
+ 22 
+
+ b62aaab8, b61eb00c, b62ba9b8 
+
+ 33 
+
+out_place
+
+in mm_malloc
+
+No.432 malloc
+
+in find_fit
+
+ b62ba9b8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62ba9b8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62ba9b8, size= 16883 t1=b62ba9b8 
+ list=b61eb00c 
+
+ list=b62ba9b8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62ba9b8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62ba9b8 
+
+out find_fit
+
+in place
+
+ 5784, 5784 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.433 malloc
+
+in find_fit
+
+ b62bb9a8 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62bb9a8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62bb9a8, size= 17043 t1=b62bb9a8 
+ list=b61eb00c 
+
+ list=b62bb9a8 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62bb9a8, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62bb9a8 
+
+out find_fit
+
+in place
+
+ 5800, 5800 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.434 malloc
+
+in find_fit
+
+ b62bc998 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62bc998 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62bc998, size= 17203 t1=b62bc998 
+ list=b61eb00c 
+
+ list=b62bc998 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+out coalesce
+
+in insert_node_LIFO
+
+ b62bc998, b62876b8 
+
+out insert_node_LIFO
+
+in find_fit
+
+ b62bc998 
+
+out find_fit
+
+in place
+
+ 5816, 5816 
+
+ 11 
+
+out_place
+
+out mm_malloc
+
+in mm_malloc
+
+No.435 malloc
+
+in find_fit
+
+ b62bd988 
+
+ b62876b8 
+
+ b62855e0 
+
+out find_fit
+
+ list=b61eb00c 
+
+ list=b62bd988 
+
+ list=b62876b8 
+
+ list=b62855e0 
+
+in extend_heap
+
+out extend_heap
+
+in coalesce
+
+ 4096, 0, 1 
+ prev_blkp_bp= b62bd988, size= 17363 t1=b62bd988 
+ list=b61eb00c 
+
+ list=b62bd988 
+
+ list=b62876b8 
