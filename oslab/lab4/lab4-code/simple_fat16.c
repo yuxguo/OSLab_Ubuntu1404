@@ -41,7 +41,7 @@ static char upper (char a)
 char **path_split(char *pathInput, int *pathDepth_ret)
 {
   int i,j;
-  int pathDepth = 1;
+  int pathDepth = 0;
   for (i=0;pathInput[i]!='\0';++i)
   {
     if (pathInput[i]=='/')
