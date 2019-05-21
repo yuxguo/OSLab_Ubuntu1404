@@ -149,6 +149,7 @@ char **path_split(char *pathInput, int *pathDepth_ret)
 **/
 BYTE *path_decode(BYTE *path)
 {
+
   BYTE *pathDecoded = malloc(MAX_SHORT_NAME_LEN * sizeof(BYTE));
   int i,j;
   for (i=0;i<8;++i)
@@ -177,6 +178,7 @@ BYTE *path_decode(BYTE *path)
     }
     pathDecoded[j]='\0';
   }
+  printf("s\n", (char *)path);
   printf("%s\n",(char *)pathDecoded);
   return pathDecoded;
 }
