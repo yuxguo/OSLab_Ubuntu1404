@@ -142,7 +142,7 @@ BYTE *path_decode(BYTE *path)
 {
   BYTE *pathDecoded = malloc(MAX_SHORT_NAME_LEN * sizeof(BYTE));
   int i,j;
-  for (i=0;i<=10;++i)
+  for (i=0;i<8;++i)
   {
     if (path[i]!=' ')
     {
@@ -151,19 +151,21 @@ BYTE *path_decode(BYTE *path)
     else 
       break;
   }
-  for (j=10;j>=0;--j)
+  if (path[8]==' ')//无扩展名
   {
-    if (path[j]==' ')
-      break;
+    pathDecoded[i]='\0';
   }
-  pathDecoded[i]='.';
-  i++;
-  j++;
-  for (;j<11;++i,++j)
-  {
-    pathDecoded[i]=(char)path[j];
+  else {
+    pathDecoded[i++]='.';
+    for (j=8;j<11;++j)
+    {
+      if (path[j]!=' ')
+      {
+        pathDecoded[i]=path[j];
+      }
+    }
+    pathDecoded[j]='\0';
   }
-  pathDecoded[i]='\0';
   return pathDecoded;
 }
 
