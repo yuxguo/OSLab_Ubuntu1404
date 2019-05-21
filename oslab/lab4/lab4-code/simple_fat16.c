@@ -97,7 +97,7 @@ char **path_split(char *pathInput, int *pathDepth_ret)
           j=k1+1;
           if (j<k)
           {
-            path[i][l]=pathInput[j];
+            paths[i][l]=pathInput[j];
             j++;
           }
           else 
