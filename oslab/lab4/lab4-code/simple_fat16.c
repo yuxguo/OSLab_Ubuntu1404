@@ -38,7 +38,7 @@ char **path_split(char *pathInput, int *pathDepth_ret)
     if (pathInput[i]=='/')
     {
       pathDepth++;
-      pathDepth[i]='\0';
+      pathInput[i]='\0';
     }
   }
   char **paths = (char **)malloc(pathDepth * sizeof(char *));
@@ -56,7 +56,8 @@ char **path_split(char *pathInput, int *pathDepth_ret)
     }//找点号所在的位置，若没有则为-1
     if (k1==-1)
     {
-      for (int l=0;l<12;++l)
+      int l;
+      for (l=0;l<12;++l)
       {
         if (l<8)
         {
@@ -80,7 +81,8 @@ char **path_split(char *pathInput, int *pathDepth_ret)
     }
     else
     {
-      for (int l=0;l<12;++l) 
+      int l;
+      for (l=0;l<12;++l) 
       {
         if (l<8)
         {
@@ -107,7 +109,7 @@ char **path_split(char *pathInput, int *pathDepth_ret)
         {
           if (j<k)
           {
-            path[i][l]=pathInput[j];
+            paths[i][l]=pathInput[j];
             j++;
           }
           else 
@@ -116,8 +118,8 @@ char **path_split(char *pathInput, int *pathDepth_ret)
         else 
           paths[i][l]='\0';
       }
-      j=k+1;
     }
+    j=k+1;
   }
   *pathDepth_ret=pathDepth;
   return paths;
