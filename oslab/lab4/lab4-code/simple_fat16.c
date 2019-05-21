@@ -11,6 +11,7 @@
 
 #include "fat16.h"
 
+static char upper (char a);
 
 char *FAT_FILE_NAME = "fat16.img";
 
@@ -29,16 +30,23 @@ void sector_read(FILE *fd, unsigned int secnum, void *buffer)
  *      返回转换后的字符串数组，并将*pathDepth_ret设置为3
  * Hint2:可能会出现过长的字符串输入，如“/.Trash-1000”，需要自行截断字符串
 **/
+static char upper (char a)
+{
+  if (a>='a' && a<='z')
+    {
+        a=a-32;
+    }
+    return a;
+}
 char **path_split(char *pathInput, int *pathDepth_ret)
 {
   int i,j;
   int pathDepth = 1;
-  for (i=1;pathInput[i]!='\0';++i)
+  for (i=0;pathInput[i]!='\0';++i)
   {
     if (pathInput[i]=='/')
     {
       pathDepth++;
-      pathInput[i]='\0';
     }
   }
   char **paths = (char **)malloc(pathDepth * sizeof(char *));
@@ -47,7 +55,7 @@ char **path_split(char *pathInput, int *pathDepth_ret)
     paths[i]=(char *)malloc(12 * sizeof(char));
     int k1=-1;
     int k;
-    for (k=j;pathInput[k]!='\0';++k)
+    for (k=j;pathInput[k]!='\0' && pathInput[k]!='/';++k)
     {
       if (pathInput[k]=='.')
       {
@@ -63,7 +71,7 @@ char **path_split(char *pathInput, int *pathDepth_ret)
         {
           if (j<k)
           {
-            paths[i][l]=pathInput[j];
+            paths[i][l]=upper(pathInput[j]);
             ++j;
           }
           else 
@@ -88,7 +96,7 @@ char **path_split(char *pathInput, int *pathDepth_ret)
         {
           if (j<k1)
           {
-            paths[i][l]=pathInput[j];
+            paths[i][l]=upper(pathInput[j]);
             ++j;
           }
           else 
@@ -99,7 +107,7 @@ char **path_split(char *pathInput, int *pathDepth_ret)
           j=k1+1;
           if (j<k)
           {
-            paths[i][l]=pathInput[j];
+            paths[i][l]=upper(pathInput[j]);
             j++;
           }
           else 
@@ -109,7 +117,7 @@ char **path_split(char *pathInput, int *pathDepth_ret)
         {
           if (j<k)
           {
-            paths[i][l]=pathInput[j];
+            paths[i][l]=upper(pathInput[j]);
             j++;
           }
           else 
