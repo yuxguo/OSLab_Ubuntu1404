@@ -12,6 +12,7 @@
 #include "fat16.h"
 
 static char upper (char a);
+static char lower (char a);
 
 char *FAT_FILE_NAME = "fat16.img";
 
@@ -33,10 +34,18 @@ void sector_read(FILE *fd, unsigned int secnum, void *buffer)
 static char upper (char a)
 {
   if (a>='a' && a<='z')
-    {
-        a=a-32;
-    }
-    return a;
+  {
+    a=a-32;
+  }
+  return a;
+}
+static char lower(char a)
+{
+  if (a>='A' && a<='Z')
+  {
+    a=a+32;
+  }
+  return a;
 }
 char **path_split(char *pathInput, int *pathDepth_ret)
 {
@@ -146,7 +155,7 @@ BYTE *path_decode(BYTE *path)
   {
     if (path[i]!=' ')
     {
-      pathDecoded[i]=(char)path[i];
+      pathDecoded[i]=lower((char)path[i]);
     }
     else 
       break;
@@ -156,12 +165,13 @@ BYTE *path_decode(BYTE *path)
     pathDecoded[i]='\0';
   }
   else {
-    pathDecoded[i++]='.';
+    pathDecoded[i]='.';
+    ++i;
     for (j=8;j<11;++j)
     {
       if (path[j]!=' ')
       {
-        pathDecoded[i]=path[j];
+        pathDecoded[i]=lower((char)path[j]);
       }
     }
     pathDecoded[j]='\0';
