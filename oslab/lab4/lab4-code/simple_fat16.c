@@ -178,7 +178,7 @@ BYTE *path_decode(BYTE *path)
     }
     pathDecoded[j]='\0';
   }
-  printf("s\n", (char *)path);
+  printf("%s\n", (char *)path);
   printf("%s\n",(char *)pathDecoded);
   return pathDecoded;
 }
