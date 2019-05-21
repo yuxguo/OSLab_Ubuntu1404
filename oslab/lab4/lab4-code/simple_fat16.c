@@ -172,6 +172,7 @@ BYTE *path_decode(BYTE *path)
       if (path[j]!=' ')
       {
         pathDecoded[i]=lower((char)path[j]);
+        ++i;
       }
     }
     pathDecoded[j]='\0';
