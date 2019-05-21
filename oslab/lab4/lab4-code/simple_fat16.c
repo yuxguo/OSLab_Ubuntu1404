@@ -4,11 +4,13 @@
 #include <assert.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <strings.h>
 
 #define FUSE_USE_VERSION 26
 #include <fuse.h>
 
 #include "fat16.h"
+
 
 char *FAT_FILE_NAME = "fat16.img";
 
@@ -29,12 +31,95 @@ void sector_read(FILE *fd, unsigned int secnum, void *buffer)
 **/
 char **path_split(char *pathInput, int *pathDepth_ret)
 {
+  int i,j;
   int pathDepth = 1;
-  char **paths = malloc(pathDepth * sizeof(char *));
-
-
-
-
+  for (i=1;pathInput[i]!='\0';++i)
+  {
+    if (pathInput[i]=='/')
+    {
+      pathDepth++;
+      pathDepth[i]='\0';
+    }
+  }
+  char **paths = (char **)malloc(pathDepth * sizeof(char *));
+  for (i=0,j=1;i<pathDepth;++i)
+  {
+    paths[i]=(char *)malloc(12 * sizeof(char));
+    int k1=-1;
+    int k;
+    for (k=j;pathInput[k]!='\0';++k)
+    {
+      if (pathInput[k]=='.')
+      {
+        k1=k;
+      }
+    }//找点号所在的位置，若没有则为-1
+    if (k1==-1)
+    {
+      for (int l=0;l<12;++l)
+      {
+        if (l<8)
+        {
+          if (j<k)
+          {
+            paths[i][l]=pathInput[j];
+            ++j;
+          }
+          else 
+            paths[i][l]=' ';
+        }
+        else if (l>=8 && l<11)
+        {
+          paths[i][l]=' ';
+        }
+        else
+        {
+          paths[i][l]='\0';
+        }
+      }
+    }
+    else
+    {
+      for (int l=0;l<12;++l) 
+      {
+        if (l<8)
+        {
+          if (j<k1)
+          {
+            paths[i][l]=pathInput[j];
+            ++j;
+          }
+          else 
+            paths[i][l]=' ';
+        }
+        else if (l==8)
+        {
+          j=k1+1;
+          if (j<k)
+          {
+            path[i][l]=pathInput[j];
+            j++;
+          }
+          else 
+            paths[i][l]=' ';
+        }
+        else if (l>8 && l<11)
+        {
+          if (j<k)
+          {
+            path[i][l]=pathInput[j];
+            j++;
+          }
+          else 
+            paths[i][l]=' ';
+        }
+        else 
+          paths[i][l]='\0';
+      }
+      j=k+1;
+    }
+  }
+  *pathDepth_ret=pathDepth;
   return paths;
 }
 
@@ -46,9 +131,29 @@ char **path_split(char *pathInput, int *pathDepth_ret)
 BYTE *path_decode(BYTE *path)
 {
   BYTE *pathDecoded = malloc(MAX_SHORT_NAME_LEN * sizeof(BYTE));
-
-
-
+  int i,j;
+  for (i=0;i<=10;++i)
+  {
+    if (path[i]!=' ')
+    {
+      pathDecoded[i]=(char)path[i];
+    }
+    else 
+      break;
+  }
+  for (j=10;j>=0;--j)
+  {
+    if (path[j]==' ')
+      break;
+  }
+  pathDecoded[i]='.';
+  i++;
+  j++;
+  for (;j<11;++i,++j)
+  {
+    pathDecoded[i]=(char)path[j];
+  }
+  pathDecoded[i]='\0';
   return pathDecoded;
 }
 
