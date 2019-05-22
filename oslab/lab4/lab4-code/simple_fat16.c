@@ -289,7 +289,7 @@ int find_root(FAT16 *fat16_ins, DIR_ENTRY *Dir, const char *path)
 
   /* 先读取root directory */
   int i, j;
-  int RootDirCnt = 1;   /* 用于统计已读取的扇区数 */
+  int RootDirCnt = 0;   /* 用于统计已读取的扇区数 */
   BYTE buffer[BYTES_PER_SECTOR];
 
   sector_read(fat16_ins->fd, fat16_ins->FirstRootDirSecNum, buffer);
@@ -300,11 +300,25 @@ int find_root(FAT16 *fat16_ins, DIR_ENTRY *Dir, const char *path)
    * 
    * !!注意root directory可能包含多个扇区
   **/
-  for (i = 1; i <= fat16_ins->Bpb.BPB_RootEntCnt; i++)
+
+  //注意，根目录中共包含512个项，每项占据32个字节，每个扇区里面共有
+  //512个byte，总共有根目录占据32个sector，需要按照sector进行查找
+  for (i = 0; i < fat16_ins->Bpb.BPB_RootEntCnt; i++)
   {
-    
+    //先判断是否超出当前扇区；
+    if (i*32 >= (RootDirCnt+1)*BYTES_PER_SECTOR){
+      RootDirCnt++;
+      sector_read(fat16_ins->fd, (fat16_ins->FirstRootDirSecNum)+RootDirCnt, buffer);
+    }
+    char Name_Buffer[12];
+    int Start_Read=(i*32)%BYTES_PER_SECTOR;
+    for (j=0;j<11;++j){
+      Name_Buffer[j] = buffer[Start_Read+j];
+    }
 
-
+    if (strcmp(Name_Buffer, paths[0])){
+      return find_subdir(fat16_ins, Dir, paths, pathDepth, 1); 
+    }
     /** 
      * return find_subdir(fat16_ins, Dir, paths, pathDepth, 1); 
     **/
