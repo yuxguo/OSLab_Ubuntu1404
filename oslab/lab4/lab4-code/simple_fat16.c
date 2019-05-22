@@ -357,14 +357,13 @@ int find_subdir(FAT16 *fat16_ins, DIR_ENTRY *Dir, char **paths, int pathDepth, i
   if (curDepth<pathDepth){
     int i, j, k;//i簇内扇区偏移，j为扇区内字节偏移
     WORD ClusterN = Dir->DIR_FstClusLO; 
+    printf("%d\n\n", ClusterN);
     WORD FatClusEntryVal, FirstSectorofCluster;
     //第一个变量是当前簇的后继簇号，第二个是该簇的第一个扇区号。
     first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,buffer);
     //开始进行查找
     while (ClusterN >= 0x0002 && ClusterN <= 0xffef){
       first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,buffer);
-      //sector_read(fat16_ins->fd, FirstSectorofCluster, buffer);
-      //DirSecCnt=0;
       for (i=0;i<fat16_ins->Bpb.BPB_SecPerClus;++i){
         sector_read(fat16_ins->fd, FirstSectorofCluster+i, buffer);
         for (j=0;j<BYTES_PER_SECTOR;j+=32){
@@ -393,9 +392,9 @@ int find_subdir(FAT16 *fat16_ins, DIR_ENTRY *Dir, char **paths, int pathDepth, i
             Dir->DIR_FileSize = *((DWORD *)(&buffer[Start_Read+0x1c]));
             return find_subdir(fat16_ins, Dir, paths, pathDepth, curDepth+1);
           }
-          // if (Name_Buffer[0]==0 && Name_Buffer[1]==0){
-          //   return 1;
-          // }
+          if (Name_Buffer[0]==0 && Name_Buffer[1]==0){
+            return 1;
+          }
         }
       }
       ClusterN = FatClusEntryVal;
