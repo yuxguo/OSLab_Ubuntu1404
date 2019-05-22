@@ -240,7 +240,8 @@ FAT16 *pre_init_fat16(void)
 
   fat16_ins->FirstRootDirSecNum = fat16_ins->Bpb.BPB_RsvdSecCnt+(fat16_ins->Bpb.BPB_NumFATS)*(fat16_ins->Bpb.BPB_FATSz16);
   fat16_ins->FirstDataSector = fat16_ins->FirstRootDirSecNum+fat16_ins->Bpb.BPB_RootEntCnt;
-  printf("%d\n%d", fat16_ins->FirstRootDirSecNum,fat16_ins->Bpb.BPB_RootEntCnt);
+  printf("%d\n", fat16_ins->FirstRootDirSecNum);
+  printf("%d  %d", fat16_ins->FirstDataSector, fat16_ins->Bpb.BPB_RootEntCnt);
   return fat16_ins;
 }
 
