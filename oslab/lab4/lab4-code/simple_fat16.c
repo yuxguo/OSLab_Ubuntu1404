@@ -234,7 +234,7 @@ FAT16 *pre_init_fat16(void)
     fat16_ins->Bpb.BS_FilSysType[i] = buffer[0x36+i];
   }
   for (i=0;i<448;++i){
-    fat16_ins->Bpb.Reserved2[i] = buffer[0x3e+i];
+    fat16_ins->Bpb.Reserved2[i] = buffer[i+0x3e];
   }
   fat16_ins->Bpb.Signature_word = *((WORD *)(&buffer[0x1fe]));
 
