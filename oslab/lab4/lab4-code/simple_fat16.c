@@ -315,7 +315,7 @@ int find_root(FAT16 *fat16_ins, DIR_ENTRY *Dir, const char *path)
     for (j=0;j<11;++j){
       Name_Buffer[j] = buffer[Start_Read+j];
     }
-
+    Name_Buffer[12]='\0';
     if (strcmp(Name_Buffer, paths[0])==0){
       if (pathDepth==1){
         for (j=0;j<11;++j){
@@ -332,14 +332,12 @@ int find_root(FAT16 *fat16_ins, DIR_ENTRY *Dir, const char *path)
         Dir->DIR_WrtDate = *((WORD *)(&buffer[Start_Read+0x18]));
         Dir->DIR_FstClusLO = *((WORD *)(&buffer[Start_Read+0x1a]));
         Dir->DIR_FileSize = *((DWORD *)(&buffer[Start_Read+0x1c]));
-        printf("1\n");
         return 0;
       }
-      return find_subdir(fat16_ins, Dir, paths, pathDepth, 1); 
+      else{
+        return find_subdir(fat16_ins, Dir, paths, pathDepth, 1);
+      }
     }
-    /** 
-     * return find_subdir(fat16_ins, Dir, paths, pathDepth, 1); 
-    **/
   }
   return 1;
 }
@@ -353,19 +351,57 @@ int find_root(FAT16 *fat16_ins, DIR_ENTRY *Dir, const char *path)
 **/
 int find_subdir(FAT16 *fat16_ins, DIR_ENTRY *Dir, char **paths, int pathDepth, int curDepth)
 {
-  int i, j;
-  int DirSecCnt = 1;  /* 用于统计已读取的扇区数 */
+  
+  //int DirSecCnt = 0;  /* 用于统计已读取的扇区数 */
   BYTE buffer[BYTES_PER_SECTOR];
-
-  WORD ClusterN, FatClusEntryVal, FirstSectorofCluster;
-  
-  
-
-
-
-
-
-
+  if (curDepth<pathDepth){
+    int i, j, k;//i簇内扇区偏移，j为扇区内字节偏移
+    WORD ClusterN = Dir->DIR_FstClusLO; 
+    WORD FatClusEntryVal, FirstSectorofCluster;
+    //第一个变量是当前簇的后继簇号，第二个是该簇的第一个扇区号。
+    first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,buffer);
+    //开始进行查找
+    while (ClusterN >= 0x0002 && ClusterN <= 0xffef){
+      //sector_read(fat16_ins->fd, FirstSectorofCluster, buffer);
+      //DirSecCnt=0;
+      for (i=0;i<fat16_ins->Bpb.BPB_SecPerClus;++i){
+        sector_read(fat16_ins->fd, FirstSectorofCluster+i, buffer);
+        for (j=0;j<BYTES_PER_SECTOR;j+=32){
+          char Name_Buffer[12];
+          for (k=0;k<11;++k){
+            Name_Buffer[k] = buffer[j+k];
+          }
+          Name_Buffer[12]='\0';
+          if (strcmp(Name_Buffer, paths[curDepth])==0){
+            for (k=0;k<11;++k){
+              Dir->DIR_Name[k] = Name_Buffer[k];
+            }
+            int Start_Read=j;
+            Dir->DIR_Attr = buffer[Start_Read+0x0b];
+            Dir->DIR_NTRes = buffer[Start_Read+0x0c];
+            Dir->DIR_CrtTimeTenth = buffer[Start_Read+0x0d];
+            Dir->DIR_CrtTime = *((WORD *)(&buffer[Start_Read+0x0e]));
+            Dir->DIR_CrtDate = *((WORD *)(&buffer[Start_Read+0x10]));
+            Dir->DIR_LstAccDate = *((WORD *)(&buffer[Start_Read+0x12]));
+            Dir->DIR_FstClusHI = *((WORD *)(&buffer[Start_Read+0x14]));
+            Dir->DIR_WrtTime = *((WORD *)(&buffer[Start_Read+0x16]));
+            Dir->DIR_WrtDate = *((WORD *)(&buffer[Start_Read+0x18]));
+            Dir->DIR_FstClusLO = *((WORD *)(&buffer[Start_Read+0x1a]));
+            Dir->DIR_FileSize = *((DWORD *)(&buffer[Start_Read+0x1c]));
+            return find_subdir(fat16_ins, Dir, paths, pathDepth, curDepth+1);
+          }
+          if (Name_Buffer[0]==0 && Name_Buffer[1]==0){
+            return 1;
+          }
+        }
+      }
+      ClusterN = FatClusEntryVal;
+      first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,buffer);
+    }
+  }
+  else if (curDepth == pathDepth){
+    return 0;
+  }
   return 1;
 }
 
