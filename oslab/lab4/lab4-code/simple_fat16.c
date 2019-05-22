@@ -262,7 +262,7 @@ WORD fat_entry_by_cluster(FAT16 *fat16_ins, WORD ClusterN)
   WORD result = *((WORD *)(&sector_buffer[Byte_Shift]));
 
 
-  return 0xffff;
+  return result;
 }
 
 /**
