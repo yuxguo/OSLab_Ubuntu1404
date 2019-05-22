@@ -362,6 +362,7 @@ int find_subdir(FAT16 *fat16_ins, DIR_ENTRY *Dir, char **paths, int pathDepth, i
     first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,buffer);
     //开始进行查找
     while (ClusterN >= 0x0002 && ClusterN <= 0xffef){
+      first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,buffer);
       //sector_read(fat16_ins->fd, FirstSectorofCluster, buffer);
       //DirSecCnt=0;
       for (i=0;i<fat16_ins->Bpb.BPB_SecPerClus;++i){
@@ -396,7 +397,7 @@ int find_subdir(FAT16 *fat16_ins, DIR_ENTRY *Dir, char **paths, int pathDepth, i
         }
       }
       ClusterN = FatClusEntryVal;
-      first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,buffer);
+      
     }
   }
   else if (curDepth == pathDepth){
