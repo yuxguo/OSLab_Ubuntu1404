@@ -317,14 +317,23 @@ int find_root(FAT16 *fat16_ins, DIR_ENTRY *Dir, const char *path)
     }
 
     if (strcmp(Name_Buffer, paths[0])){
+      if (pathDepth==1){
+        for (j=0;j<11;++j){
+          Dir->DIR_Name[j] = Name_Buffer[j];
+        }
+        Dir->DIR_Attr = buffer[Start_Read+0x0b];
+        Dir->DIR_WrtTime = *((WORD *)(&buffer[Start_Read+0x16]));
+        Dir->DIR_WrtDate = *((WORD *)(&buffer[Start_Read+0x18]));
+        Dir->DIR_FstClusLO = *((WORD *)(&buffer[Start_Read+0x1a]));
+        Dir->DIR_FileSize = *((DWORD *)(&buffer[Start_Read+0x1c]));
+        return 0;
+      }
       return find_subdir(fat16_ins, Dir, paths, pathDepth, 1); 
     }
     /** 
      * return find_subdir(fat16_ins, Dir, paths, pathDepth, 1); 
     **/
-
   }
-
   return 1;
 }
 
