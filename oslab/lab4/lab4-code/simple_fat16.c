@@ -178,8 +178,6 @@ BYTE *path_decode(BYTE *path)
     }
     pathDecoded[i]='\0';
   }
-  //printf("%s\n", (char *)path);
-  //printf("%s\n",(char *)pathDecoded);
   return pathDecoded;
 }
 
@@ -204,9 +202,43 @@ FAT16 *pre_init_fat16(void)
    * 初始化fat16_ins的其余成员变量
    * Hint: root directory的大小与Bpb.BPB_RootEntCnt有关，并且是扇区对齐的
   **/
+  char buffer[BYTES_PER_SECTOR];
+  sector_read(fd, 0, (void *)buffer);
+  int i;
+  for (i=0;i<3;++i){
+    fat16_ins->Bpb.BS_jmpBoot[i]=buffer[i];
+  }
+  for (i=0;i<8;++i){
+    fat16_ins->Bpb.BS_OEMName[i]=buffer[0x3+i];
+  }
+  fat16_ins->Bpb.BPB_BytsPerSec = *((WORD *)(&buffer[0xb]));
+  fat16_ins->Bpb.BPB_SecPerClus = buffer[0xd];
+  fat16_ins->Bpb.BPB_RsvdSecCnt = *((WORD *)(&buffer[0xe]));
+  fat16_ins->Bpb.BPB_NumFATS = buffer[0x10];
+  fat16_ins->Bpb.BPB_RootEntCnt = *((WORD *)(&buffer[0x11]));
+  fat16_ins->Bpb.BPB_TotSec16 = *((WORD *)(&buffer[0x13]));
+  fat16_ins->Bpb.BPB_Media = buffer[0x15];
+  fat16_ins->Bpb.BPB_FATSz16 = *((WORD *)(&buffer[0x16]));
+  fat16_ins->Bpb.BPB_SecPerTrk = *((WORD *)(&buffer[0x18]));
+  fat16_ins->Bpb.BPB_NumHeads = *((WORD *)(&buffer[0x1a]));
+  fat16_ins->Bpb.BPB_HiddSec = *((DWORD *)(&buffer[0x1c]));
+  fat16_ins->Bpb.BPB_TotSec32 = *((DWORD *)(&buffer[0x20]));
+  fat16_ins->Bpb.BS_DrvNum = buffer[0x24];
+  fat16_ins->Bpb.BS_Reserved1 = buffer[0x25];
+  fat16_ins->Bpb.BS_BootSig = buffer[0x26];
+  fat16_ins->Bpb.BS_VollID = *((DWORD *)(&buffer[0x27]));
+  for (i=0;i<11;++i){
+    fat16_ins->Bpb.BS_VollLab[i] = buffer[0x2b+i];
+  }
+  for (i=0;i<8;++i){
+    fat16_ins->Bpb.BS_FilSysType[i] = buffer[0x36+i];
+  }
+  for (i=0;i<448;++i){
+    fat16_ins->Bpb.Reserved2[i] = buffer[0x3e+i];
+  }
+  fat16_ins->Bpb.Signature_word = *((WORD *)(&buffer[0x1fe]));
 
-
-
+  fat16_ins->FirstRootDirSecNum = 
   return fat16_ins;
 }
 
