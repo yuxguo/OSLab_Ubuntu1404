@@ -250,8 +250,16 @@ FAT16 *pre_init_fat16(void)
 WORD fat_entry_by_cluster(FAT16 *fat16_ins, WORD ClusterN)
 {
   BYTE sector_buffer[BYTES_PER_SECTOR];
-  
+  DWORD Fat1_Start = fat16_ins->Bpb.BPB_RsvdSecCnt;
+  WORD Fat1_Large = fat16_ins->Bpb.BPB_FATSz16;//可以在检查是否越界的时候使用，以增加安全性
+  WORD Sec_Large = fat16_ins->Bpb.BPB_BytsPerSec;
 
+  //需要寻找对应的扇区来找到对应簇的后继，首先要确定ClusterN簇号存储在哪一个扇区，再确定偏移了多少；
+  //因为使用两个字节来存储一个簇的簇号所以...
+  int Sec_Shift = (ClusterN*2)/Sec_Large;
+  int Byte_Shift = (ClusterN*2)%Sec_Large;
+  sector_read(fat16_ins->fd, (Fat1_Start+Sec_Shift), sector_buffer);
+  WORD result = *((WORD *)(&sector_buffer[Byte_Shift]));
 
 
   return 0xffff;
