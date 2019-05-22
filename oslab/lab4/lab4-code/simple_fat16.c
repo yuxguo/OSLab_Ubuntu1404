@@ -368,7 +368,7 @@ int find_subdir(FAT16 *fat16_ins, DIR_ENTRY *Dir, char **paths, int pathDepth, i
     while (ClusterN >= 0x0002 && ClusterN <= 0xffef){
       first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,buffer);
       for (i=0;i<fat16_ins->Bpb.BPB_SecPerClus;++i){
-        sector_read(fat16_ins->fd, FirstSectorofCluster+i, buffer);
+        sector_read(fat16_ins->fd, FirstSectorofCluster+i-1, buffer);
         for (j=0;j<BYTES_PER_SECTOR;j+=32){
           char Name_Buffer[12];
           for (k=0;k<11;++k){
