@@ -316,7 +316,7 @@ int find_root(FAT16 *fat16_ins, DIR_ENTRY *Dir, const char *path)
       Name_Buffer[j] = buffer[Start_Read+j];
     }
 
-    if (strcmp(Name_Buffer, paths[0])){
+    if (strcmp(Name_Buffer, paths[0])==0){
       if (pathDepth==1){
         for (j=0;j<11;++j){
           Dir->DIR_Name[j] = Name_Buffer[j];
