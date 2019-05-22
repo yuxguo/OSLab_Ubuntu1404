@@ -358,10 +358,12 @@ int find_subdir(FAT16 *fat16_ins, DIR_ENTRY *Dir, char **paths, int pathDepth, i
     int i, j, k;//i簇内扇区偏移，j为扇区内字节偏移
     WORD ClusterN = Dir->DIR_FstClusLO; 
     printf("%d\n\n", ClusterN);
+    
     WORD FatClusEntryVal, FirstSectorofCluster;
     //第一个变量是当前簇的后继簇号，第二个是该簇的第一个扇区号。
     first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,buffer);
     //开始进行查找
+    printf("%x\n%x\n", FatClusEntryVal, FirstSectorofCluster)
     while (ClusterN >= 0x0002 && ClusterN <= 0xffef){
       first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,buffer);
       for (i=0;i<fat16_ins->Bpb.BPB_SecPerClus;++i){
