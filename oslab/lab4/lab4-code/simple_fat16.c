@@ -393,9 +393,9 @@ int find_subdir(FAT16 *fat16_ins, DIR_ENTRY *Dir, char **paths, int pathDepth, i
             Dir->DIR_FileSize = *((DWORD *)(&buffer[Start_Read+0x1c]));
             return find_subdir(fat16_ins, Dir, paths, pathDepth, curDepth+1);
           }
-          if (Name_Buffer[0]==0 && Name_Buffer[1]==0){
-            return 1;
-          }
+          // if (Name_Buffer[0]==0 && Name_Buffer[1]==0){
+          //   return 1;
+          // }
         }
       }
       ClusterN = FatClusEntryVal;
