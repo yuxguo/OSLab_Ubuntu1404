@@ -351,7 +351,7 @@ int find_root(FAT16 *fat16_ins, DIR_ENTRY *Dir, const char *path)
 **/
 int find_subdir(FAT16 *fat16_ins, DIR_ENTRY *Dir, char **paths, int pathDepth, int curDepth)
 {
-  
+  printf("%s\n\n", paths[curDepth]);
   //int DirSecCnt = 0;  /* 用于统计已读取的扇区数 */
   BYTE buffer[BYTES_PER_SECTOR];
   if (curDepth<pathDepth){
@@ -373,6 +373,7 @@ int find_subdir(FAT16 *fat16_ins, DIR_ENTRY *Dir, char **paths, int pathDepth, i
             Name_Buffer[k] = buffer[j+k];
           }
           Name_Buffer[12]='\0';
+          printf("%s\n", Name_Buffer);
           if (strcmp(Name_Buffer, paths[curDepth])==0){
             for (k=0;k<11;++k){
               Dir->DIR_Name[k] = Name_Buffer[k];
