@@ -377,6 +377,7 @@ int find_subdir(FAT16 *fat16_ins, DIR_ENTRY *Dir, char **paths, int pathDepth, i
             for (k=0;k<11;++k){
               Dir->DIR_Name[k] = Name_Buffer[k];
             }
+            printf("%s\n", Name_Buffer);
             int Start_Read=j;
             Dir->DIR_Attr = buffer[Start_Read+0x0b];
             Dir->DIR_NTRes = buffer[Start_Read+0x0c];
