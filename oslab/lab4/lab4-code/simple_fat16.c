@@ -326,6 +326,7 @@ int find_root(FAT16 *fat16_ins, DIR_ENTRY *Dir, const char *path)
         Dir->DIR_WrtDate = *((WORD *)(&buffer[Start_Read+0x18]));
         Dir->DIR_FstClusLO = *((WORD *)(&buffer[Start_Read+0x1a]));
         Dir->DIR_FileSize = *((DWORD *)(&buffer[Start_Read+0x1c]));
+        printf("1\n");
         return 0;
       }
       return find_subdir(fat16_ins, Dir, paths, pathDepth, 1); 
