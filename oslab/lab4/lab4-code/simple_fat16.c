@@ -322,6 +322,12 @@ int find_root(FAT16 *fat16_ins, DIR_ENTRY *Dir, const char *path)
           Dir->DIR_Name[j] = Name_Buffer[j];
         }
         Dir->DIR_Attr = buffer[Start_Read+0x0b];
+        Dir->DIR_NTRes = buffer[Start_Read+0x0c];
+        Dir->DIR_CrtTimeTenth = buffer[Start_Read+0x0d];
+        Dir->DIR_CrtTime = *((WORD *)(&buffer[Start_Read+0x0e]));
+        Dir->DIR_CrtDate = *((WORD *)(&buffer[Start_Read+0x10]));
+        Dir->DIR_LstAccDate = *((WORD *)(&buffer[Start_Read+0x12]));
+        Dir->DIR_FstClusHI = *((WORD *)(&buffer[Start_Read+0x14]));
         Dir->DIR_WrtTime = *((WORD *)(&buffer[Start_Read+0x16]));
         Dir->DIR_WrtDate = *((WORD *)(&buffer[Start_Read+0x18]));
         Dir->DIR_FstClusLO = *((WORD *)(&buffer[Start_Read+0x1a]));
