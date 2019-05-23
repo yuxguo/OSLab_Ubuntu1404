@@ -351,7 +351,6 @@ int find_root(FAT16 *fat16_ins, DIR_ENTRY *Dir, const char *path)
 **/
 int find_subdir(FAT16 *fat16_ins, DIR_ENTRY *Dir, char **paths, int pathDepth, int curDepth)
 {
-  //int DirSecCnt = 0;  /* 用于统计已读取的扇区数 */
   BYTE buffer[BYTES_PER_SECTOR];
   if (curDepth<pathDepth){
     int i, j, k;//i簇内扇区偏移，j为扇区内字节偏移
@@ -360,8 +359,6 @@ int find_subdir(FAT16 *fat16_ins, DIR_ENTRY *Dir, char **paths, int pathDepth, i
     //第一个变量是当前簇的后继簇号，第二个是该簇的第一个扇区号。
     first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,buffer);
     //开始进行查找
-    //printf("%d\n%d\n", fat16_ins->FirstDataSector, fat16_ins->Bpb.BPB_SecPerClus);
-    //printf("%x\n%d\n", FatClusEntryVal, FirstSectorofCluster);
     while (ClusterN >= 0x0002 && ClusterN <= 0xffef){
       first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,buffer);
       for (i=0;i<fat16_ins->Bpb.BPB_SecPerClus;++i){
@@ -372,12 +369,10 @@ int find_subdir(FAT16 *fat16_ins, DIR_ENTRY *Dir, char **paths, int pathDepth, i
             Name_Buffer[k] = buffer[j+k];
           }
           Name_Buffer[12]='\0';
-          //printf("%s\n", Name_Buffer);
           if (strncmp(Name_Buffer, paths[curDepth],11)==0){
             for (k=0;k<11;++k){
               Dir->DIR_Name[k] = Name_Buffer[k];
             }
-            //printf("%s\n", Name_Buffer);
             int Start_Read=j;
             Dir->DIR_Attr = buffer[Start_Read+0x0b];
             Dir->DIR_NTRes = buffer[Start_Read+0x0c];
