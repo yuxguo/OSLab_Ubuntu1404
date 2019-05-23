@@ -629,7 +629,7 @@ int fat16_read(const char *path, char *buffer, size_t size, off_t offset,
   context = fuse_get_context();
   fat16_ins = (FAT16 *)context->private_data;
   DIR_ENTRY File;
-  char sector_buffer[BYTES_PER_SECTOR];
+  BYTE sector_buffer[BYTES_PER_SECTOR];
   WORD ClusterN, FatClusEntryVal, FirstSectorofCluster;
   find_root(fat16_ins, &File, path);
   ClusterN = File.DIR_FstClusLO;
