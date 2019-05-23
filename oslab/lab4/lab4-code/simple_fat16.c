@@ -519,9 +519,9 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
         Name_Buffer[j] = sector_buffer[Start_Read+j];
       }
       Name_Buffer[12]='\0';
-      if (Name_Buffer[0]==0 && Name_Buffer[1]==0){
-        break;
-      }//根目录遍历结束
+      // if (Name_Buffer[0]==0 && Name_Buffer[1]==0){
+      //   break;
+      // }//根目录遍历结束
       for (j=0;j<11;++j){
         Root.DIR_Name[j] = Name_Buffer[j];
       }
@@ -626,21 +626,25 @@ int fat16_read(const char *path, char *buffer, size_t size, off_t offset,
   find_root(fat16_ins, &File, path);
   ClusterN = File.DIR_FstClusLO;
   DWORD File_Size = File.DIR_FileSize;
-  first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,sector_buffer);
-  int i,j,k;
   if (offset >= File_Size){
     return 0;
   }
-
-  DWORD Real_Read_Size = ((DWORD)offset+(DWORD)size)<=File_Size ? (DWORD)size : (DWORD)File_Size-(DWORD)offset;
-  DWORD Start_ClusterN = (offset)/((fat16_ins->Bpb.BPB_SecPerClus)*(fat16_ins->Bpb.BPB_BytsPerSec));
-  DWORD Start_Sector = (offset - Start_ClusterN*(fat16_ins->Bpb.BPB_SecPerClus)*(fat16_ins->Bpb.BPB_BytsPerSec))/fat16_ins->Bpb.BPB_BytsPerSec;
-  DWORD Start_Byte = offset - Start_ClusterN*(fat16_ins->Bpb.BPB_SecPerClus)*(fat16_ins->Bpb.BPB_BytsPerSec) - Start_Sector*(fat16_ins->Bpb.BPB_BytsPerSec);
-  
-  while (ClusterN != Start_ClusterN){
+  first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,sector_buffer);
+  int i;
+  int Cluster_Shift = (offset)/((fat16_ins->Bpb.BPB_SecPerClus)*(fat16_ins->Bpb.BPB_BytsPerSec));
+  for (i=0;i<Cluster_Shift;++i){
     ClusterN = FatClusEntryVal;
     first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,sector_buffer);
   }
+
+  DWORD Real_Read_Size = ((DWORD)offset+(DWORD)size)<=File_Size ? (DWORD)size : (DWORD)File_Size-(DWORD)offset;
+  DWORD Start_Sector = (offset - Cluster_Shift*(fat16_ins->Bpb.BPB_SecPerClus)*(fat16_ins->Bpb.BPB_BytsPerSec))/fat16_ins->Bpb.BPB_BytsPerSec;
+  DWORD Start_Byte = offset - Cluster_Shift*(fat16_ins->Bpb.BPB_SecPerClus)*(fat16_ins->Bpb.BPB_BytsPerSec) - Start_Sector*(fat16_ins->Bpb.BPB_BytsPerSec);
+  
+  // while (ClusterN != Start_ClusterN){
+  //   ClusterN = FatClusEntryVal;
+  //   first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,sector_buffer);
+  // }
   int CurSector = FirstSectorofCluster + Start_Sector;
   sector_read(fat16_ins->fd, CurSector, sector_buffer);
 
