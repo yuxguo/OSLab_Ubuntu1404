@@ -651,7 +651,6 @@ int fat16_read(const char *path, char *buffer, size_t size, off_t offset,
   
   
   int CurSector = FirstSectorofCluster + Start_Sector;
-  printf ("%d  %d\n",Start_Byte,CurSector);
   sector_read(fat16_ins->fd, CurSector, sector_buffer);
 
 
