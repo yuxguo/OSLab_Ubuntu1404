@@ -519,9 +519,9 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
         Name_Buffer[j] = sector_buffer[Start_Read+j];
       }
       Name_Buffer[12]='\0';
-      // if (Name_Buffer[0]==0 && Name_Buffer[1]==0){
-      //   break;
-      // }//根目录遍历结束
+      if (Name_Buffer[0]==0 && Name_Buffer[1]==0){
+        break;
+      }//根目录遍历结束
       for (j=0;j<11;++j){
         Root.DIR_Name[j] = Name_Buffer[j];
       }
