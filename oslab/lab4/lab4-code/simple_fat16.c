@@ -655,7 +655,7 @@ int fat16_read(const char *path, char *buffer, size_t size, off_t offset,
   sector_read(fat16_ins->fd, CurSector, sector_buffer);
 
   for (i=0;i<Real_Read_Size;++i){
-    if ((Start_Byte+i) >= BYTES_PER_SECTOR){
+    if ((Start_Byte+i)%BYTES_PER_SECTOR >= BYTES_PER_SECTOR){
       Start_Byte = 0;
       if (CurSector+1-FirstSectorofCluster>=fat16_ins->Bpb.BPB_SecPerClus){
         ClusterN = FatClusEntryVal;
