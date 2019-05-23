@@ -489,8 +489,6 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
 {
   FAT16 *fat16_ins;
   BYTE sector_buffer[BYTES_PER_SECTOR];
-  int i;
-  int RootDirCnt = 1, DirSecCnt = 1;  /* 用于统计已读取的扇区数 */
 
   struct fuse_context *context;
   context = fuse_get_context();
@@ -501,15 +499,46 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
   if (strcmp(path, "/") == 0)
   {
     DIR_ENTRY Root;
+    int i,j;
+    int RootDirCnt = 0;
 
     /** TODO:
      * 将root directory下的文件或目录通过filler填充到buffer中
      * 注意不需要遍历子目录
     **/
 
-    for (i = 1; i <= fat16_ins->Bpb.BPB_RootEntCnt; i++)
+    for (i = 0; i <= fat16_ins->Bpb.BPB_RootEntCnt; i++)
     {
-     
+      if (i*32 >= (RootDirCnt+1)*BYTES_PER_SECTOR){
+        RootDirCnt++;
+        sector_read(fat16_ins->fd, (fat16_ins->FirstRootDirSecNum)+RootDirCnt, sector_buffer);
+      }
+      char Name_Buffer[12];
+      int Start_Read=(i*32)%BYTES_PER_SECTOR;
+      for (j=0;j<11;++j){
+        Name_Buffer[j] = buffer[Start_Read+j];
+      }
+      Name_Buffer[12]='\0';
+      if (Name_Buffer[0]==0 && Name_Buffer[1]==0){
+        break;
+      }//根目录遍历结束
+      for (j=0;j<11;++j){
+        Root.DIR_Name[j] = Name_Buffer[j];
+      }
+      Root.DIR_Attr = buffer[Start_Read+0x0b];
+      Root.DIR_NTRes = buffer[Start_Read+0x0c];
+      Root.DIR_CrtTimeTenth = buffer[Start_Read+0x0d];
+      Root.DIR_CrtTime = *((WORD *)(&buffer[Start_Read+0x0e]));
+      Root.DIR_CrtDate = *((WORD *)(&buffer[Start_Read+0x10]));
+      Root.DIR_LstAccDate = *((WORD *)(&buffer[Start_Read+0x12]));
+      Root.DIR_FstClusHI = *((WORD *)(&buffer[Start_Read+0x14]));
+      Root.DIR_WrtTime = *((WORD *)(&buffer[Start_Read+0x16]));
+      Root.DIR_WrtDate = *((WORD *)(&buffer[Start_Read+0x18]));
+      Root.DIR_FstClusLO = *((WORD *)(&buffer[Start_Read+0x1a]));
+      Root.DIR_FileSize = *((DWORD *)(&buffer[Start_Read+0x1c]));
+
+      const char *filename = (const char *)path_decode(Root.DIR_Name);
+      filler(buffer, filename, NULL, 0);
       /**
        * const char *filename = (const char *)path_decode(Root.DIR_Name);
        * filler(buffer, filename, NULL, 0);
@@ -520,7 +549,9 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
   else
   {
     DIR_ENTRY Dir;
- 
+    int i,j,k;
+    WORD ClusterN, FatClusEntryVal, FirstSectorofCluster;
+
     /** TODO:
      * 通过find_root获取path对应的目录的目录项，
      * 然后访问该目录，将其下的文件或目录通过filler填充到buffer中，
@@ -528,16 +559,52 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
      * Hint: 需要考虑目录大小，可能跨扇区，跨簇
     **/
     find_root(fat16_ins, &Dir, path);
+    ClusterN = Dir.DIR_FstClusLO;
+    first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,sector_buffer);
+    int end_flag=0;
 
-    WORD ClusterN, FatClusEntryVal, FirstSectorofCluster;
-    
-    
-
-
-
+    while (ClusterN >= 0x0002 && ClusterN <= 0xffef){
+      first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,sector_buffer);
+      for (i=0;i<fat16_ins->Bpb.BPB_SecPerClus;++i){
+        sector_read(fat16_ins->fd,FirstSectorofCluster+i,sector_buffer);
+        for (j=0;j<BYTES_PER_SECTOR;j+=32){
+          char Name_Buffer[12];
+          for (k=0;k<11;++k){
+            Name_Buffer[k] = buffer[j+k];
+          }
+          Name_Buffer[12]='\0';
+          if (Name_Buffer[0]==0 && Name_Buffer[1]==0){
+            end_flag=1;
+            break;
+          }//当前目录遍历结束
+          for (k=0;k<11;++k){
+              Dir.DIR_Name[k] = Name_Buffer[k];
+          }
+          int Start_Read=j;
+          Dir.DIR_Attr = buffer[Start_Read+0x0b];
+          Dir.DIR_NTRes = buffer[Start_Read+0x0c];
+          Dir.DIR_CrtTimeTenth = buffer[Start_Read+0x0d];
+          Dir.DIR_CrtTime = *((WORD *)(&buffer[Start_Read+0x0e]));
+          Dir.DIR_CrtDate = *((WORD *)(&buffer[Start_Read+0x10]));
+          Dir.DIR_LstAccDate = *((WORD *)(&buffer[Start_Read+0x12]));
+          Dir.DIR_FstClusHI = *((WORD *)(&buffer[Start_Read+0x14]));
+          Dir.DIR_WrtTime = *((WORD *)(&buffer[Start_Read+0x16]));
+          Dir.DIR_WrtDate = *((WORD *)(&buffer[Start_Read+0x18]));
+          Dir.DIR_FstClusLO = *((WORD *)(&buffer[Start_Read+0x1a]));
+          Dir.DIR_FileSize = *((DWORD *)(&buffer[Start_Read+0x1c]));
+          const char *filename = (const char *)path_decode(Dir.DIR_Name);
+          filler(buffer, filename, NULL, 0);
+        }
+        if (end_flag==1){
+          break;
+        }
+      }
+      if (end_flag==1){
+        break;
+      }
+      ClusterN = FatClusEntryVal;
+    }
   }
-
-
   return 0;
 }
 
