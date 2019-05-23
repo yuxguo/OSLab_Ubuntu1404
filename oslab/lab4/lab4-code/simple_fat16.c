@@ -667,6 +667,7 @@ int fat16_read(const char *path, char *buffer, size_t size, off_t offset,
         sector_read(fat16_ins->fd, CurSector, sector_buffer);
       }
     }
+    printf("%d\n" ,Start_Byte);
     buffer[i] = sector_buffer[Start_Byte+i];
   }
   return (int)Real_Read_Size;
