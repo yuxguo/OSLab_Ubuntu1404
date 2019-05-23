@@ -516,7 +516,7 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
       char Name_Buffer[12];
       int Start_Read=(i*32)%BYTES_PER_SECTOR;
       for (j=0;j<11;++j){
-        Name_Buffer[j] = buffer[Start_Read+j];
+        Name_Buffer[j] = sector_buffer[Start_Read+j];
       }
       Name_Buffer[12]='\0';
       if (Name_Buffer[0]==0 && Name_Buffer[1]==0){
@@ -525,17 +525,17 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
       for (j=0;j<11;++j){
         Root.DIR_Name[j] = Name_Buffer[j];
       }
-      Root.DIR_Attr = buffer[Start_Read+0x0b];
-      Root.DIR_NTRes = buffer[Start_Read+0x0c];
-      Root.DIR_CrtTimeTenth = buffer[Start_Read+0x0d];
-      Root.DIR_CrtTime = *((WORD *)(&buffer[Start_Read+0x0e]));
-      Root.DIR_CrtDate = *((WORD *)(&buffer[Start_Read+0x10]));
-      Root.DIR_LstAccDate = *((WORD *)(&buffer[Start_Read+0x12]));
-      Root.DIR_FstClusHI = *((WORD *)(&buffer[Start_Read+0x14]));
-      Root.DIR_WrtTime = *((WORD *)(&buffer[Start_Read+0x16]));
-      Root.DIR_WrtDate = *((WORD *)(&buffer[Start_Read+0x18]));
-      Root.DIR_FstClusLO = *((WORD *)(&buffer[Start_Read+0x1a]));
-      Root.DIR_FileSize = *((DWORD *)(&buffer[Start_Read+0x1c]));
+      Root.DIR_Attr = sector_buffer[Start_Read+0x0b];
+      Root.DIR_NTRes = sector_buffer[Start_Read+0x0c];
+      Root.DIR_CrtTimeTenth = sector_buffer[Start_Read+0x0d];
+      Root.DIR_CrtTime = *((WORD *)(&sector_buffer[Start_Read+0x0e]));
+      Root.DIR_CrtDate = *((WORD *)(&sector_buffer[Start_Read+0x10]));
+      Root.DIR_LstAccDate = *((WORD *)(&sector_buffer[Start_Read+0x12]));
+      Root.DIR_FstClusHI = *((WORD *)(&sector_buffer[Start_Read+0x14]));
+      Root.DIR_WrtTime = *((WORD *)(&sector_buffer[Start_Read+0x16]));
+      Root.DIR_WrtDate = *((WORD *)(&sector_buffer[Start_Read+0x18]));
+      Root.DIR_FstClusLO = *((WORD *)(&sector_buffer[Start_Read+0x1a]));
+      Root.DIR_FileSize = *((DWORD *)(&sector_buffer[Start_Read+0x1c]));
 
       const char *filename = (const char *)path_decode(Root.DIR_Name);
       filler(buffer, filename, NULL, 0);
@@ -570,7 +570,7 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
         for (j=0;j<BYTES_PER_SECTOR;j+=32){
           char Name_Buffer[12];
           for (k=0;k<11;++k){
-            Name_Buffer[k] = buffer[j+k];
+            Name_Buffer[k] = sector_buffer[j+k];
           }
           Name_Buffer[12]='\0';
           if (Name_Buffer[0]==0 && Name_Buffer[1]==0){
@@ -581,17 +581,17 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
               Dir.DIR_Name[k] = Name_Buffer[k];
           }
           int Start_Read=j;
-          Dir.DIR_Attr = buffer[Start_Read+0x0b];
-          Dir.DIR_NTRes = buffer[Start_Read+0x0c];
-          Dir.DIR_CrtTimeTenth = buffer[Start_Read+0x0d];
-          Dir.DIR_CrtTime = *((WORD *)(&buffer[Start_Read+0x0e]));
-          Dir.DIR_CrtDate = *((WORD *)(&buffer[Start_Read+0x10]));
-          Dir.DIR_LstAccDate = *((WORD *)(&buffer[Start_Read+0x12]));
-          Dir.DIR_FstClusHI = *((WORD *)(&buffer[Start_Read+0x14]));
-          Dir.DIR_WrtTime = *((WORD *)(&buffer[Start_Read+0x16]));
-          Dir.DIR_WrtDate = *((WORD *)(&buffer[Start_Read+0x18]));
-          Dir.DIR_FstClusLO = *((WORD *)(&buffer[Start_Read+0x1a]));
-          Dir.DIR_FileSize = *((DWORD *)(&buffer[Start_Read+0x1c]));
+          Dir.DIR_Attr = sector_buffer[Start_Read+0x0b];
+          Dir.DIR_NTRes = sector_buffer[Start_Read+0x0c];
+          Dir.DIR_CrtTimeTenth = sector_buffer[Start_Read+0x0d];
+          Dir.DIR_CrtTime = *((WORD *)(&sector_buffer[Start_Read+0x0e]));
+          Dir.DIR_CrtDate = *((WORD *)(&sector_buffer[Start_Read+0x10]));
+          Dir.DIR_LstAccDate = *((WORD *)(&sector_buffer[Start_Read+0x12]));
+          Dir.DIR_FstClusHI = *((WORD *)(&sector_buffer[Start_Read+0x14]));
+          Dir.DIR_WrtTime = *((WORD *)(&sector_buffer[Start_Read+0x16]));
+          Dir.DIR_WrtDate = *((WORD *)(&sector_buffer[Start_Read+0x18]));
+          Dir.DIR_FstClusLO = *((WORD *)(&sector_buffer[Start_Read+0x1a]));
+          Dir.DIR_FileSize = *((DWORD *)(&sector_buffer[Start_Read+0x1c]));
           const char *filename = (const char *)path_decode(Dir.DIR_Name);
           filler(buffer, filename, NULL, 0);
         }
