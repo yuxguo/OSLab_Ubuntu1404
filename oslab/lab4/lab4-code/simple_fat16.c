@@ -538,6 +538,7 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
       Root.DIR_FileSize = *((DWORD *)(&sector_buffer[Start_Read+0x1c]));
 
       const char *filename = (const char *)path_decode(Name_Buffer);
+      printf("%s\n",filename);
       filler(buffer, filename, NULL, 0);
       /**
        * const char *filename = (const char *)path_decode(Root.DIR_Name);
