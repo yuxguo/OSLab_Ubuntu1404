@@ -667,9 +667,10 @@ int fat16_read(const char *path, char *buffer, size_t size, off_t offset,
         sector_read(fat16_ins->fd, CurSector, sector_buffer);
       }
     }
-    //printf("%d %d\n" ,i,Start_Byte);
-    buffer[i] = sector_buffer[(Start_Byte+i)%fat16_ins->Bpb.BPB_BytsPerSec];
+    
+    buffer[i] = sector_buffer[(Start_Byte+i)%BYTES_PER_SECTOR];
   }
+  printf("%d %d\n" ,i,Real_Read_Size);
   return (int)Real_Read_Size;
   
 }
