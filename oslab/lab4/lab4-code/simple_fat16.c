@@ -620,14 +620,47 @@ int fat16_read(const char *path, char *buffer, size_t size, off_t offset,
   struct fuse_context *context;
   context = fuse_get_context();
   fat16_ins = (FAT16 *)context->private_data;
+  DIR_ENTRY File;
+  char sector_buffer[BYTES_PER_SECTOR];
+  WORD ClusterN, FatClusEntryVal, FirstSectorofCluster;
+  find_root(fat16_ins, &File, path);
+  ClusterN = File.DIR_FstClusLO;
+  DWORD File_Size = File.DIR_FileSize;
+  first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,sector_buffer);
+  int i,j,k;
+  if (offset >= File_Size){
+    return 0;
+  }
 
+  DWORD Real_Read_Size = ((DWORD)offset+(DWORD)size)<=File_Size ? (DWORD)size : (DWORD)File_Size-(DWORD)offset;
+  DWORD Start_ClusterN = (offset)/((fat16_ins->Bpb.BPB_SecPerClus)*(fat16_ins->Bpb.BPB_BytsPerSec));
+  DWORD Start_Sector = (offset - Start_ClusterN*(fat16_ins->Bpb.BPB_SecPerClus)*(fat16_ins->Bpb.BPB_BytsPerSec))/fat16_ins->Bpb.BPB_BytsPerSec;
+  DWORD Start_Byte = offset - Start_ClusterN*(fat16_ins->Bpb.BPB_SecPerClus)*(fat16_ins->Bpb.BPB_BytsPerSec) - Start_Sector*(fat16_ins->Bpb.BPB_BytsPerSec);
+  
+  while (ClusterN != Start_ClusterN){
+    ClusterN = FatClusEntryVal;
+    first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,sector_buffer);
+  }
+  int CurSector = FirstSectorofCluster + Start_Sector;
+  sector_read(fat16_ins->fd, CurSector, sector_buffer);
 
-
-
-
-
-
-  return 0;
+  for (i=0;i<Real_Read_Size;++i){
+    if ((Start_Byte+i) >= BYTES_PER_SECTOR){
+      Start_Byte = Start_Byte+i-BYTES_PER_SECTOR;
+      if (CurSector+1-FirstSectorofCluster>=fat16_ins->Bpb.BPB_SecPerClus){
+        ClusterN = FatClusEntryVal;
+        first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,sector_buffer);
+        CurSector = FirstSectorofCluster;
+      }
+      else {
+        CurSector++;
+        sector_read(fat16_ins->fd, CurSector, sector_buffer);
+      }
+    }
+    buffer[i] = sector_buffer[Start_Byte+i];
+  }
+  return (int)Real_Read_Size;
+  
 }
 
 
