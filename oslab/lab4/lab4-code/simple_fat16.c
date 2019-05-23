@@ -649,8 +649,9 @@ int fat16_read(const char *path, char *buffer, size_t size, off_t offset,
   DWORD Start_Sector = (offset - Cluster_Shift*(fat16_ins->Bpb.BPB_SecPerClus)*(fat16_ins->Bpb.BPB_BytsPerSec))/fat16_ins->Bpb.BPB_BytsPerSec;
   DWORD Start_Byte = offset - Cluster_Shift*(fat16_ins->Bpb.BPB_SecPerClus)*(fat16_ins->Bpb.BPB_BytsPerSec) - Start_Sector*(fat16_ins->Bpb.BPB_BytsPerSec);
   
-  printf ("%d  %d\n",Start_Byte,Start_Sector);
+  
   int CurSector = FirstSectorofCluster + Start_Sector;
+  printf ("%d  %d\n",Start_Byte,CurSector);
   sector_read(fat16_ins->fd, CurSector, sector_buffer);
 
   for (i=0;i<Real_Read_Size;++i){
