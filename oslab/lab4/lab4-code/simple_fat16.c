@@ -542,8 +542,7 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
       if (Name_Buffer[0]==0x00 || Name_Buffer[0]==0xe5 || Root.DIR_Attr==0x0f){
         continue;
       }
-      const char *filename = (const char *)path_decode(Name_Buffer);
-      printf("%s\n",Name_Buffer);
+      const char *filename = (const char *)path_decode(Root.DIR_Name);
       filler(buffer, filename, NULL, 0);
       /**
        * const char *filename = (const char *)path_decode(Root.DIR_Name);
