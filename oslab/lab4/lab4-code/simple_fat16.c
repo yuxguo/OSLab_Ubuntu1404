@@ -332,6 +332,7 @@ int find_root(FAT16 *fat16_ins, DIR_ENTRY *Dir, const char *path)
         Dir->DIR_WrtDate = *((WORD *)(&buffer[Start_Read+0x18]));
         Dir->DIR_FstClusLO = *((WORD *)(&buffer[Start_Read+0x1a]));
         Dir->DIR_FileSize = *((DWORD *)(&buffer[Start_Read+0x1c]));
+        printf("%d\n", Dir->DIR_FstClusLO);
         return 0;
       }
       else{
@@ -368,7 +369,7 @@ int find_subdir(FAT16 *fat16_ins, DIR_ENTRY *Dir, char **paths, int pathDepth, i
     while (ClusterN >= 0x0002 && ClusterN <= 0xffef){
       first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,buffer);
       for (i=0;i<fat16_ins->Bpb.BPB_SecPerClus;++i){
-        sector_read(fat16_ins->fd, FirstSectorofCluster+i-1, buffer);
+        sector_read(fat16_ins->fd, FirstSectorofCluster+i, buffer);
         for (j=0;j<BYTES_PER_SECTOR;j+=32){
           char Name_Buffer[12];
           for (k=0;k<11;++k){
