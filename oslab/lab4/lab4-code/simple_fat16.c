@@ -634,7 +634,7 @@ int fat16_read(const char *path, char *buffer, size_t size, off_t offset,
   find_root(fat16_ins, &File, path);
   ClusterN = File.DIR_FstClusLO;
   DWORD File_Size = File.DIR_FileSize;
-  if (offset >= File_Size){
+  if ((DWORD)offset >= File_Size){
     return 0;
   }
   first_sector_by_cluster(fat16_ins,ClusterN,&FatClusEntryVal,&FirstSectorofCluster,sector_buffer);
@@ -649,6 +649,7 @@ int fat16_read(const char *path, char *buffer, size_t size, off_t offset,
   DWORD Start_Sector = (offset - Cluster_Shift*(fat16_ins->Bpb.BPB_SecPerClus)*(fat16_ins->Bpb.BPB_BytsPerSec))/fat16_ins->Bpb.BPB_BytsPerSec;
   DWORD Start_Byte = offset - Cluster_Shift*(fat16_ins->Bpb.BPB_SecPerClus)*(fat16_ins->Bpb.BPB_BytsPerSec) - Start_Sector*(fat16_ins->Bpb.BPB_BytsPerSec);
   
+  printf ("%d  %d\n",Start_Byte,Start_Sector);
   int CurSector = FirstSectorofCluster + Start_Sector;
   sector_read(fat16_ins->fd, CurSector, sector_buffer);
 
