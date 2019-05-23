@@ -539,6 +539,7 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
 
       const char *filename = (const char *)path_decode(Root.DIR_Name);
       filler(buffer, filename, NULL, 0);
+      buffer += (strlen(filename)+1);
       /**
        * const char *filename = (const char *)path_decode(Root.DIR_Name);
        * filler(buffer, filename, NULL, 0);
@@ -594,6 +595,7 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
           Dir.DIR_FileSize = *((DWORD *)(&sector_buffer[Start_Read+0x1c]));
           const char *filename = (const char *)path_decode(Dir.DIR_Name);
           filler(buffer, filename, NULL, 0);
+          buffer += (strlen(filename)+1);
         }
         if (end_flag==1){
           break;
