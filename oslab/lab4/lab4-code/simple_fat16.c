@@ -519,7 +519,7 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
         Name_Buffer[j] = sector_buffer[Start_Read+j];
       }
       Name_Buffer[12]='\0';
-      if (Name_Buffer[0]==0 && Name_Buffer[1]==0){
+      if ((BYTE)Name_Buffer[0]==0 && (BYTE)Name_Buffer[1]==0){
         break;
       }//根目录遍历结束
 
@@ -542,7 +542,7 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
       if ((BYTE)Name_Buffer[0]==0x00 || (BYTE)Name_Buffer[0]==0xe5 || (BYTE)Root.DIR_Attr==0x0f){
         continue;
       }
-      printf("%x\n", Name_Buffer[0]);
+      //printf("%x\n", Name_Buffer[0]);
       const char *filename = (const char *)path_decode(Root.DIR_Name);
       filler(buffer, filename, NULL, 0);
       /**
@@ -579,7 +579,7 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
             Name_Buffer[k] = sector_buffer[j+k];
           }
           Name_Buffer[12]='\0';
-          if (Name_Buffer[0]==0 && Name_Buffer[1]==0){
+          if ((BYTE)Name_Buffer[0]==0 && (BYTE)Name_Buffer[1]==0){
             end_flag=1;
             break;
           }//当前目录遍历结束
@@ -599,7 +599,7 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
           Dir.DIR_FstClusLO = *((WORD *)(&sector_buffer[Start_Read+0x1a]));
           Dir.DIR_FileSize = *((DWORD *)(&sector_buffer[Start_Read+0x1c]));
           
-          if (Name_Buffer[0]==0x00 || Name_Buffer[0]==0xe5 || Dir.DIR_Attr==0x0f){
+          if ((BYTE)Name_Buffer[0]==0x00 || (BYTE)Name_Buffer[0]==0xe5 || (BYTE)Dir.DIR_Attr==0x0f){
             continue;
           }
           const char *filename = (const char *)path_decode(Dir.DIR_Name);
