@@ -538,10 +538,11 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
       Root.DIR_WrtDate = *((WORD *)(&sector_buffer[Start_Read+0x18]));
       Root.DIR_FstClusLO = *((WORD *)(&sector_buffer[Start_Read+0x1a]));
       Root.DIR_FileSize = *((DWORD *)(&sector_buffer[Start_Read+0x1c]));
-
+      
       if (Name_Buffer[0]==0x00 || Name_Buffer[0]==0xe5 || Root.DIR_Attr==0x0f){
         continue;
       }
+      printf("%x\n", Name_Buffer[0]);
       const char *filename = (const char *)path_decode(Root.DIR_Name);
       filler(buffer, filename, NULL, 0);
       /**
@@ -597,7 +598,7 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
           Dir.DIR_WrtDate = *((WORD *)(&sector_buffer[Start_Read+0x18]));
           Dir.DIR_FstClusLO = *((WORD *)(&sector_buffer[Start_Read+0x1a]));
           Dir.DIR_FileSize = *((DWORD *)(&sector_buffer[Start_Read+0x1c]));
-          printf("%d\n", Name_Buffer[0]);
+          
           if (Name_Buffer[0]==0x00 || Name_Buffer[0]==0xe5 || Dir.DIR_Attr==0x0f){
             continue;
           }
