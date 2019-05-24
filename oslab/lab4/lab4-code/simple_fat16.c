@@ -597,6 +597,7 @@ int fat16_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
           Dir.DIR_WrtDate = *((WORD *)(&sector_buffer[Start_Read+0x18]));
           Dir.DIR_FstClusLO = *((WORD *)(&sector_buffer[Start_Read+0x1a]));
           Dir.DIR_FileSize = *((DWORD *)(&sector_buffer[Start_Read+0x1c]));
+          printf("%d\n", Name_Buffer[0]);
           if (Name_Buffer[0]==0x00 || Name_Buffer[0]==0xe5 || Dir.DIR_Attr==0x0f){
             continue;
           }
@@ -669,6 +670,7 @@ int fat16_read(const char *path, char *buffer, size_t size, off_t offset,
     }
     buffer[i] = sector_buffer[Start_Byte];
   }
+  buffer[i]='\0';
   return (int)Real_Read_Size;
 }
 
