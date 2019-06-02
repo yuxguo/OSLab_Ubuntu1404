@@ -13,6 +13,7 @@
 
 static char upper (char a);
 static char lower (char a);
+static BYTE *path_encode(BYTE *path);
 
 char *FAT_FILE_NAME = "fat16.img";
 
@@ -48,100 +49,85 @@ static char lower(char a)
   return a;
 }
 char **path_split(char *pathInput, int *pathDepth_ret)
+//重写，现在支持长文件名，传入一个内含有长文件名的字符串，仅仅将其分割，并计算深度。
 {
-  int i,j;
-  int pathDepth = 0;
-  for (i=0;pathInput[i]!='\0';++i)
-  {
-    if (pathInput[i]=='/')
-    {
-      pathDepth++;
-    }
-  }
-  char **paths = (char **)malloc(pathDepth * sizeof(char *));
-  for (i=0,j=1;i<pathDepth;++i)
-  {
-    paths[i]=(char *)malloc(12 * sizeof(char));
-    int k1=-1;
-    int k;
-    for (k=j;pathInput[k]!='\0' && pathInput[k]!='/';++k)
-    {
-      if (pathInput[k]=='.')
-      {
-        k1=k;
-      }
-    }//找点号所在的位置，若没有则为-1
-    if (k1==-1)
-    {
-      int l;
-      for (l=0;l<12;++l)
-      {
-        if (l<8)
-        {
-          if (j<k)
-          {
-            paths[i][l]=upper(pathInput[j]);
-            ++j;
-          }
-          else 
-            paths[i][l]=' ';
-        }
-        else if (l>=8 && l<11)
-        {
-          paths[i][l]=' ';
-        }
-        else
-        {
-          paths[i][l]='\0';
-        }
-      }
-    }
-    else
-    {
-      int l;
-      for (l=0;l<12;++l) 
-      {
-        if (l<8)
-        {
-          if (j<k1)
-          {
-            paths[i][l]=upper(pathInput[j]);
-            ++j;
-          }
-          else 
-            paths[i][l]=' ';
-        }
-        else if (l==8)
-        {
-          j=k1+1;
-          if (j<k)
-          {
-            paths[i][l]=upper(pathInput[j]);
-            j++;
-          }
-          else 
-            paths[i][l]=' ';
-        }
-        else if (l>8 && l<11)
-        {
-          if (j<k)
-          {
-            paths[i][l]=upper(pathInput[j]);
-            j++;
-          }
-          else 
-            paths[i][l]=' ';
-        }
-        else 
-          paths[i][l]='\0';
-      }
-    }
-    j=k+1;
-  }
-  *pathDepth_ret=pathDepth;
-  return paths;
-}
 
+    int pathDepth = 0;
+    int i,j;
+    for (i=0;pathInput[i]!='\0';++i){
+        if (pathInput[i]=='/')
+            pathDepth++;
+    }
+    *pathDepth_ret=pathDepth;
+
+    char **paths = (char **)malloc(pathDepth * sizeof(char *));
+
+
+    int start,end;
+    for (i=0,start=1,end=1;i<pathDepth;++i){
+        while (pathInput[end]!='\0' && pathInput[end]!='/'){
+            end++;
+        }
+        int lenth=end-start+1;
+        paths[i]=(char *)malloc(lenth * sizeof(char));
+        for (j=0;j<lenth-1;++j){
+            paths[i][j]=pathInput[start++];
+        }
+        paths[i][lenth-1]='\0';
+        paths[i]=path_encode(path[i]);
+        start=end+1;
+        end=start;
+    }
+    return paths;
+}
+static BYTE *path_encode(BYTE *path)
+//自己添加的函数，用来将分割后的字符串，按照8+3的格式，全部大写的格式编码，超出8+3格式的备份会被截断。
+{
+  BYTE *pathEncoded = malloc(12 * sizeof(BYTE));
+  int i,j;
+  int dot=-1;
+  int lenth=strlen(path)+1;
+  for (i=0;i<lenth;++i){
+    if (path[i]=='.')
+      dot=i;
+  }
+  if (dot==-1){
+    for (i=0;i<8;++i){
+      if (i<lenth-1){
+        pathEncoded[i]=upper(path[i]);
+      }
+      else{
+        pathEncoded[i]=' ';
+      }
+    }
+    for (i=8;i<11;++i){
+      pathEncoded[i]=' ';
+    }
+    pathEncoded[11]='\0';
+  }
+  else{
+    for (i=0;i<8;++i){
+      if (i<dot){
+        pathEncoded[i]=upper(path[i]);
+      }
+      else{
+        pathEncoded[i]=' ';
+      }
+    }
+    for (i=8,j=0;i<11;++i){
+      if (dot+j+1<lenth-1){
+        pathEncoded[i]=upper(path[dot+j+1]);
+        j++;
+      }
+      else {
+        pathEncoded[i]=' ';
+      }
+    }
+    pathEncoded[i]='\0';
+  }
+
+  return pathEncoded;
+}
 /** TODO:
  * 将FAT文件名格式解码成原始的文件名
  * 
