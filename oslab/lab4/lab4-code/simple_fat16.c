@@ -74,7 +74,7 @@ char **path_split(char *pathInput, int *pathDepth_ret)
             paths[i][j]=pathInput[start++];
         }
         paths[i][lenth-1]='\0';
-        paths[i]=path_encode(path[i]);
+        paths[i]=path_encode(paths[i]);
         start=end+1;
         end=start;
     }
